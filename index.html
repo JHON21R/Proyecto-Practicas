@@ -3,457 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Módulo 1 – ¿Cómo entendemos la salud?</title>
+  <title>Módulo 1 – Viaje hacia el sentir, entendiendo la Salud Mental</title>
+  <link rel="stylesheet" href="css/styles.css" />
   <style>
-    /* ══════════════ BASE ══════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f7f4;
-      color: #222;
-    }
-    a { color: inherit; text-decoration: none; }
+    /* ═══════════════════════════════════════════
+       TIPOGRAFÍA — mínimo 12px en todo el sitio
+    ═══════════════════════════════════════════ */
+    body          { font-size: 15px; }
+    p, li, span,
+    label, td     { font-size: 1rem; }
+    .subtitle,
+    .click-hint   { font-size: 1rem; }
+    .activity-item{ font-size: 0.93rem; }
+    .flip-front p,
+    .flip-back  p { font-size: 0.87rem; }
+    .flip-hint    { font-size: 0.8rem; }
+    h1            { font-size: 2rem; }
+    h2            { font-size: 1.4rem; }
+    h3            { font-size: 1.15rem; }
+    h4            { font-size: 1rem; }
+    .hero-quote   { font-size: 1rem; }
+    .enc-item     { font-size: 1rem; }
+    .modules-title{ font-size: 1.1rem; }
+    .no-eval-card { font-size: 0.93rem; }
+    .fase-separador span { font-size: 0.87rem; }
 
-    /* ══════════════ WRAPPER ══════════════ */
-    .page { max-width: 1100px; margin: 0 auto; padding: 24px 16px 40px; }
-
-    /* ══════════════ HEADER / HERO ══════════════ */
-    .hero {
-      background: linear-gradient(160deg, #c8e6c9 0%, #b3e5fc 100%);
-      border-radius: 20px;
-      padding: 28px 32px 20px;
-      display: grid;
-      grid-template-columns: 1fr 220px 1fr;
-      gap: 20px;
-      align-items: start;
-      margin-bottom: 18px;
-      position: relative;
-    }
-
-    .hero-badge {
-      position: absolute;
-      top: 18px; left: 22px;
-      background: #1565c0;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-    }
-
-    .hero-left { padding-top: 32px; }
-
-    .hero-left h1 {
-      font-size: 2.6rem;
-      font-weight: 900;
-      line-height: 1.1;
-      color: #1b5e20;
-      cursor: pointer;
-      transition: color .2s;
-    }
-    .hero-left h1:hover { color: #0d4726; }
-    .hero-left h1 span { color: #222; }
-
-    .hero-left .subtitle {
-      margin-top: 12px;
-      font-size: 0.88rem;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .hero-center img,
-    .hero-center .img-placeholder {
-      width: 100%;
-      height: 200px;
-      border-radius: 16px;
-      object-fit: cover;
-      background: linear-gradient(135deg,#a5d6a7,#4db6ac);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3.5rem;
-    }
-
-    /* íconos de la derecha del hero */
-    .hero-right { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
-
-    .hero-icons {
-      display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap;
-    }
-    .hero-icon-item {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 4px; cursor: pointer;
-    }
-    .hero-icon-item .ico {
-      width: 52px; height: 52px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,.15);
-      transition: transform .2s;
-    }
-    .hero-icon-item:hover .ico { transform: scale(1.12); }
-    .hero-icon-item span { font-size: 0.65rem; text-align: center; color: #333; max-width: 60px; }
-
-    .ico-personas  { background: #1565c0; }
-    .ico-familias  { background: #2e7d32; }
-    .ico-comunid   { background: #e65100; }
-    .ico-territorio{ background: #6a1b9a; }
-    .ico-particip  { background: #00695c; }
-
-    .hero-quote {
-      background: #fff;
-      border-radius: 14px;
-      padding: 14px 16px;
-      font-size: 0.82rem;
-      color: #444;
-      line-height: 1.6;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
-      max-width: 240px;
-      text-align: right;
-    }
-    .hero-quote::before { content: "💚 "; }
-
-    /* ══════════════ DOS CAJAS FLOTANTES (Intención / Descripción) ══════════════ */
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .info-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 18px 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.08);
-      cursor: pointer;
-      border-left: 5px solid #1565c0;
-      transition: box-shadow .2s, transform .2s;
-      position: relative;
-    }
-    .info-card:nth-child(2) { border-left-color: #e65100; }
-    .info-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.14); transform: translateY(-3px); }
-
-    .info-card .card-icon { font-size: 2rem; margin-bottom: 8px; }
-    .info-card h3 { font-size: 1rem; font-weight: 700; color: #1a237e; margin-bottom: 6px; }
-    .info-card p  { font-size: 0.82rem; color: #555; line-height: 1.6; }
-    .info-card .click-hint {
-      font-size: 0.72rem; color: #999; margin-top: 10px;
-      display: flex; align-items: center; gap: 4px;
-    }
-
-    /* ══════════════ TARJETAS GIRATORIAS (5 módulos) ══════════════ */
-    .modules-title {
-      font-size: 1rem; font-weight: 700; color: #555;
-      text-transform: uppercase; letter-spacing: 1px;
-      margin-bottom: 14px;
-    }
-
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    /* Flip card container */
-    .flip-card {
-      height: 320px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-
-    .flip-inner {
-      position: relative;
-      width: 100%; height: 100%;
-      transition: transform 0.7s cubic-bezier(.4,0,.2,1);
-      transform-style: preserve-3d;
-    }
-
-    .flip-card.flipped .flip-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-front, .flip-back {
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      overflow: hidden;
-      box-shadow: 0 4px 18px rgba(0,0,0,.12);
-    }
-
-    /* FRENTE */
-    .flip-front {
-      background: #fff;
-      display: flex; flex-direction: column; align-items: center;
-      padding: 18px 12px 14px;
-      gap: 10px;
-    }
-    .flip-front .num {
-      width: 34px; height: 34px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1rem; color: #fff;
-      flex-shrink: 0;
-    }
-    .flip-front .card-img {
-      width: 100%; height: 110px; border-radius: 10px;
-      object-fit: cover;
-      background: linear-gradient(135deg, #e0f2f1, #80cbc4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem;
-    }
-    .flip-front h4 { font-size: 0.82rem; font-weight: 700; text-align: center; color: #1a237e; }
-    .flip-front .recurso, .flip-front .actividad {
-      width: 100%;
-      background: #f5f5f5;
-      border-radius: 8px;
-      padding: 6px 10px;
-      font-size: 0.72rem;
-      color: #333;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .flip-front .actividad { background: #fff3e0; }
-    .flip-front .flip-hint {
-      font-size: 0.68rem; color: #aaa; margin-top: auto;
-    }
-
-    /* REVERSO */
-    .flip-back {
-      background: linear-gradient(160deg, #1a237e 0%, #1565c0 100%);
-      color: #fff;
-      transform: rotateY(180deg);
-      display: flex; flex-direction: column;
-      padding: 20px 16px 16px;
-      gap: 12px;
-    }
-    .flip-back h4 { font-size: 0.9rem; font-weight: 800; }
-    .flip-back p  { font-size: 0.76rem; line-height: 1.6; flex: 1; }
-
-    .show-more-btn {
-      background: #fff;
-      color: #1a237e;
-      border: none;
-      border-radius: 20px;
-      padding: 7px 16px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .2s;
-      align-self: flex-start;
-    }
-    .show-more-btn:hover { background: #e3f2fd; }
-
-    /* ══════════════ CIERRE / ENCUESTA ══════════════ */
-    .cierre-row {
-      display: grid;
-      grid-template-columns: 220px 1fr 260px;
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .cierre-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; gap: 8px;
-    }
-    .cierre-card .big-icon { font-size: 2.5rem; }
-    .cierre-card h3 { font-size: 0.9rem; font-weight: 700; color: #1a237e; }
-    .cierre-card p  { font-size: 0.78rem; color: #555; line-height: 1.5; }
-
-    .encuesta-items {
-      display: flex; gap: 10px; flex-wrap: wrap;
-    }
-    .enc-item {
-      background: #fff;
-      border-radius: 12px;
-      padding: 10px 14px;
-      display: flex; align-items: center; gap: 8px;
-      font-size: 0.78rem; color: #333;
-      box-shadow: 0 2px 8px rgba(0,0,0,.07);
-      flex: 1; min-width: 120px;
-    }
-    .enc-item .ei { font-size: 1.3rem; }
-
-    .no-eval-card {
-      background: #fffde7;
-      border-radius: 14px;
-      padding: 16px;
-      font-size: 0.78rem; color: #5d4037;
-      line-height: 1.6;
-      box-shadow: 0 2px 8px rgba(0,0,0,.07);
-    }
-    .no-eval-card::before { content: "💡 "; }
-
-    /* ══════════════ FOOTER ══════════════ */
-    .footer-row {
-      display: grid;
-      grid-template-columns: 1fr 220px 1fr;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .footer-text {
-      background: #fff;
-      border-radius: 14px;
-      padding: 18px 22px;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #1b5e20;
-      line-height: 1.5;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .footer-text .ft-icon { font-size: 2rem; }
-
-    .footer-img {
-      width: 100%; height: 130px; border-radius: 16px;
-      background: linear-gradient(135deg,#a5d6a7,#80cbc4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3.5rem;
-    }
-
-    .footer-icons {
-      display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;
-    }
-    .fi-item {
-      display: flex; flex-direction: column; align-items: center; gap: 4px;
-      cursor: pointer;
-    }
-    .fi-item .ico2 {
-      width: 46px; height: 46px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,.15);
-      transition: transform .2s;
-    }
-    .fi-item:hover .ico2 { transform: scale(1.12); }
-    .fi-item span { font-size: 0.62rem; text-align: center; color: #333; max-width: 58px; }
-
-    .ico-part  { background: #1565c0; }
-    .ico-equi  { background: #2e7d32; }
-    .ico-enf   { background: #e65100; }
-    .ico-artic { background: #6a1b9a; }
-    .ico-terr  { background: #00695c; }
-
-    /* ══════════════ OVERLAY / MODALES ══════════════ */
-    .overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.55);
-      z-index: 200;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity .3s;
-    }
-    .overlay.active { opacity: 1; pointer-events: all; }
-
-    .modal {
-      background: #fff;
-      border-radius: 20px;
-      padding: 36px 40px 32px;
-      max-width: 580px; width: 92%;
-      position: relative;
-      transform: translateY(28px) scale(.96);
-      transition: transform .35s cubic-bezier(.34,1.56,.64,1);
-      box-shadow: 0 20px 60px rgba(0,0,0,.22);
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-    .overlay.active .modal { transform: translateY(0) scale(1); }
-
-    .modal-bar {
-      position: absolute; top: 0; left: 0; right: 0; height: 6px;
-      border-radius: 20px 20px 0 0;
-    }
-    .modal h2 { font-size: 1.35rem; font-weight: 800; color: #1a237e; margin-bottom: 12px; }
-    .modal p  { font-size: 0.9rem; color: #444; line-height: 1.75; }
-    .modal .emoji { font-size: 2.8rem; display: block; margin-bottom: 10px; }
-
-    .close-btn {
-      position: absolute; top: 12px; right: 16px;
-      background: none; border: none; font-size: 1.5rem;
-      cursor: pointer; color: #888; transition: color .2s;
-    }
-    .close-btn:hover { color: #111; }
-
-    /* Actividades dentro del modal */
-    .activities-section { display: none; margin-top: 18px; }
-    .activities-section.open { display: block; }
-
-    .activities-section h3 {
-      font-size: 0.95rem; font-weight: 700; color: #1565c0; margin-bottom: 10px;
-    }
+    /* ═══════════════════════════════════════════
+       ACTIVIDADES INDIVIDUALES — revisada en verde
+    ═══════════════════════════════════════════ */
     .activity-item {
-      display: flex; align-items: flex-start; gap: 10px;
-      background: #f5f5f5; border-radius: 10px;
-      padding: 10px 14px; margin-bottom: 8px;
-      font-size: 0.83rem; color: #333; line-height: 1.5;
+      position: relative;
+      transition: background .3s;
     }
-    .activity-item .ai { font-size: 1.3rem; flex-shrink: 0; }
+    .activity-item.revisada {
+      background: #e8f5e9 !important;
+      border-left: 4px solid #43a047;
+    }
+    .activity-item.revisada .ai-check { display: flex !important; }
+    .ai-check {
+      display: none;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #43a047;
+      color: #fff;
+      border-radius: 50%;
+      width: 24px; height: 24px;
+      font-size: 0.8rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-revisar {
+      display: inline-block;
+      margin-top: 6px;
+      background: none;
+      border: 1.5px solid #bbb;
+      color: #bbb;
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: not-allowed;
+      transition: all .2s;
+      opacity: 0.6;
+    }
+    .btn-revisar.habilitado {
+      border-color: #00897b;
+      color: #00897b;
+      cursor: pointer;
+      opacity: 1;
+    }
+    .btn-revisar.habilitado:hover { background: #00897b; color: #fff; }
+    .btn-revisar.revisado       { border-color: #43a047; color: #43a047; cursor: default; opacity: 1; }
+    .btn-revisar.revisado:hover { background: none; color: #43a047; }
 
-    .toggle-activities {
-      background: #1565c0; color: #fff; border: none;
-      border-radius: 20px; padding: 8px 20px;
-      font-size: 0.8rem; font-weight: 700; cursor: pointer;
-      margin-top: 14px; transition: background .2s;
+    /* ═══════════════════════════════════════════
+       TARJETA COMPLETADA
+    ═══════════════════════════════════════════ */
+    .flip-card.completada .flip-front {
+      background: linear-gradient(135deg,#e8f5e9,#c8e6c9) !important;
+      border: 2px solid #43a047;
     }
-    .toggle-activities:hover { background: #0d47a1; }
-
-    /* ══════════════ COLORES POR MÓDULO ══════════════ */
-    .m1 .num  { background: #e53935; }
-    .m1 .flip-back { background: linear-gradient(160deg,#b71c1c,#e53935); }
-    .m2 .num  { background: #1e88e5; }
-    .m2 .flip-back { background: linear-gradient(160deg,#0d47a1,#1e88e5); }
-    .m3 .num  { background: #43a047; }
-    .m3 .flip-back { background: linear-gradient(160deg,#1b5e20,#43a047); }
-    .m4 .num  { background: #fb8c00; }
-    .m4 .flip-back { background: linear-gradient(160deg,#e65100,#fb8c00); }
-    .m5 .num  { background: #8e24aa; }
-    .m5 .flip-back { background: linear-gradient(160deg,#4a148c,#8e24aa); }
-
-    /* ══════════════ RESPONSIVE ══════════════ */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { align-items: flex-start; }
-      .modules-grid { grid-template-columns: repeat(3,1fr); }
-      .cierre-row, .footer-row { grid-template-columns: 1fr; }
-      .info-grid { grid-template-columns: 1fr; }
+    .flip-card.completada .flip-back {
+      background: linear-gradient(135deg,#1b5e20,#2e7d32) !important;
     }
-    @media (max-width: 600px) {
-      .hero-left h1 { font-size: 1.8rem; }
-      .modules-grid { grid-template-columns: 1fr 1fr; }
-      .flip-card { height: 300px; }
+    .completada-badge {
+      display: none;
+      position: absolute;
+      top: 10px; right: 10px;
+      background: #43a047;
+      color: #fff;
+      border-radius: 50%;
+      width: 30px; height: 30px;
+      font-size: 1rem;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 2;
     }
+    .flip-card.completada .completada-badge { display: flex; }
   </style>
 </head>
 <body>
+
 <div class="page">
 
-  <!-- ══════════ HERO ══════════ -->
+  <!-- ══════════════════════════════════════════ HERO ══ -->
   <div class="hero">
     <span class="hero-badge">MÓDULO 1</span>
-
-    <!-- Izquierda: título clicable -->
     <div class="hero-left">
       <h1 onclick="openModal('m-titulo')">
-        ¿Cómo entendemos<br><span>la salud?</span>
+        "Viaje hacia el sentir,<br><span>entendiendo la Salud Mental"</span>
       </h1>
       <p class="subtitle">
-        Aproximación a las formas de comprender la salud desde la Atención Primaria en Salud (APS)
-        y la Salud Colectiva como referentes que orientan las acciones de Ciudad Bienestar.
+        Módulo 1 — El mapa del viajero: <strong>"Comprendiendo la Salud Mental"</strong>.
+        Un recorrido por los conceptos, la normatividad, las emociones y el bienestar
+        que orientan las acciones de Ciudad Bienestar en salud mental.
       </p>
     </div>
-
-    <!-- Centro: imagen -->
     <div class="hero-center">
-      <div class="img-placeholder">🏥</div>
+      <img src="img/iconocolibri.png" alt="Colibrí"
+           style="width:100%;height:200px;object-fit:contain;background:transparent;">
     </div>
-
-    <!-- Derecha: íconos + cita -->
     <div class="hero-right">
       <div class="hero-icons">
         <div class="hero-icon-item" onclick="openModal('m-personas')">
@@ -473,129 +145,35 @@
         </div>
       </div>
       <div class="hero-quote">
-        Comprender la salud es el primer paso para construir acciones que transformen la vida de las personas y las comunidades.
+        Comprender la salud es el primer paso para construir acciones que
+        transformen la vida de las personas y las comunidades.
       </div>
     </div>
-  </div>
+  </div><!-- /hero -->
 
-  <!-- ══════════ DOS CAJAS CON TEXTO FLOTANTE ══════════ -->
+  <!-- ══════════════════════════════════════ TARJETAS INFO ══ -->
   <div class="info-grid">
     <div class="info-card" onclick="openModal('m-intencion')">
       <div class="card-icon">🎯</div>
       <h3>Intención de la unidad</h3>
-      <p>Reconocer las diferentes formas de comprender la salud desde la Atención Primaria en Salud y la Salud Colectiva, identificando los conceptos clave que orientan las acciones de Ciudad Bienestar en el territorio...</p>
+      <p>Reconocer los conceptos fundamentales de la salud mental, el marco
+         normativo colombiano y los mitos y realidades que rodean este tema…</p>
       <div class="click-hint">👆 Clic para ampliar</div>
     </div>
     <div class="info-card" onclick="openModal('m-descripcion')">
       <div class="card-icon">📖</div>
       <h3>Descripción general</h3>
-      <p>Esta unidad presenta las principales formas de comprender la salud que orientan la Atención Primaria en Salud (APS) y Ciudad Bienestar. Se abordan los referentes conceptuales de la APS y de la Salud Colectiva...</p>
+      <p>Este módulo presenta un viaje por la salud mental: sus conceptos,
+         normatividad, emociones, autoestima y afectaciones…</p>
       <div class="click-hint">👆 Clic para ampliar</div>
     </div>
   </div>
 
-  <!-- ══════════ 5 TARJETAS GIRATORIAS ══════════ -->
+  <!-- ══════════════════════════════════ TARJETAS GIRATORIAS ══ -->
   <p class="modules-title">Temas del módulo</p>
-  <div class="modules-grid">
+  <div class="modules-grid" id="modules-grid"></div>
 
-    <!-- TARJETA 1 -->
-    <div class="flip-card m1" onclick="this.classList.toggle('flipped')">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="num">1</div>
-          <div class="card-img">🏥</div>
-          <h4>Contexto de la Atención Primaria en Salud</h4>
-          <div class="recurso">⏱️ Recurso: Línea de tiempo interactiva</div>
-          <div class="actividad">🧩 Actividad: Ejercicio de emparejamiento</div>
-          <span class="flip-hint">↩ Clic para ver descripción</span>
-        </div>
-        <div class="flip-back">
-          <h4>Contexto de la Atención Primaria en Salud</h4>
-          <p>Aproximación a los antecedentes históricos, principios, objetivos y enfoques de la APS como estrategia para garantizar el derecho a la salud.</p>
-          <button class="show-more-btn" onclick="event.stopPropagation(); openModal('act-1')">Mostrar actividades ▸</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TARJETA 2 -->
-    <div class="flip-card m2" onclick="this.classList.toggle('flipped')">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="num">2</div>
-          <div class="card-img">🌎</div>
-          <h4>Salud Colectiva como apuesta latinoamericana</h4>
-          <div class="recurso">⏱️ Recurso: Línea de tiempo interactiva</div>
-          <div class="actividad">🏗️ Actividad: Construcción de una línea del tiempo</div>
-          <span class="flip-hint">↩ Clic para ver descripción</span>
-        </div>
-        <div class="flip-back">
-          <h4>Salud Colectiva como apuesta latinoamericana</h4>
-          <p>Principales referentes de la Salud Colectiva en América Latina y su influencia en la comprensión de la salud desde una perspectiva colectiva, crítica y transformadora.</p>
-          <button class="show-more-btn" onclick="event.stopPropagation(); openModal('act-2')">Mostrar actividades ▸</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TARJETA 3 -->
-    <div class="flip-card m3" onclick="this.classList.toggle('flipped')">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="num">3</div>
-          <div class="card-img">🏙️</div>
-          <h4>Ciudad Bienestar como estrategia territorial</h4>
-          <div class="recurso">▶ Recurso: Video experiencias de Ciudad Bienestar</div>
-          <div class="actividad">💬 Actividad: Foro ¿Qué significa para mí Ciudad Bienestar?</div>
-          <span class="flip-hint">↩ Clic para ver descripción</span>
-        </div>
-        <div class="flip-back">
-          <h4>Ciudad Bienestar como estrategia territorial</h4>
-          <p>Propósitos, pilares, enfoques y formas de actuación de Ciudad Bienestar para el fortalecimiento de capacidades comunitarias y la promoción de la salud en los territorios.</p>
-          <button class="show-more-btn" onclick="event.stopPropagation(); openModal('act-3')">Mostrar actividades ▸</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TARJETA 4 -->
-    <div class="flip-card m4" onclick="this.classList.toggle('flipped')">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="num">4</div>
-          <div class="card-img">⚖️</div>
-          <h4>Derecho a la salud, determinantes sociales y determinación social</h4>
-          <div class="recurso">📖 Recurso: Lectura guiada + historia de vida</div>
-          <div class="actividad">❓ Actividad: Preguntas de comprensión y análisis</div>
-          <span class="flip-hint">↩ Clic para ver descripción</span>
-        </div>
-        <div class="flip-back">
-          <h4>Derecho a la salud, determinantes sociales y determinación social</h4>
-          <p>Aproximación a estos conceptos clave para comprender las condiciones que influyen en la salud de las personas, las familias y las comunidades.</p>
-          <button class="show-more-btn" onclick="event.stopPropagation(); openModal('act-4')">Mostrar actividades ▸</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TARJETA 5 -->
-    <div class="flip-card m5" onclick="this.classList.toggle('flipped')">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <div class="num">5</div>
-          <div class="card-img">📍</div>
-          <h4>El territorio como escenario de articulación</h4>
-          <div class="recurso">🎥 Recurso audiovisual con recorrido por territorios urbanos y rurales</div>
-          <div class="actividad">🎤 Audio corto: ¿Cómo vivo mi territorio?</div>
-          <span class="flip-hint">↩ Clic para ver descripción</span>
-        </div>
-        <div class="flip-back">
-          <h4>El territorio como escenario de articulación</h4>
-          <p>Reconocer el territorio como espacio donde convergen actores, instituciones, saberes y dinámicas que influyen en la salud de las comunidades.</p>
-          <button class="show-more-btn" onclick="event.stopPropagation(); openModal('act-5')">Mostrar actividades ▸</button>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /modules-grid -->
-
-  <!-- ══════════ CIERRE / ENCUESTA ══════════ -->
+  <!-- ══════════════════════════════════════════ CIERRE ══ -->
   <div class="cierre-row">
     <div class="cierre-card">
       <div class="big-icon">📋</div>
@@ -610,11 +188,13 @@
       <div class="enc-item"><span class="ei">🔗</span> Aplicabilidad de los aprendizajes en su práctica</div>
     </div>
     <div class="no-eval-card">
-      En esta unidad NO se aplica evaluación de conocimientos general. La evaluación se centra en las actividades de cada temática y en la encuesta de satisfacción del curso (fase piloto).
+      En esta unidad NO se aplica evaluación de conocimientos general.
+      La evaluación se centra en las actividades de cada temática y en la
+      encuesta de satisfacción del curso (fase piloto).
     </div>
   </div>
 
-  <!-- ══════════ FOOTER ══════════ -->
+  <!-- ══════════════════════════════════════════ FOOTER ══ -->
   <div class="footer-row">
     <div class="footer-text">
       <span class="ft-icon">👥</span>
@@ -633,221 +213,330 @@
 </div><!-- /page -->
 
 
-<!-- ══════════════════════════════════════════
-     OVERLAYS / MODALES FLOTANTES
-══════════════════════════════════════════ -->
-
-<!-- Modal Título -->
+<!-- ════════════════════════════════════════════════════════
+     MODALES INFORMATIVOS
+════════════════════════════════════════════════════════ -->
 <div class="overlay" id="m-titulo" onclick="backdropClose(event,'m-titulo')">
   <div class="modal">
-    <div class="modal-bar" style="background:linear-gradient(90deg,#1b5e20,#4caf50)"></div>
+    <div class="modal-bar" style="background:linear-gradient(90deg,#00695c,#00bfa5)"></div>
     <button class="close-btn" onclick="closeModal('m-titulo')">✕</button>
-    <span class="emoji">🌿</span>
-    <h2>¿Cómo entendemos la salud?</h2>
-    <p>La salud no es simplemente la ausencia de enfermedad. Según la OMS, es un estado de completo bienestar <strong>físico, mental y social</strong>. Este módulo propone una mirada integral que articula la Atención Primaria en Salud (APS) y la Salud Colectiva para orientar las acciones de Ciudad Bienestar en los territorios.</p>
+    <span class="emoji">🐦</span>
+    <h2>"Viaje hacia el sentir, entendiendo la Salud Mental"</h2>
+    <p>Este módulo invita a emprender un viaje de autoconocimiento y comprensión
+       de la salud mental. Exploraremos los <strong>conceptos, la normatividad,
+       las emociones y la autoestima</strong> como pilares del bienestar mental
+       en nuestras comunidades y territorios.</p>
   </div>
 </div>
 
-<!-- Modal Intención -->
 <div class="overlay" id="m-intencion" onclick="backdropClose(event,'m-intencion')">
   <div class="modal">
-    <div class="modal-bar" style="background:#1565c0"></div>
+    <div class="modal-bar" style="background:#00897b"></div>
     <button class="close-btn" onclick="closeModal('m-intencion')">✕</button>
     <span class="emoji">🎯</span>
     <h2>Intención de la unidad</h2>
-    <p>Reconocer las diferentes formas de comprender la salud desde la Atención Primaria en Salud y la Salud Colectiva, identificando los conceptos clave que orientan las acciones de Ciudad Bienestar en el territorio y su relación con el derecho a la salud, los determinantes sociales y el territorio como escenario de articulación comunitaria.</p>
+    <p>Reconocer los conceptos fundamentales de la salud mental, identificar
+       el marco normativo colombiano que la sustenta, y desmitificar creencias
+       erróneas a través del análisis crítico de mitos y realidades. Se busca
+       que el participante comprenda la importancia del bienestar mental como
+       un derecho y un componente esencial de la salud integral en el territorio.</p>
   </div>
 </div>
 
-<!-- Modal Descripción -->
 <div class="overlay" id="m-descripcion" onclick="backdropClose(event,'m-descripcion')">
   <div class="modal">
-    <div class="modal-bar" style="background:#e65100"></div>
+    <div class="modal-bar" style="background:#1565c0"></div>
     <button class="close-btn" onclick="closeModal('m-descripcion')">✕</button>
     <span class="emoji">📖</span>
     <h2>Descripción general</h2>
-    <p>Esta unidad presenta las principales formas de comprender la salud que orientan la Atención Primaria en Salud (APS) y Ciudad Bienestar. Se abordan los referentes conceptuales de la APS y de la Salud Colectiva, el derecho a la salud, los determinantes sociales y la determinación social de la salud, y el territorio como escenario de articulación para promover la participación social, el bienestar y el fortalecimiento comunitario.</p>
+    <p>Este módulo presenta un viaje estructurado en dos unidades: la primera
+       aborda los <strong>conceptos y la normatividad</strong> de la salud mental
+       en Colombia desde 1991 hasta hoy; la segunda se enfoca en las
+       <strong>emociones, el autoconcepto, la autoestima</strong> y las
+       principales afectaciones como el estrés, la ansiedad y la depresión.</p>
   </div>
 </div>
 
-<!-- Modales íconos hero -->
 <div class="overlay" id="m-personas" onclick="backdropClose(event,'m-personas')">
   <div class="modal">
     <div class="modal-bar" style="background:#1565c0"></div>
     <button class="close-btn" onclick="closeModal('m-personas')">✕</button>
-    <span class="emoji">👤</span>
-    <h2>Personas</h2>
-    <p>Cada persona es el centro de las acciones de salud. Reconocer su historia, su contexto y sus necesidades permite construir respuestas integrales y humanizadas que respetan su dignidad y autonomía.</p>
+    <span class="emoji">👤</span><h2>Personas</h2>
+    <p>Cada persona es el centro de las acciones de salud. Reconocer su historia,
+       su contexto y sus necesidades permite construir respuestas integrales y
+       humanizadas que respetan su dignidad y autonomía.</p>
   </div>
 </div>
+
 <div class="overlay" id="m-familias" onclick="backdropClose(event,'m-familias')">
   <div class="modal">
     <div class="modal-bar" style="background:#2e7d32"></div>
     <button class="close-btn" onclick="closeModal('m-familias')">✕</button>
-    <span class="emoji">👨‍👩‍👧</span>
-    <h2>Familias</h2>
-    <p>La familia es el núcleo de soporte social y afectivo. Entender sus dinámicas y necesidades permite fortalecer sus capacidades para promover el bienestar de todos sus integrantes en el territorio.</p>
+    <span class="emoji">👨‍👩‍👧</span><h2>Familias</h2>
+    <p>La familia es el núcleo de soporte social y afectivo. Entender sus dinámicas
+       y necesidades permite fortalecer sus capacidades para promover el bienestar
+       de todos sus integrantes en el territorio.</p>
   </div>
 </div>
+
 <div class="overlay" id="m-comunidades" onclick="backdropClose(event,'m-comunidades')">
   <div class="modal">
     <div class="modal-bar" style="background:#e65100"></div>
     <button class="close-btn" onclick="closeModal('m-comunidades')">✕</button>
-    <span class="emoji">🏘️</span>
-    <h2>Comunidades</h2>
-    <p>Las comunidades son espacios de vida colectiva donde se construyen saberes, se organizan recursos y se generan acciones transformadoras para mejorar las condiciones de salud y bienestar.</p>
+    <span class="emoji">🏘️</span><h2>Comunidades</h2>
+    <p>Las comunidades son espacios de vida colectiva donde se construyen saberes,
+       se organizan recursos y se generan acciones transformadoras para mejorar
+       las condiciones de salud y bienestar.</p>
   </div>
 </div>
+
 <div class="overlay" id="m-territorio" onclick="backdropClose(event,'m-territorio')">
   <div class="modal">
     <div class="modal-bar" style="background:#6a1b9a"></div>
     <button class="close-btn" onclick="closeModal('m-territorio')">✕</button>
-    <span class="emoji">🗺️</span>
-    <h2>Territorio</h2>
-    <p>El territorio es más que un espacio físico: es un entramado de relaciones sociales, históricas y culturales que determinan las condiciones de vida y salud de las comunidades que lo habitan.</p>
+    <span class="emoji">🗺️</span><h2>Territorio</h2>
+    <p>El territorio es más que un espacio físico: es un entramado de relaciones
+       sociales, históricas y culturales que determinan las condiciones de vida
+       y salud de las comunidades que lo habitan.</p>
   </div>
 </div>
+
 <div class="overlay" id="m-participacion" onclick="backdropClose(event,'m-participacion')">
   <div class="modal">
     <div class="modal-bar" style="background:#00695c"></div>
     <button class="close-btn" onclick="closeModal('m-participacion')">✕</button>
-    <span class="emoji">🤝</span>
-    <h2>Participación y bienestar</h2>
-    <p>La participación activa de la ciudadanía es fundamental para construir territorios saludables. El bienestar se logra cuando las personas se convierten en agentes de cambio en sus propias comunidades.</p>
+    <span class="emoji">🤝</span><h2>Participación y bienestar</h2>
+    <p>La participación activa de la ciudadanía es fundamental para construir
+       territorios saludables. El bienestar se logra cuando las personas se
+       convierten en agentes de cambio en sus propias comunidades.</p>
   </div>
 </div>
 
-<!-- ══ MODALES DE ACTIVIDADES (5 módulos) ══ -->
+<!-- Modales de actividades (generados por JS) -->
+<div id="modals-container"></div>
 
-<!-- Actividades 1 -->
-<div class="overlay" id="act-1" onclick="backdropClose(event,'act-1')">
-  <div class="modal">
-    <div class="modal-bar" style="background:#e53935"></div>
-    <button class="close-btn" onclick="closeModal('act-1')">✕</button>
-    <span class="emoji">🏥</span>
-    <h2>Contexto de la Atención Primaria en Salud</h2>
-    <p>Aproximación a los antecedentes históricos, principios, objetivos y enfoques de la APS como estrategia para garantizar el derecho a la salud.</p>
-    <button class="toggle-activities" onclick="toggleActs(this)">▸ Mostrar actividades a subir</button>
-    <div class="activities-section">
-      <h3>Actividades que debes subir</h3>
-      <div class="activity-item"><span class="ai">⏱️</span><span><strong>Recurso:</strong> Línea de tiempo interactiva sobre la historia de la APS.</span></div>
-      <div class="activity-item"><span class="ai">🧩</span><span><strong>Actividad evaluativa:</strong> Ejercicio de emparejamiento entre conceptos y definiciones clave de la APS.</span></div>
-      <div class="activity-item"><span class="ai">📝</span><span><strong>Reflexión escrita:</strong> ¿Cómo aplica la APS en tu contexto territorial? (mínimo 200 palabras).</span></div>
-      <div class="activity-item"><span class="ai">📸</span><span><strong>Evidencia fotográfica:</strong> Registro de una visita o actividad relacionada con APS en tu comunidad.</span></div>
-    </div>
+<!-- Modal próximamente -->
+<div class="overlay" id="modal-proximamente" onclick="backdropClose(event,'modal-proximamente')">
+  <div class="modal" style="text-align:center;max-width:420px;">
+    <div class="modal-bar" style="background:linear-gradient(90deg,#00897b,#1565c0)"></div>
+    <button class="close-btn" onclick="closeModal('modal-proximamente')">✕</button>
+    <span style="font-size:3rem;display:block;margin:16px 0;">🚧</span>
+    <h2 id="proximamente-titulo" style="color:#004d40;">Recurso en preparación</h2>
+    <p>Este recurso estará disponible directamente en esta página muy pronto.<br><br>
+       <strong>Por ahora puedes encontrarlo en la plataforma Moodle del curso.</strong></p>
+    <img src="img/iconocolibri.png" alt="Colibrí" style="width:60px;margin-top:16px;opacity:0.7;">
   </div>
 </div>
 
-<!-- Actividades 2 -->
-<div class="overlay" id="act-2" onclick="backdropClose(event,'act-2')">
-  <div class="modal">
-    <div class="modal-bar" style="background:#1e88e5"></div>
-    <button class="close-btn" onclick="closeModal('act-2')">✕</button>
-    <span class="emoji">🌎</span>
-    <h2>Salud Colectiva como apuesta latinoamericana</h2>
-    <p>Principales referentes de la Salud Colectiva en América Latina y su influencia en la comprensión de la salud desde una perspectiva colectiva, crítica y transformadora.</p>
-    <button class="toggle-activities" onclick="toggleActs(this)">▸ Mostrar actividades a subir</button>
-    <div class="activities-section">
-      <h3>Actividades que debes subir</h3>
-      <div class="activity-item"><span class="ai">⏱️</span><span><strong>Recurso:</strong> Línea de tiempo interactiva de la Salud Colectiva en Latinoamérica.</span></div>
-      <div class="activity-item"><span class="ai">🏗️</span><span><strong>Actividad evaluativa:</strong> Construcción de una línea del tiempo propia con los hitos más relevantes.</span></div>
-      <div class="activity-item"><span class="ai">📄</span><span><strong>Ensayo breve:</strong> Diferencias entre la salud pública tradicional y la Salud Colectiva (mínimo 300 palabras).</span></div>
-      <div class="activity-item"><span class="ai">💬</span><span><strong>Participación en foro:</strong> Comentar el aporte de al menos un referente latinoamericano de la Salud Colectiva.</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- Actividades 3 -->
-<div class="overlay" id="act-3" onclick="backdropClose(event,'act-3')">
-  <div class="modal">
-    <div class="modal-bar" style="background:#43a047"></div>
-    <button class="close-btn" onclick="closeModal('act-3')">✕</button>
-    <span class="emoji">🏙️</span>
-    <h2>Ciudad Bienestar como estrategia territorial</h2>
-    <p>Propósitos, pilares, enfoques y formas de actuación de Ciudad Bienestar para el fortalecimiento de capacidades comunitarias y la promoción de la salud en los territorios.</p>
-    <button class="toggle-activities" onclick="toggleActs(this)">▸ Mostrar actividades a subir</button>
-    <div class="activities-section">
-      <h3>Actividades que debes subir</h3>
-      <div class="activity-item"><span class="ai">▶️</span><span><strong>Recurso:</strong> Ver el video "Experiencias de Ciudad Bienestar" y tomar notas.</span></div>
-      <div class="activity-item"><span class="ai">💬</span><span><strong>Actividad evaluativa:</strong> Foro — ¿Qué significa para mí Ciudad Bienestar? (respuesta y comentario a compañero).</span></div>
-      <div class="activity-item"><span class="ai">🗺️</span><span><strong>Mapa territorial:</strong> Identificar y ubicar en un mapa los actores de Ciudad Bienestar en tu territorio.</span></div>
-      <div class="activity-item"><span class="ai">📊</span><span><strong>Infografía:</strong> Los 4 pilares de Ciudad Bienestar aplicados a tu comunidad.</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- Actividades 4 -->
-<div class="overlay" id="act-4" onclick="backdropClose(event,'act-4')">
-  <div class="modal">
-    <div class="modal-bar" style="background:#fb8c00"></div>
-    <button class="close-btn" onclick="closeModal('act-4')">✕</button>
-    <span class="emoji">⚖️</span>
-    <h2>Derecho a la salud, determinantes sociales y determinación social</h2>
-    <p>Aproximación a estos conceptos clave para comprender las condiciones que influyen en la salud de las personas, las familias y las comunidades.</p>
-    <button class="toggle-activities" onclick="toggleActs(this)">▸ Mostrar actividades a subir</button>
-    <div class="activities-section">
-      <h3>Actividades que debes subir</h3>
-      <div class="activity-item"><span class="ai">📖</span><span><strong>Recurso:</strong> Lectura guiada sobre determinantes sociales + historia de vida.</span></div>
-      <div class="activity-item"><span class="ai">❓</span><span><strong>Actividad evaluativa:</strong> Preguntas de comprensión y análisis de historia de vida (cuestionario en plataforma).</span></div>
-      <div class="activity-item"><span class="ai">📝</span><span><strong>Historia de vida:</strong> Redactar una historia de vida que ilustre determinantes sociales en salud.</span></div>
-      <div class="activity-item"><span class="ai">📌</span><span><strong>Mapa conceptual:</strong> Diferencias entre determinantes y determinación social de la salud.</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- Actividades 5 -->
-<div class="overlay" id="act-5" onclick="backdropClose(event,'act-5')">
-  <div class="modal">
-    <div class="modal-bar" style="background:#8e24aa"></div>
-    <button class="close-btn" onclick="closeModal('act-5')">✕</button>
-    <span class="emoji">📍</span>
-    <h2>El territorio como escenario de articulación</h2>
-    <p>Reconocer el territorio como espacio donde convergen actores, instituciones, saberes y dinámicas que influyen en la salud de las comunidades.</p>
-    <button class="toggle-activities" onclick="toggleActs(this)">▸ Mostrar actividades a subir</button>
-    <div class="activities-section">
-      <h3>Actividades que debes subir</h3>
-      <div class="activity-item"><span class="ai">🎥</span><span><strong>Recurso:</strong> Recurso audiovisual con recorrido por territorios urbanos y rurales.</span></div>
-      <div class="activity-item"><span class="ai">🎤</span><span><strong>Actividad evaluativa:</strong> Audio corto (2-3 min) — ¿Cómo vivo mi territorio? Describir características sociales y de salud.</span></div>
-      <div class="activity-item"><span class="ai">🏙️</span><span><strong>Diagnóstico territorial:</strong> Elaborar un diagnóstico breve de las condiciones de salud en tu barrio o vereda.</span></div>
-      <div class="activity-item"><span class="ai">🤝</span><span><strong>Entrevista comunitaria:</strong> Entrevistar a un líder o actor del territorio y subir el registro (audio, video o texto).</span></div>
+<!-- Modal visor -->
+<div class="overlay" id="modal-visor" onclick="backdropClose(event,'modal-visor')">
+  <div class="modal modal-doc">
+    <div class="modal-bar" style="background:linear-gradient(90deg,#00695c,#1565c0)"></div>
+    <button class="close-btn" onclick="closeModal('modal-visor')">✕</button>
+    <div id="visor-contenido">
+      <p style="text-align:center;padding:40px;color:#aaa;">Cargando...</p>
     </div>
   </div>
 </div>
 
 
-<!-- ══════════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════════ -->
+<script src="data/modulos.js"></script>
+<script src="js/modals.js"></script>
+<script src="js/auth.js"></script>
+
 <script>
-  /* Abrir / cerrar modales */
-  function openModal(id) {
-    document.getElementById(id).classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  function backdropClose(e, id) {
-    if (e.target === e.currentTarget) closeModal(id);
-  }
+/* ══════════════════════════════════════════════════════════
+   VISOR
+══════════════════════════════════════════════════════════ */
+function abrirProximamente(titulo) {
+  document.getElementById('proximamente-titulo').textContent = titulo || 'Recurso en preparación';
+  openModal('modal-proximamente');
+}
 
-  /* Mostrar / ocultar actividades dentro del modal */
-  function toggleActs(btn) {
-    const section = btn.nextElementSibling;
-    const open = section.classList.toggle('open');
-    btn.textContent = open ? '▾ Ocultar actividades' : '▸ Mostrar actividades a subir';
-  }
+function abrirVisor(archivo, titulo) {
+  var contenedor = document.getElementById('visor-contenido');
+  contenedor.innerHTML = '<p style="text-align:center;padding:40px;color:#aaa;">Cargando...</p>';
+  openModal('modal-visor');
+  fetch(archivo)
+    .then(function(r) { return r.text(); })
+    .then(function(html) { contenedor.innerHTML = html; })
+    .catch(function() {
+      contenedor.innerHTML = '<p style="text-align:center;padding:40px;color:#e53935;">No se pudo cargar el documento.</p>';
+    });
+}
 
-  /* Cerrar con Escape */
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.overlay.active').forEach(el => {
-        el.classList.remove('active');
-      });
-      document.body.style.overflow = '';
+/* ══════════════════════════════════════════════════════════
+   GENERACIÓN DE TARJETAS Y MODALES
+══════════════════════════════════════════════════════════ */
+var grid      = document.getElementById('modules-grid');
+var container = document.getElementById('modals-container');
+
+MODULOS.forEach(function(m) {
+
+  /* ── Tarjeta giratoria ── */
+  var card = document.createElement('div');
+  card.className = 'flip-card ' + m.colorClase;
+  card.id        = 'card-' + m.id;
+  card.onclick   = function() { this.classList.toggle('flipped'); };
+  card.innerHTML =
+    '<div class="flip-inner" style="position:relative">' +
+      '<div class="completada-badge">✅</div>' +
+      '<div class="flip-front">' +
+        '<div class="num">' + m.numero + '</div>' +
+        '<div class="card-img">' + m.imgEmoji + '</div>' +
+        '<h4>' + m.titulo + '</h4>' +
+        '<p style="text-align:center;margin:0">' + m.subtitulo + '</p>' +
+        '<div class="recurso">' + m.recurso + '</div>' +
+        '<div class="actividad">' + m.actividad + '</div>' +
+        '<span class="flip-hint">↩ Clic para ver descripción</span>' +
+      '</div>' +
+      '<div class="flip-back">' +
+        '<h4>' + m.titulo + ' — ' + m.subtitulo + '</h4>' +
+        '<p>' + m.descripcion + '</p>' +
+        '<button class="show-more-btn" onclick="event.stopPropagation();openModal(\'' + m.id + '\')">Ver recursos ▸</button>' +
+      '</div>' +
+    '</div>';
+  grid.appendChild(card);
+
+  /* ── Items del modal con botón "Marcar como revisado" ── */
+  var itemIdx  = 0;
+  var itemsHTML = m.items.map(function(item) {
+    if (item.accion === 'separador') {
+      return '<div class="fase-separador"><hr><span>' + (item.texto || '') + '</span><hr></div>';
     }
+
+    var idx   = itemIdx++;
+    var actId = m.id + '__' + idx;
+    var contenido = '';
+
+    if (item.accion === 'visor') {
+      contenido = '<span style="cursor:pointer;color:#00897b;font-weight:600;text-decoration:underline;" onclick="abrirVisor(\'' + item.archivo + '\',\'' + item.tipo + '\');habilitarRevisar(\'' + actId + '\')">' +
+                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</span>';
+    } else if (item.accion === 'pdf') {
+      contenido = '<a href="' + item.archivo + '" download style="color:#e65100;font-weight:600;text-decoration:underline;" onclick="habilitarRevisar(\'' + actId + '\')">' +
+                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</a>';
+    } else if (item.accion === 'youtube') {
+      contenido = '<a href="' + item.url + '" target="_blank" rel="noopener" style="color:#c62828;font-weight:600;text-decoration:underline;" onclick="habilitarRevisar(\'' + actId + '\')">' +
+                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</a>';
+    } else if (item.accion === 'proximamente') {
+      contenido = '<span style="cursor:pointer;color:#6a1b9a;font-weight:600;text-decoration:underline;" onclick="abrirProximamente(\'' + item.tipo + '\');habilitarRevisar(\'' + actId + '\')">' +
+                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</span>';
+    } else {
+      contenido = '<a href="' + item.url + '" target="_blank" rel="noopener" style="color:#1565c0;font-weight:600;text-decoration:underline;" onclick="habilitarRevisar(\'' + actId + '\')">' +
+                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</a>';
+    }
+
+    return '<div class="activity-item" id="ai-' + actId + '">' +
+             '<span class="ai">' + item.icono + '</span>' +
+             '<div style="flex:1">' + contenido +
+               '<br><button class="btn-revisar" id="br-' + actId + '" onclick="revisarActividad(\'' + actId + '\',\'' + m.id + '\')" title="Primero abre el recurso para poder marcarlo como revisado">' +
+               '✓ Marcar como revisado</button>' +
+             '</div>' +
+             '<div class="ai-check">✓</div>' +
+           '</div>';
+  }).join('');
+
+  /* ── Modal ── */
+  var modal = document.createElement('div');
+  modal.className = 'overlay';
+  modal.id        = m.id;
+  modal.setAttribute('onclick', 'backdropClose(event,\'' + m.id + '\')');
+  modal.innerHTML =
+    '<div class="modal">' +
+      '<div class="modal-bar" style="background:' + m.colorBarra + '"></div>' +
+      '<button class="close-btn" onclick="closeModal(\'' + m.id + '\')">✕</button>' +
+      '<span class="emoji">' + m.emoji + '</span>' +
+      '<h2>' + m.titulo + ' — ' + m.subtitulo + '</h2>' +
+      '<p>' + m.descripcion + '</p>' +
+      '<button class="toggle-activities" onclick="toggleActs(this)">▸ Ver recursos y actividades</button>' +
+      '<div class="activities-section">' +
+        '<h3>Recursos y actividades</h3>' +
+        itemsHTML +
+      '</div>' +
+    '</div>';
+  container.appendChild(modal);
+});
+
+/* ══════════════════════════════════════════════════════════
+   HABILITAR BOTÓN AL ABRIR EL RECURSO
+══════════════════════════════════════════════════════════ */
+function habilitarRevisar(actId) {
+  var btn = document.getElementById('br-' + actId);
+  if (btn && !btn.classList.contains('revisado')) {
+    btn.classList.add('habilitado');
+    btn.title = '¡Ya puedes marcar esta actividad como revisada!';
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MARCAR ACTIVIDAD COMO REVISADA
+══════════════════════════════════════════════════════════ */
+function revisarActividad(actId, unidadId) {
+  var btn  = document.getElementById('br-' + actId);
+  var item = document.getElementById('ai-' + actId);
+  if (!btn || btn.classList.contains('revisado')) return;
+
+  /* Bloquear si aún no se abrió el recurso */
+  if (!btn.classList.contains('habilitado')) {
+    btn.style.animation = 'none';
+    btn.textContent     = '⚠ Abre el recurso primero';
+    setTimeout(function() { btn.textContent = '✓ Marcar como revisado'; }, 2000);
+    return;
+  }
+
+  btn.textContent = 'Guardando…';
+  btn.disabled    = true;
+
+  marcarRevisada(actId).then(function() {
+    btn.textContent = '✅ Revisado';
+    btn.classList.add('revisado');
+    btn.disabled    = false;
+    item.classList.add('revisada');
+    verificarUnidadCompleta(unidadId);
   });
+}
+
+/* ══════════════════════════════════════════════════════════
+   VERIFICAR SI TODA LA UNIDAD ESTÁ COMPLETA
+══════════════════════════════════════════════════════════ */
+function verificarUnidadCompleta(unidadId) {
+  var modulo = MODULOS.find(function(m) { return m.id === unidadId; });
+  if (!modulo) return;
+
+  var total    = modulo.items.filter(function(i) { return i.accion !== 'separador'; }).length;
+  var revisadas = 0;
+  for (var i = 0; i < total; i++) {
+    var btn = document.getElementById('br-' + unidadId + '__' + i);
+    if (btn && btn.classList.contains('revisado')) revisadas++;
+  }
+
+  if (revisadas >= total) {
+    var card = document.getElementById('card-' + unidadId);
+    if (card && !card.classList.contains('completada')) {
+      card.classList.add('completada');
+      setTimeout(function() {
+        alert('🎉 ¡Completaste ' + modulo.titulo + '!\n\nTodas las actividades fueron revisadas.');
+      }, 300);
+    }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   CARGAR PROGRESO AL INICIAR
+══════════════════════════════════════════════════════════ */
+consultarProgreso().then(function(data) {
+  (data.revisadas || []).forEach(function(actId) {
+    var btn  = document.getElementById('br-' + actId);
+    var item = document.getElementById('ai-' + actId);
+    if (btn)  { btn.textContent = '✅ Revisado'; btn.classList.add('habilitado', 'revisado'); }
+    if (item) { item.classList.add('revisada'); }
+  });
+  MODULOS.forEach(function(m) { verificarUnidadCompleta(m.id); });
+});
 </script>
+
 </body>
 </html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingresar — Viaje hacia el sentir</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #e0f2f1 0%, #e3f2fd 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      width: 100%;
+      max-width: 420px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, #00897b, #1565c0);
+      padding: 32px 24px 24px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .card-header img {
+      width: 64px;
+      margin-bottom: 12px;
+    }
+
+    .card-header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .card-header p {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 14px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #888;
+      cursor: pointer;
+      transition: all .2s;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+    }
+
+    .tab.active {
+      color: #00897b;
+      border-bottom-color: #00897b;
+    }
+
+    /* ── Formulario ── */
+    .form-body {
+      padding: 28px 28px 24px;
+    }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .field input {
+      width: 100%;
+      border: 1.5px solid #ddd;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: #333;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .field input:focus {
+      border-color: #00897b;
+    }
+
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #00897b, #1565c0);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 13px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity .2s;
+    }
+
+    .btn:hover { opacity: 0.9; }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── Mensajes de error / éxito ── */
+    .msg {
+      font-size: 0.82rem;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 14px;
+      display: none;
+    }
+
+    .msg.error   { background: #ffebee; color: #c62828; display: block; }
+    .msg.success { background: #e8f5e9; color: #2e7d32; display: block; }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #aaa;
+      padding: 0 28px 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Cabecera -->
+  <div class="card-header">
+    <img src="img/iconocolibri.png" alt="Colibrí" onerror="this.style.display='none'">
+    <h1>Viaje hacia el sentir<br>entendiendo la Salud Mental</h1>
+    <p>Ingresa a tu cuenta para continuar tu recorrido</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" onclick="cambiarTab('login')">Iniciar sesión</div>
+    <div class="tab"        onclick="cambiarTab('registro')">Registrarse</div>
+  </div>
+
+  <!-- Cuerpo del formulario -->
+  <div class="form-body">
+
+    <!-- Panel: Login -->
+    <div class="panel active" id="panel-login">
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" id="login-email" placeholder="tu@correo.com" />
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" id="login-password" placeholder="••••••••" />
+      </div>
+      <button class="btn" id="btn-login" onclick="hacerLogin()">Ingresar</button>
+      <div class="msg" id="msg-login"></div>
+    </div>
+
+    <!-- Panel: Registro -->
+    <div class="panel" id="panel-registro">
+      <div class="field">
+        <label>Nombre completo</label>
+        <input type="text" id="reg-nombre" placeholder="Tu nombre" />
+      </div>
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" id="reg-email" placeholder="tu@correo.com" />
+      </div>
+      <div class="field">
+        <label>Contraseña <span style="color:#aaa;font-weight:400">(mínimo 6 caracteres)</span></label>
+        <input type="password" id="reg-password" placeholder="••••••••" />
+      </div>
+      <button class="btn" id="btn-registro" onclick="hacerRegistro()">Crear cuenta</button>
+      <div class="msg" id="msg-registro"></div>
+    </div>
+
+  </div><!-- /form-body -->
+
+  <div class="footer-note">Ciudad Bienestar · Salud Mental 2026</div>
+
+</div><!-- /card -->
+
+<script>
+  const API = 'http://localhost:3001/api';
+
+  /* ── Cambiar entre tabs ──────────────────────────────── */
+  function cambiarTab(tab) {
+    document.querySelectorAll('.tab').forEach(function(t, i) {
+      t.classList.toggle('active', (i === 0 && tab === 'login') || (i === 1 && tab === 'registro'));
+    });
+    document.getElementById('panel-login').classList.toggle('active', tab === 'login');
+    document.getElementById('panel-registro').classList.toggle('active', tab === 'registro');
+    document.getElementById('msg-login').className    = 'msg';
+    document.getElementById('msg-registro').className = 'msg';
+  }
+
+  /* ── Mostrar mensaje ─────────────────────────────────── */
+  function mostrarMsg(id, texto, tipo) {
+    var el = document.getElementById(id);
+    el.textContent  = texto;
+    el.className    = 'msg ' + tipo;
+  }
+
+  /* ── Login ───────────────────────────────────────────── */
+  function hacerLogin() {
+    var email    = document.getElementById('login-email').value.trim();
+    var password = document.getElementById('login-password').value;
+    var btn      = document.getElementById('btn-login');
+
+    if (!email || !password) {
+      return mostrarMsg('msg-login', 'Completa todos los campos.', 'error');
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Ingresando…';
+
+    fetch(API + '/login', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email, password })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (!res.ok) {
+        mostrarMsg('msg-login', res.data.error || 'Error al ingresar.', 'error');
+        btn.disabled    = false;
+        btn.textContent = 'Ingresar';
+        return;
+      }
+      /* Guardar token y redirigir */
+      localStorage.setItem('vs_token',  res.data.token);
+      localStorage.setItem('vs_nombre', res.data.nombre);
+      localStorage.setItem('vs_email',  res.data.email);
+      window.location.href = 'index.html';
+    })
+    .catch(function() {
+      mostrarMsg('msg-login', 'No se pudo conectar con el servidor. Verifica que esté corriendo.', 'error');
+      btn.disabled    = false;
+      btn.textContent = 'Ingresar';
+    });
+  }
+
+  /* ── Registro ────────────────────────────────────────── */
+  function hacerRegistro() {
+    var nombre   = document.getElementById('reg-nombre').value.trim();
+    var email    = document.getElementById('reg-email').value.trim();
+    var password = document.getElementById('reg-password').value;
+    var btn      = document.getElementById('btn-registro');
+
+    if (!nombre || !email || !password) {
+      return mostrarMsg('msg-registro', 'Completa todos los campos.', 'error');
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Creando cuenta…';
+
+    fetch(API + '/registro', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ nombre, email, password })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (!res.ok) {
+        mostrarMsg('msg-registro', res.data.error || 'Error al registrarse.', 'error');
+        btn.disabled    = false;
+        btn.textContent = 'Crear cuenta';
+        return;
+      }
+      localStorage.setItem('vs_token',  res.data.token);
+      localStorage.setItem('vs_nombre', res.data.nombre);
+      localStorage.setItem('vs_email',  res.data.email);
+      window.location.href = 'index.html';
+    })
+    .catch(function() {
+      mostrarMsg('msg-registro', 'No se pudo conectar con el servidor. Verifica que esté corriendo.', 'error');
+      btn.disabled    = false;
+      btn.textContent = 'Crear cuenta';
+    });
+  }
+
+  /* ── Enter para enviar ───────────────────────────────── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      var panelLogin = document.getElementById('panel-login').classList.contains('active');
+      if (panelLogin) hacerLogin();
+      else hacerRegistro();
+    }
+  });
+
+  /* ── Si ya tiene sesión, redirigir directo ───────────── */
+  if (localStorage.getItem('vs_token')) {
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>

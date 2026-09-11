@@ -1,0 +1,1182 @@
+/* ============================================================
+   MÓDULO 1 – ¿Cómo entendemos la salud?
+   Archivo: css/styles.css
+   Secciones:
+     1. Reset & Base
+     2. Layout / Wrapper
+     3. Hero (cabecera principal)
+     4. Íconos del Hero
+     5. Tarjetas de Información (Intención / Descripción)
+     6. Tarjetas Giratorias (Flip Cards)
+     7. Sección Cierre / Encuesta
+     8. Footer
+     9. Overlays y Modales
+    10. Actividades dentro del Modal
+    11. Colores por Módulo
+    12. Responsive
+   ============================================================ */
+
+
+/* ── 1. Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f7f4;
+  color: #222;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ── 2. Layout / Wrapper ─────────────────────────────────── */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+
+/* ── 3. Hero ─────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(160deg, #c8e6c9 0%, #b3e5fc 100%);
+  border-radius: 20px;
+  padding: 28px 32px 20px;
+  display: grid;
+  grid-template-columns: 1fr 220px 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.hero-badge {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  background: #1565c0;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+/* Título */
+.hero-left {
+  padding-top: 32px;
+}
+
+.hero-left h1 {
+  font-size: 2.6rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #1b5e20;
+  cursor: pointer;
+  transition: color .2s;
+}
+
+.hero-left h1:hover {
+  color: #0d4726;
+}
+
+.hero-left h1 span {
+  color: #222;
+}
+
+.hero-left .subtitle {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Imagen central */
+.hero-center .img-placeholder {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #a5d6a7, #4db6ac);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+.hero-center img {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+
+/* ── 4. Íconos del Hero ──────────────────────────────────── */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-end;
+}
+
+.hero-icons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.hero-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hero-icon-item .ico {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  transition: transform .2s;
+}
+
+.hero-icon-item:hover .ico {
+  transform: scale(1.12);
+}
+
+.hero-icon-item span {
+  font-size: 0.65rem;
+  text-align: center;
+  color: #333;
+  max-width: 60px;
+}
+
+/* Colores íconos hero */
+.ico-personas   { background: #1565c0; }
+.ico-familias   { background: #2e7d32; }
+.ico-comunid    { background: #e65100; }
+.ico-territorio { background: #6a1b9a; }
+.ico-particip   { background: #00695c; }
+
+.hero-quote {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 0.82rem;
+  color: #444;
+  line-height: 1.6;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  max-width: 240px;
+  text-align: right;
+}
+
+.hero-quote::before {
+  content: "💚 ";
+}
+
+
+/* ── 5. Tarjetas de Información ──────────────────────────── */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.info-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  cursor: pointer;
+  border-left: 5px solid #1565c0;
+  transition: box-shadow .2s, transform .2s;
+  position: relative;
+}
+
+.info-card:nth-child(2) {
+  border-left-color: #e65100;
+}
+
+.info-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,.14);
+  transform: translateY(-3px);
+}
+
+.info-card .card-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.info-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 6px;
+}
+
+.info-card p {
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.info-card .click-hint {
+  font-size: 0.72rem;
+  color: #999;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+/* ── 6. Tarjetas Giratorias (Flip Cards) ─────────────────── */
+.modules-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flip-card {
+  height: 340px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(.4,0,.2,1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0,0,0,.12);
+}
+
+/* Cara delantera */
+.flip-front {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 12px 14px;
+  gap: 10px;
+}
+
+.flip-front .num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.flip-front .card-img {
+  width: 100%;
+  height: 110px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #e0f2f1, #80cbc4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.flip-front h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1a237e;
+}
+
+.flip-front .recurso,
+.flip-front .actividad {
+  width: 100%;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flip-front .actividad {
+  background: #fff3e0;
+}
+
+.flip-front .flip-hint {
+  font-size: 0.68rem;
+  color: #aaa;
+  margin-top: auto;
+}
+
+/* Cara trasera */
+.flip-back {
+  background: linear-gradient(160deg, #1a237e 0%, #1565c0 100%);
+  color: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px 16px;
+  gap: 12px;
+}
+
+.flip-back h4 {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.flip-back p {
+  font-size: 0.76rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.show-more-btn {
+  background: #fff;
+  color: #1a237e;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+  align-self: flex-start;
+}
+
+.show-more-btn:hover {
+  background: #e3f2fd;
+}
+
+
+/* ── 7. Cierre / Encuesta ────────────────────────────────── */
+.cierre-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 260px;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cierre-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.cierre-card .big-icon {
+  font-size: 2.5rem;
+}
+
+.cierre-card h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.cierre-card p {
+  font-size: 0.78rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.encuesta-items {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.enc-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  flex: 1;
+  min-width: 120px;
+}
+
+.enc-item .ei {
+  font-size: 1.3rem;
+}
+
+.no-eval-card {
+  background: #fffde7;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 0.78rem;
+  color: #5d4037;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+
+.no-eval-card::before {
+  content: "💡 ";
+}
+
+
+/* ── 8. Footer ───────────────────────────────────────────── */
+.footer-row {
+  display: grid;
+  grid-template-columns: 1fr 220px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.footer-text {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1b5e20;
+  line-height: 1.5;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-text .ft-icon {
+  font-size: 2rem;
+}
+
+.footer-img {
+  width: 100%;
+  height: 130px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #a5d6a7, #80cbc4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.fi-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.fi-item .ico2 {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  transition: transform .2s;
+}
+
+.fi-item:hover .ico2 {
+  transform: scale(1.12);
+}
+
+.fi-item span {
+  font-size: 0.62rem;
+  text-align: center;
+  color: #333;
+  max-width: 58px;
+}
+
+/* Colores íconos footer */
+.ico-part  { background: #1565c0; }
+.ico-equi  { background: #2e7d32; }
+.ico-enf   { background: #e65100; }
+.ico-artic { background: #6a1b9a; }
+.ico-terr  { background: #00695c; }
+
+
+/* ── 9. Overlays y Modales ───────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 40px 32px;
+  max-width: 580px;
+  width: 92%;
+  position: relative;
+  transform: translateY(28px) scale(.96);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 20px 60px rgba(0,0,0,.22);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.overlay.active .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1a237e;
+  margin-bottom: 12px;
+}
+
+.modal p {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.75;
+}
+
+.modal .emoji {
+  font-size: 2.8rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+  transition: color .2s;
+}
+
+.close-btn:hover {
+  color: #111;
+}
+
+
+/* ── 10. Actividades dentro del Modal ────────────────────── */
+.activities-section {
+  display: none;
+  margin-top: 18px;
+}
+
+.activities-section.open {
+  display: block;
+}
+
+.activities-section h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1565c0;
+  margin-bottom: 10px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.83rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.activity-item .ai {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ── Separador entre Fase 1 y Fase 2 dentro del modal ── */
+.fase-separador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 14px;
+}
+.fase-separador hr {
+  flex: 1;
+  border: none;
+  border-top: 2px dashed #b0bec5;
+}
+.fase-separador span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1565c0;
+  white-space: nowrap;
+  background: #e3f2fd;
+  border-radius: 20px;
+  padding: 3px 12px;
+  letter-spacing: 0.03em;
+}
+
+.toggle-activities {
+  background: #1565c0;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: background .2s;
+}
+
+.toggle-activities:hover {
+  background: #0d47a1;
+}
+
+
+/* ── 11. Colores por Módulo ──────────────────────────────── */
+.m1 .num       { background: #00897b; }
+.m1 .flip-back { background: linear-gradient(160deg, #004d40, #00897b); }
+
+.m2 .num       { background: #1565c0; }
+.m2 .flip-back { background: linear-gradient(160deg, #0d47a1, #1565c0); }
+
+/* Se mantienen por si se agregan más módulos en el futuro */
+.m3 .num       { background: #43a047; }
+.m3 .flip-back { background: linear-gradient(160deg, #1b5e20, #43a047); }
+
+.m4 .num       { background: #fb8c00; }
+.m4 .flip-back { background: linear-gradient(160deg, #e65100, #fb8c00); }
+
+.m5 .num       { background: #8e24aa; }
+.m5 .flip-back { background: linear-gradient(160deg, #4a148c, #8e24aa); }
+
+
+/* ── 12. Responsive ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero                        { grid-template-columns: 1fr; }
+  .hero-right                  { align-items: flex-start; }
+  .modules-grid                { grid-template-columns: 1fr; max-width: 100%; }
+  .cierre-row, .footer-row     { grid-template-columns: 1fr; }
+  .info-grid                   { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero-left h1  { font-size: 1.8rem; }
+  .modules-grid  { grid-template-columns: 1fr; }
+  .flip-card     { height: 320px; }
+}
+
+
+/* ── 13. Visor de documentos internos ───────────────────── */
+
+/* Modal grande para documentos */
+.modal-doc {
+  max-width: 720px;
+  width: 95%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 40px 36px 32px;
+}
+
+/* Cabecera del documento */
+.doc-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e0f2f1;
+}
+
+.doc-header h2 {
+  font-size: 1.3rem;
+  color: #004d40;
+  margin-bottom: 8px;
+}
+
+.doc-intro {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Línea de tiempo de hitos */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 80px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 42px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background: linear-gradient(180deg, #00897b, #1565c0);
+  border-radius: 3px;
+}
+
+.hito {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.hito-year {
+  position: absolute;
+  left: -74px;
+  top: 4px;
+  background: #00897b;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 4px 6px;
+  border-radius: 8px;
+  min-width: 48px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+.hito::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #00897b;
+  box-shadow: 0 0 0 3px #e0f2f1;
+}
+
+.hito-body {
+  background: #f8fffe;
+  border-radius: 12px;
+  padding: 14px 16px;
+  flex: 1;
+  border-left: 4px solid #00897b;
+}
+
+.hito-body h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #004d40;
+  margin-bottom: 4px;
+}
+
+.hito-tag {
+  font-size: 0.78rem;
+  color: #00897b;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.hito-body p:not(.hito-tag) {
+  font-size: 0.82rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.hito-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #1565c0;
+  text-decoration: underline;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.hito-link:hover {
+  color: #0d47a1;
+}
+
+
+/* ── 14. Estilos del Cuento ──────────────────────────────── */
+.cuento { font-family: 'Segoe UI', Arial, sans-serif; }
+
+.cuento-portada {
+  background: linear-gradient(160deg, #00bfa5, #004d40);
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.cuento-portada h2 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+  font-style: italic;
+}
+.cuento-subtitulo {
+  color: #b2dfdb;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.cuento-icono { font-size: 3rem; }
+
+.cuento-bloque {
+  padding: 18px 4px;
+  border-bottom: 1px solid #e0f2f1;
+  margin-bottom: 6px;
+}
+.cuento-bloque p {
+  font-size: 0.88rem;
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.cuento-bloque-verde {
+  background: #f0fdf9;
+  border-radius: 12px;
+  padding: 18px 16px;
+}
+.cuento-bloque-final {
+  background: linear-gradient(160deg, #e0f7fa, #e8f5e9);
+  border-radius: 12px;
+  padding: 20px 16px;
+}
+
+/* Citas */
+.cuento-cita {
+  background: #00897b;
+  color: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 14px 0;
+  position: relative;
+}
+.cuento-cita::before {
+  content: '\201C\201C';
+  font-size: 2rem;
+  position: absolute;
+  top: 6px; left: 10px;
+  opacity: 0.4;
+  font-style: normal;
+}
+.cuento-cita-teal {
+  background: linear-gradient(135deg, #00bfa5, #0097a7);
+}
+.cuento-cita-final {
+  background: linear-gradient(135deg, #004d40, #00695c);
+  font-size: 0.9rem;
+}
+
+/* Nota del cuaderno */
+.cuento-nota {
+  background: #fffde7;
+  border-left: 4px solid #f9a825;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.83rem;
+  color: #5d4037;
+  margin-top: 12px;
+}
+
+/* Ilustraciones con emojis */
+.cuento-morral,
+.cuento-emoji-grande,
+.cuento-laguna {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+  letter-spacing: 8px;
+}
+
+/* Cuaderno Ley 1616 */
+.cuento-ilustracion {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.cuento-cuaderno {
+  background: #fff8e1;
+  border: 2px solid #f9a825;
+  border-radius: 10px;
+  padding: 14px 20px;
+  text-align: center;
+  max-width: 220px;
+  box-shadow: 0 3px 10px rgba(0,0,0,.1);
+}
+.cuento-cuaderno-titulo {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #4e342e;
+  display: block;
+  margin-bottom: 8px;
+}
+.cuento-cuaderno-lineas {
+  font-size: 0.65rem;
+  color: #bcaaa4;
+  line-height: 1.8;
+}
+
+/* Fin del cuento */
+.cuento-fin {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #00695c;
+  margin-top: 16px;
+  letter-spacing: 2px;
+}
+
+
+/* ── 15. Estilos del Foro de Reflexión ───────────────────── */
+.reflexion-doc { font-family: 'Segoe UI', Arial, sans-serif; }
+
+.reflexion-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.reflexion-header h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #004d40;
+  margin-bottom: 6px;
+}
+.reflexion-badge {
+  background: #00897b;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.reflexion-pregunta {
+  background: #004d40;
+  color: #fff;
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.reflexion-pregunta-icono { font-size: 2rem; flex-shrink: 0; }
+.reflexion-pregunta p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.reflexion-instrucciones {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+}
+.reflexion-instrucciones h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #004d40;
+  margin-bottom: 10px;
+}
+.reflexion-instrucciones ol {
+  padding-left: 18px;
+}
+.reflexion-instrucciones li {
+  font-size: 0.83rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+.reflexion-guia {
+  margin-bottom: 18px;
+}
+.reflexion-guia h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #004d40;
+  margin-bottom: 12px;
+}
+.reflexion-guia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.rg-item {
+  background: #e0f2f1;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rg-icono { font-size: 1.5rem; }
+.rg-item p {
+  font-size: 0.78rem;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.reflexion-frases { margin-bottom: 16px; }
+.reflexion-frases h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #004d40;
+  margin-bottom: 10px;
+}
+.frase-item {
+  background: #fff;
+  border-left: 4px solid #00897b;
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.83rem;
+  color: #333;
+  font-style: italic;
+  line-height: 1.6;
+  position: relative;
+}
+.frase-comilla {
+  font-size: 2rem;
+  color: #00897b;
+  line-height: 0;
+  vertical-align: -10px;
+  margin-right: 4px;
+  font-style: normal;
+}
+.frase-autor {
+  display: block;
+  font-size: 0.72rem;
+  color: #00897b;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+
+/* ── 16. Banner de Unidad (estilo Moodle) ────────────────── */
+.unidad-banner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: visible;
+}
+
+.unidad-banner img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.unidad-banner-texto {
+  background: #2e7d32;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 24px 12px 16px;
+  flex: 1;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+  position: relative;
+}
+
+.unidad-banner-texto.azul {
+  background: #1565c0;
+}
