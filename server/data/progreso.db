@@ -1,2 +1,5 @@
 {"clave":"anon_1789095247566_q1d8m6_act-1__0","email":"anon_1789095247566_q1d8m6","actividadId":"act-1__0","revisadoEn":{"$$date":1789095275854},"_id":"TVMQSKAphipmtwom"}
 {"clave":"anon_1789095247566_q1d8m6_act-1__1","email":"anon_1789095247566_q1d8m6","actividadId":"act-1__1","revisadoEn":{"$$date":1789095602551},"_id":"nNkTOhI4NGndLqHY"}
+{"$$indexCreated":{"fieldName":"clave","unique":true,"sparse":false}}
+{"$$indexCreated":{"fieldName":"clave","unique":true}}
+{"clave":"anon_1789095247566_q1d8m6_act-1__2","email":"anon_1789095247566_q1d8m6","actividadId":"act-1__2","revisadoEn":{"$$date":1789137001089},"_id":"FRJdR9fToyGCIob8"}
