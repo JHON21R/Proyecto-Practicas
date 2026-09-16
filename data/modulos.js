@@ -37,19 +37,42 @@ const MODULOS = [
     colorBarra:  "#00897b",
     emoji:       "🐦",
     imgEmoji:    "🗺️",
-    titulo:      "Unidad I",
-    subtitulo:   "Conceptos – Normatividad",
-    descripcion: "Exploración de los conceptos fundamentales de la salud mental, el marco normativo colombiano y los mitos y realidades que rodean este tema.",
+    titulo:      "Contexto de la Atención Primaria en Salud",
+    descripcion: "La Atención Primaria en Salud es una estrategia que ofrece atención integral, accesible y de calidad, enfocándose en la promoción de la salud, la prevención de enfermedades y la participación comunitaria. Su evolución ha sido significativa, desde el reconocimiento en Alma-Ata en 1978 hasta su desarrollo en Colombia con la Ley 1438 de 2011, avanzando hacia un modelo más preventivo y participativo.",
     recurso:     "🎧 Audio introductorio del módulo",
-    actividad:   "🧩 Test Unidad II — Reconociendo conceptos",
+    recursos: [
+      "🎧 Audio introductorio del módulo",
+      "📝 Antecedente APS",
+      "📋 Lectura: Viaje por la Historia de la APS",
+      "📄 Lecturas de apoyo"
+    ],
+    actividad:   "✏️ Actividad de Aprendizaje",
     items: [
 
       {
         icono:   "▶️",
-        tipo:    "Audio / Video introductorio",
+        tipo:    "Audio introductorio",
         texto:   "AudioModulo1 — Introducción al Módulo 1.",
         accion:  "link",
         url:     "http://localhost:8888/moodle/course/section.php?id=2#module-5"
+      },
+      {
+        icono:   "📝",
+        tipo:    "Antecedente APS",
+        texto:   "Antecedente de la Atención Primaria en Salud.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "📋",
+        tipo:    "Lectura",
+        texto:   "Viaje por la Historia de la APS.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "📄",
+        tipo:    "Lecturas de apoyo",
+        texto:   "Material de apoyo complementario.",
+        accion:  "proximamente"
       },
       {
         icono:   "📄",
@@ -80,7 +103,7 @@ const MODULOS = [
         url:     "http://localhost:8888/moodle/pluginfile.php/36/mod_resource/content/1/HITOS%20DE%20LA%20SALUD%20MENTAL.pdf"
       },
       {
-        icono:   "📝",
+        icono:   "📄",
         tipo:    "Mitos y realidades — Obligatoria",
         texto:   "Mitos y realidades de la salud Mental.",
         accion:  "link",
@@ -199,11 +222,17 @@ const MODULOS = [
     colorBarra:  "#1565c0",
     emoji:       "🧠",
     imgEmoji:    "💙",
-    titulo:      "Unidad II",
-    subtitulo:   "Trastornos y Rutas de Atención",
-    descripcion: "Exploración de los trastornos mentales, la epilepsia, el consumo de SPA, la conducta suicida y las violencias, con sus respectivas rutas de atención.",
+    titulo:      "Salud Colectiva Como Apuesta Latinoamericana",
+    descripcion: "La Salud Colectiva es un campo de pensamiento, conocimiento y acción construido históricamente a partir del cuestionamiento de las formas tradicionales de comprender la salud, la enfermedad y las prácticas de salud. Su trayectoria recoge los aportes de la medicina social, el movimiento de la salud en latinoamerica y las ciencias sociales, ampliando la mirada más allá de lo individual y biológico para reconocer que los procesos de salud-enfermedad están vinculados con las condiciones sociales, económicas, políticas, culturales, históricas y territoriales en las que transcurre la vida.",
     recurso:     "🎧 Audio introductorio de la unidad",
-    actividad:   "🧩 Reto de saberes: Explorando lo aprendido",
+    recursos: [
+      "🎧 Audio introductorio de la unidad",
+      "📄 Contexto de Salud Colectiva",
+      "📄 Narrativa Historica Salud Colectiva",
+      "▶️ Ciudad Bienestar como Estrategia Territorial",
+      "📄 Lecturas de Apoyo",
+    ],
+    actividad:   "💬 Foro Reconociendo Experiencias",
     items: [
 
       /* ─── Audio de apertura ─────────────────────────── */
@@ -396,6 +425,114 @@ const MODULOS = [
         url:     "http://localhost:8888/moodle/mod/quiz/view.php?id=51"
       }
 
+    ]
+  },
+
+  /* ══════════════════════════════════════════════════════
+     TARJETA 3 – Unidad III: Módulo 3
+  ══════════════════════════════════════════════════════ */
+  {
+    id:          "act-3",
+    numero:      3,
+    colorClase:  "m3",
+    colorBarra:  "#43a047",
+    emoji:       "🌿",
+    imgEmoji:    "🌱",
+    titulo:      "Unidad III",
+    descripcion: "Descripción del Módulo 3. Actualiza este texto con el contenido correspondiente.",
+    recurso:     "🎧 Audio introductorio del módulo",
+    actividad:   "🧩 Actividad del Módulo 3",
+    items: [
+      {
+        icono:   "▶️",
+        tipo:    "Audio / Video introductorio",
+        texto:   "Introducción al Módulo 3.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "📄",
+        tipo:    "Lectura",
+        texto:   "Material de lectura del Módulo 3.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "🧩",
+        tipo:    "Actividad",
+        texto:   "Actividad evaluativa del Módulo 3.",
+        accion:  "proximamente"
+      }
+    ]
+  },
+
+  /* ══════════════════════════════════════════════════════
+     TARJETA 4 – Unidad IV: Módulo 4
+  ══════════════════════════════════════════════════════ */
+  {
+    id:          "act-4",
+    numero:      4,
+    colorClase:  "m4",
+    colorBarra:  "#fb8c00",
+    emoji:       "🏘️",
+    imgEmoji:    "🌍",
+    titulo:      "Unidad IV",
+    descripcion: "Descripción del Módulo 4. Actualiza este texto con el contenido correspondiente.",
+    recurso:     "🎧 Audio introductorio del módulo",
+    actividad:   "🧩 Actividad del Módulo 4",
+    items: [
+      {
+        icono:   "▶️",
+        tipo:    "Audio / Video introductorio",
+        texto:   "Introducción al Módulo 4.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "📄",
+        tipo:    "Lectura",
+        texto:   "Material de lectura del Módulo 4.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "🧩",
+        tipo:    "Actividad",
+        texto:   "Actividad evaluativa del Módulo 4.",
+        accion:  "proximamente"
+      }
+    ]
+  },
+
+  /* ══════════════════════════════════════════════════════
+     TARJETA 5 – Unidad V: Módulo 5
+  ══════════════════════════════════════════════════════ */
+  {
+    id:          "act-5",
+    numero:      5,
+    colorClase:  "m5",
+    colorBarra:  "#8e24aa",
+    emoji:       "🤝",
+    imgEmoji:    "💜",
+    titulo:      "Unidad V",
+    descripcion: "Descripción del Módulo 5. Actualiza este texto con el contenido correspondiente.",
+    recurso:     "🎧 Audio introductorio del módulo",
+    actividad:   "🧩 Actividad del Módulo 5",
+    items: [
+      {
+        icono:   "▶️",
+        tipo:    "Audio / Video introductorio",
+        texto:   "Introducción al Módulo 5.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "📄",
+        tipo:    "Lectura",
+        texto:   "Material de lectura del Módulo 5.",
+        accion:  "proximamente"
+      },
+      {
+        icono:   "🧩",
+        tipo:    "Actividad",
+        texto:   "Actividad evaluativa del Módulo 5.",
+        accion:  "proximamente"
+      }
     ]
   }
 

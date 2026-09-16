@@ -7,6 +7,139 @@
   <link rel="stylesheet" href="css/styles.css" />
   <style>
     /* ═══════════════════════════════════════════
+       BANNER APS
+    ═══════════════════════════════════════════ */
+    .banner-aps {
+      background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: 1fr 200px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .banner-aps-left h2 {
+      font-size: 2.6rem !important;
+      font-weight: 900;
+      color: #1b5e20;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .banner-aps-left h2 span { color: #1565c0; }
+    .banner-aps-left p {
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.7;
+    }
+    .banner-aps-center {
+      background: rgba(255,255,255,0.6);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      text-align: center;
+      line-height: 1.5;
+      height: 120px;
+    }
+    .banner-aps-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .banner-aps-icons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .banner-aps-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .banner-aps-icon .ico-b {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+    }
+    .banner-aps-icon span {
+      font-size: 0.62rem;
+      text-align: center;
+      color: #333;
+      max-width: 60px;
+    }
+    .banner-aps-quote {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 0.8rem;
+      color: #444;
+      line-height: 1.6;
+      max-width: 220px;
+      text-align: right;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+    @media (max-width: 900px) {
+      .banner-aps { grid-template-columns: 1fr; }
+      .banner-aps-right { align-items: flex-start; }
+      .banner-aps-icons { justify-content: flex-start; }
+      .banner-aps-quote { text-align: left; max-width: 100%; }
+    }
+    .onda {
+      display: inline-block;
+      width: 4px;
+      height: 100%;
+      background: #2e7d32;
+      border-radius: 4px;
+      animation: onda-pulso 0.8s ease-in-out infinite alternate;
+      min-height: 4px;
+    }
+    @keyframes onda-pulso {
+      0%   { height: 20%; }
+      100% { height: 100%; }
+    }
+    #ondas-audio {
+      display: none;
+      align-items: flex-end;
+      gap: 3px;
+      height: 20px;
+    }
+    #ondas-audio.activo {
+      display: flex !important;
+    }
+    #modal-bienvenida {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity .4s ease;
+    }
+    #modal-bienvenida .modal {
+      max-height: 90vh !important;
+      overflow-y: auto !important;
+    }
+
+    #modal-bienvenida .modal-body {
+      overflow-y: visible;
+    }
+
+    /* ═══════════════════════════════════════════
        TIPOGRAFÍA — mínimo 12px en todo el sitio
     ═══════════════════════════════════════════ */
     body          { font-size: 15px; }
@@ -108,18 +241,22 @@
 <body>
 
 <div class="page">
-
   <!-- ══════════════════════════════════════════ HERO ══ -->
   <div class="hero">
-    <span class="hero-badge">MÓDULO 1</span>
     <div class="hero-left">
       <h1 onclick="openModal('m-titulo')">
-        "Viaje hacia el sentir,<br><span>entendiendo la Salud Mental"</span>
+        "Curso de Atención Primaria en Salud"
       </h1>
       <p class="subtitle">
-        Módulo 1 — El mapa del viajero: <strong>"Comprendiendo la Salud Mental"</strong>.
-        Un recorrido por los conceptos, la normatividad, las emociones y el bienestar
-        que orientan las acciones de Ciudad Bienestar en salud mental.
+        La construcción del Curso Virtual de Atención Primaria en Salud y Ciudad Bienestar surge
+        de la necesidad de fortalecer las capacidades de los actores que desarrollan acciones de
+        promoción de la salud en los territorios del municipio de Pasto.
+        <button onclick="openModal('m-titulo')"
+                style="background:none;border:none;color:#1565c0;font-size:0.8rem;
+                       font-weight:700;cursor:pointer;padding:0;margin-left:4px;
+                       text-decoration:underline;"
+                onmouseover="this.style.color='#0d47a1'"
+                onmouseout="this.style.color='#1565c0'">Leer más »</button>
       </p>
     </div>
     <div class="hero-center">
@@ -129,27 +266,38 @@
     <div class="hero-right">
       <div class="hero-icons">
         <div class="hero-icon-item" onclick="openModal('m-personas')">
-          <div class="ico ico-personas">👤</div><span>Personas</span>
+          <div class="ico ico-personas">🎯</div><span>Objetivos de Aprendizaje</span>
         </div>
         <div class="hero-icon-item" onclick="openModal('m-familias')">
-          <div class="ico ico-familias">👨‍👩‍👧</div><span>Familias</span>
+          <div class="ico ico-familias">💬</div><span>Presentación</span>
         </div>
-        <div class="hero-icon-item" onclick="openModal('m-comunidades')">
-          <div class="ico ico-comunid">🏘️</div><span>Comunidades</span>
-        </div>
-        <div class="hero-icon-item" onclick="openModal('m-territorio')">
-          <div class="ico ico-territorio">🗺️</div><span>Territorio</span>
-        </div>
-        <div class="hero-icon-item" onclick="openModal('m-participacion')">
-          <div class="ico ico-particip">🤝</div><span>Participación y bienestar</span>
-        </div>
-      </div>
-      <div class="hero-quote">
-        Comprender la salud es el primer paso para construir acciones que
-        transformen la vida de las personas y las comunidades.
       </div>
     </div>
   </div><!-- /hero -->
+
+  <!-- ══════════════════════════════════════ BANNER APS ══ -->
+  <div class="banner-aps" style="position:relative;">
+    <span class="hero-badge">MÓDULO 1</span>
+    <div class="banner-aps-left">
+      <h2 style="font-size:2.6rem;font-weight:900;color:#1565c0;line-height:1.15;margin-bottom:10px;"><br><span style="font-size:2.6rem;color:#1565c0;">¿Cómo entendemos la salud?</span></h2>
+      <p>Aproximación a las formas de comprender la salud desde la Atención Primaria en Salud (APS) y la Salud Colectiva como referentes que orientan las acciones de Ciudad Bienestar.</p>
+    </div>
+    <div class="banner-aps-center">
+      👨‍⚕️👩‍⚕️<br>👨‍👩‍👧‍👦🏘️
+    </div>
+    <div class="banner-aps-right">
+      <div class="banner-aps-icons">
+        <div class="banner-aps-icon"><div class="ico-b" style="background:#1565c0;">👥</div><span>Personas</span></div>
+        <div class="banner-aps-icon"><div class="ico-b" style="background:#2e7d32;">👨‍👩‍👧</div><span>Familias</span></div>
+        <div class="banner-aps-icon"><div class="ico-b" style="background:#e65100;">🏘️</div><span>Comunidades</span></div>
+        <div class="banner-aps-icon"><div class="ico-b" style="background:#6a1b9a;">🗺️</div><span>Territorio</span></div>
+        <div class="banner-aps-icon"><div class="ico-b" style="background:#00695c;">🤝</div><span>Participación y bienestar</span></div>
+      </div>
+      <div class="banner-aps-quote">
+        💚 Comprender la salud es el primer paso para construir acciones que transformen la vida de las personas y las comunidades.
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════ TARJETAS INFO ══ -->
   <div class="info-grid">
@@ -163,8 +311,7 @@
     <div class="info-card" onclick="openModal('m-descripcion')">
       <div class="card-icon">📖</div>
       <h3>Descripción general</h3>
-      <p>Este módulo presenta un viaje por la salud mental: sus conceptos,
-         normatividad, emociones, autoestima y afectaciones…</p>
+      <p>En este curso encontrara diferentes recursos para su revición y desarrollo del curso aps</p>
       <div class="click-hint">👆 Clic para ampliar</div>
     </div>
   </div>
@@ -184,7 +331,7 @@
       <div class="enc-item"><span class="ei">✅</span> Claridad de los contenidos</div>
       <div class="enc-item"><span class="ei">📚</span> Calidad de los recursos</div>
       <div class="enc-item"><span class="ei">💡</span> Utilidad de los temas</div>
-      <div class="enc-item"><span class="ei">🖥️</span> Funcionamiento de la plataforma</div>
+      <div class="enc-item"><span class="ei">🖥️</span> Marcha de la plataforma</div>
       <div class="enc-item"><span class="ei">🔗</span> Aplicabilidad de los aprendizajes en su práctica</div>
     </div>
     <div class="no-eval-card">
@@ -221,11 +368,11 @@
     <div class="modal-bar" style="background:linear-gradient(90deg,#00695c,#00bfa5)"></div>
     <button class="close-btn" onclick="closeModal('m-titulo')">✕</button>
     <span class="emoji">🐦</span>
-    <h2>"Viaje hacia el sentir, entendiendo la Salud Mental"</h2>
-    <p>Este módulo invita a emprender un viaje de autoconocimiento y comprensión
-       de la salud mental. Exploraremos los <strong>conceptos, la normatividad,
-       las emociones y la autoestima</strong> como pilares del bienestar mental
-       en nuestras comunidades y territorios.</p>
+    <h2>"Curso de Atención Primaria en Salud"</h2>
+    <p>Esta propuesta parte del reconocimiento de los aportes de la Atención Primaria en Salud y Ciudad Bienestar para el fortalecimiento de las acciones de promoción de la salud en los territorios. Cada experiencia aportará perspectivas, conocimientos y herramientas que permitan ampliar la comprensión de las realidades de las personas, las familias y las comunidades y fortalecer las respuestas frente a sus necesidades sociales en salud.
+Aquí el territorio se  constituye como  un escenario fundamental para el desarrollo de procesos en salud, ya que permite reconocer las condiciones de vida, necesidades, capacidades, dinámicas y recursos presentes en las comunidades. 
+Por esta razón, el curso propone un recorrido progresivo que parte de la comprensión de la salud, continúa con el reconocimiento del territorio y los fundamentos para la acción, avanza hacia la práctica y culmina con la revisión de experiencias significativas desarrolladas en el territorio en torno a la búsqueda de la garantía del derecho a la salud en interdependencia con los derechos humanos y los derechos de la naturaleza.
+</p>
   </div>
 </div>
 
@@ -249,11 +396,15 @@
     <button class="close-btn" onclick="closeModal('m-descripcion')">✕</button>
     <span class="emoji">📖</span>
     <h2>Descripción general</h2>
-    <p>Este módulo presenta un viaje estructurado en dos unidades: la primera
-       aborda los <strong>conceptos y la normatividad</strong> de la salud mental
-       en Colombia desde 1991 hasta hoy; la segunda se enfoca en las
-       <strong>emociones, el autoconcepto, la autoestima</strong> y las
-       principales afectaciones como el estrés, la ansiedad y la depresión.</p>
+
+    <p><strong>EXPLORE EL MATERIAL MULTIMEDIA</strong></p>
+    <p>En cada unidad encontrarás infografías, enlaces, videos y demás herramientas pedagógicas que te permitirán de manera lúdica acceder a la información de este curso, es importante que las revises en su totalidad.</p>
+
+    <p style="margin-top:14px;"><strong>CAJA DE HERRAMIENTAS</strong></p>
+    <p>En ella encontrarás documentos pdf, enlaces a lecturas y videos que te permitirán ahondar en las diferentes temáticas y con ello profundizar tus conocimientos.</p>
+
+    <p style="margin-top:14px;"><strong>PRUEBAS DE CONOCIMIENTO O RETROALIMENTACIÓN</strong></p>
+    <p>El desarrollo de estas actividades nos permitirán hacer el seguimiento a tu avance en el proceso formativo, recuerda que al culminar el mismo de manera satisfactoria alcanzarás tu certificado de participación.</p>
   </div>
 </div>
 
@@ -261,10 +412,9 @@
   <div class="modal">
     <div class="modal-bar" style="background:#1565c0"></div>
     <button class="close-btn" onclick="closeModal('m-personas')">✕</button>
-    <span class="emoji">👤</span><h2>Personas</h2>
-    <p>Cada persona es el centro de las acciones de salud. Reconocer su historia,
-       su contexto y sus necesidades permite construir respuestas integrales y
-       humanizadas que respetan su dignidad y autonomía.</p>
+    <span class="emoji">🎯</span>
+    <h2>Objetivos de Aprendizaje</h2>
+    <p>Fortalecer las capacidades de los participantes para comprender los fundamentos, enfoques y herramientas de la Atención Primaria en Salud y Ciudad Bienestar, promoviendo su aplicación en el desarrollo de acciones de promoción de la salud en los territorios del municipio de Pasto.</p>
   </div>
 </div>
 
@@ -272,10 +422,18 @@
   <div class="modal">
     <div class="modal-bar" style="background:#2e7d32"></div>
     <button class="close-btn" onclick="closeModal('m-familias')">✕</button>
-    <span class="emoji">👨‍👩‍👧</span><h2>Familias</h2>
-    <p>La familia es el núcleo de soporte social y afectivo. Entender sus dinámicas
-       y necesidades permite fortalecer sus capacidades para promover el bienestar
-       de todos sus integrantes en el territorio.</p>
+    <span class="emoji">💬</span><h2>Participación</h2>
+    <p>Te invitamos a compartir una breve presentación que nos permita conocer y reconocer sus espectativas sobre el proceso formativo</p>
+    <div style="text-align:center;margin-top:20px;">
+      <a href="#" target="_blank" rel="noopener"
+         style="display:inline-block;background:#2e7d32;color:#fff;border-radius:24px;
+                padding:10px 28px;font-size:0.9rem;font-weight:700;text-decoration:none;
+                box-shadow:0 4px 12px rgba(46,125,50,.3);transition:background .2s;"
+         onmouseover="this.style.background='#1b5e20'"
+         onmouseout="this.style.background='#2e7d32'">
+        💬 Ir al foro
+      </a>
+    </div>
   </div>
 </div>
 
@@ -315,6 +473,94 @@
 <!-- Modales de actividades (generados por JS) -->
 <div id="modals-container"></div>
 
+<!-- ════════════════════════════════════════════════════════
+     MODAL DE BIENVENIDA (Guión de saludo)
+════════════════════════════════════════════════════════ -->
+<div id="modal-bienvenida">
+  <div class="modal" style="max-width:640px;width:92%;padding:40px 36px 32px;background:linear-gradient(135deg, #F4E04D 0%, #4AA96C 100%);">
+    <div class="modal-bar" style="background:linear-gradient(90deg,#2e7d32,#00897b,#1565c0)"></div>
+    <button class="close-btn" onclick="cerrarBienvenida()" aria-label="Cerrar">✕</button>
+
+    <!-- Capa para legibilidad del texto sobre el fondo -->
+    <div style="position:relative;z-index:1;border-radius:14px;padding:24px 22px;">
+
+    <div style="text-align:center;margin-bottom:18px;position:relative;display:flex;align-items:center;justify-content:center;gap:20px;">
+
+      <!-- Botón de audio con ondas -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <button id="btn-audio-bienvenida" onclick="toggleAudioBienvenida()"
+                style="width:52px;height:52px;border-radius:50%;border:none;
+                       background:#2e7d32;color:#fff;font-size:1.4rem;cursor:pointer;
+                       box-shadow:0 4px 12px rgba(46,125,50,.4);
+                       transition:background .2s;flex-shrink:0;"
+                onmouseover="this.style.background='#1b5e20'"
+                onmouseout="this.style.background='#2e7d32'"
+                aria-label="Reproducir audio">
+          ▶
+        </button>
+        <!-- Ondas de reproducción -->
+        <div id="ondas-audio" style="display:none;align-items:flex-end;gap:3px;height:20px;">
+          <span class="onda" style="animation-delay:0s"></span>
+          <span class="onda" style="animation-delay:0.1s"></span>
+          <span class="onda" style="animation-delay:0.2s"></span>
+          <span class="onda" style="animation-delay:0.3s"></span>
+          <span class="onda" style="animation-delay:0.15s"></span>
+        </div>
+      </div>
+
+      <img src="img/iconocolibri.png" alt="Colibrí" style="width:64px;opacity:0.9;">
+    </div>
+
+    <audio id="audio-bienvenida" src="img/20260911_112232.mp3" preload="auto"></audio>
+
+    <div class="modal-body">
+
+    <p style="font-size:1.15rem;color:#1b5e20;font-weight:700;text-align:center;margin-bottom:14px;">
+      ¡Bienvenidas y bienvenidos al Curso Virtual de Atención Primaria en Salud y Ciudad Bienestar!
+    </p>
+
+    <p style="margin-bottom:12px;">
+      Es un gusto contar con su participación en este espacio de formación, diseñado para fortalecer
+      conocimientos, capacidades y herramientas que permitan comprender y desarrollar acciones de
+      promoción de la salud en los territorios.
+    </p>
+
+    <p style="margin-bottom:12px;">
+      A lo largo de este curso tendremos la oportunidad de reconocer los fundamentos de la
+      Atención Primaria en Salud y de Ciudad Bienestar —una estrategia de salud colectiva que busca
+      la garantía del derecho a la salud—, comprender sus particularidades, aproximarnos a las
+      realidades territoriales del municipio de Pasto y explorar la articulación que puede contribuir
+      al mejoramiento de las condiciones de salud de las personas, las familias y las comunidades.
+    </p>
+
+    <p style="margin-bottom:20px;">
+      Les invitamos a participar activamente, relacionando los contenidos con sus experiencias de
+      la vida cotidiana. Este será un espacio para aprender, reflexionar, compartir saberes y
+      fortalecer capacidades para la acción en territorio.
+    </p>
+
+    <p style="font-size:1.15rem;color:#1b5e20;font-weight:700;text-align:center;margin-bottom:24px;">
+      ¡Les damos la bienvenida y esperamos que este recorrido sea una experiencia significativa
+      para su práctica y para el trabajo que desarrollan con las comunidades!
+    </p>
+
+    </div><!-- /modal-body -->
+
+    <div style="text-align:center;padding-top:12px;">
+      <button onclick="cerrarBienvenida()"
+              style="background:#2e7d32;color:#fff;border:none;border-radius:24px;
+                     padding:12px 32px;font-size:1rem;font-weight:700;cursor:pointer;
+                     transition:background .2s;box-shadow:0 4px 14px rgba(46,125,50,.3);"
+              onmouseover="this.style.background='#1b5e20'"
+              onmouseout="this.style.background='#2e7d32'">
+        ¡Comenzar el curso! 🌿
+      </button>
+    </div>
+
+    </div><!-- /capa legibilidad -->
+  </div>
+</div>
+
 <!-- Modal próximamente -->
 <div class="overlay" id="modal-proximamente" onclick="backdropClose(event,'modal-proximamente')">
   <div class="modal" style="text-align:center;max-width:420px;">
@@ -348,6 +594,66 @@
 <script src="js/auth.js"></script>
 
 <script>
+/* ══════════════════════════════════════════════════════════
+   AUDIO BIENVENIDA
+══════════════════════════════════════════════════════════ */
+function toggleAudioBienvenida() {
+  var audio  = document.getElementById('audio-bienvenida');
+  var btn    = document.getElementById('btn-audio-bienvenida');
+  var ondas  = document.getElementById('ondas-audio');
+
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = '⏸';
+    ondas.classList.add('activo');
+  } else {
+    audio.pause();
+    btn.textContent = '▶';
+    ondas.classList.remove('activo');
+  }
+}
+
+// Al terminar el audio, resetear botón
+document.addEventListener('DOMContentLoaded', function() {
+  var audio = document.getElementById('audio-bienvenida');
+  if (audio) {
+    audio.addEventListener('ended', function() {
+      document.getElementById('btn-audio-bienvenida').textContent = '▶';
+      document.getElementById('ondas-audio').classList.remove('activo');
+    });
+  }
+});
+
+/* ══════════════════════════════════════════════════════════
+   MODAL DE BIENVENIDA
+══════════════════════════════════════════════════════════ */
+document.body.style.overflow = 'hidden';
+document.documentElement.style.overflow = 'hidden';
+var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+document.body.style.paddingRight = scrollbarW + 'px';
+
+function cerrarBienvenida() {
+  var audio = document.getElementById('audio-bienvenida');
+  if (audio) { audio.pause(); audio.currentTime = 0; }
+  var modal = document.getElementById('modal-bienvenida');
+  modal.classList.add('saliendo');
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+  document.body.style.paddingRight = '';
+  setTimeout(function() { modal.style.display = 'none'; }, 420);
+}
+
+// Activa scroll solo si el modal no cabe en la pantalla
+(function ajustarScrollBienvenida() {
+  var modal = document.querySelector('#modal-bienvenida .modal');
+  if (!modal) return;
+  var margen = 40;
+  if (modal.scrollHeight <= window.innerHeight - margen) {
+    modal.style.maxHeight = 'none';
+    modal.style.overflowY = 'visible';
+  }
+})();
+
 /* ══════════════════════════════════════════════════════════
    VISOR
 ══════════════════════════════════════════════════════════ */
@@ -388,15 +694,13 @@ MODULOS.forEach(function(m) {
         '<div class="num">' + m.numero + '</div>' +
         '<div class="card-img">' + m.imgEmoji + '</div>' +
         '<h4>' + m.titulo + '</h4>' +
-        '<p style="text-align:center;margin:0">' + m.subtitulo + '</p>' +
-        '<div class="recurso">' + m.recurso + '</div>' +
-        '<div class="actividad">' + m.actividad + '</div>' +
-        '<span class="flip-hint">↩ Clic para ver descripción</span>' +
+        '<p style="text-align:center;margin:0;font-size:0.78rem;color:#555;line-height:1.5;padding:0 4px;">' + m.descripcion + '</p>' +
+        '<span class="flip-hint">↩ Clic para ver recursos</span>' +
       '</div>' +
       '<div class="flip-back">' +
-        '<h4>' + m.titulo + ' — ' + m.subtitulo + '</h4>' +
-        '<p>' + m.descripcion + '</p>' +
-        '<button class="show-more-btn" onclick="event.stopPropagation();openModal(\'' + m.id + '\')">Ver recursos ▸</button>' +
+        '<h4>' + m.titulo + '</h4>' +
+        (m.recursos ? m.recursos.map(function(r){ return '<div class="recurso-back">' + r + '</div>'; }).join('') : '<div class="recurso-back">' + m.recurso + '</div>') +
+        '<div class="actividad-back">' + m.actividad + '</div>' +
       '</div>' +
     '</div>';
   grid.appendChild(card);
@@ -430,7 +734,7 @@ MODULOS.forEach(function(m) {
     }
 
     return '<div class="activity-item" id="ai-' + actId + '">' +
-             '<span class="ai">' + item.icono + '</span>' +
+             '<span class="ai">' + (item.icono || '📌') + '</span>' +
              '<div style="flex:1">' + contenido +
                '<br><button class="btn-revisar" id="br-' + actId + '" onclick="revisarActividad(\'' + actId + '\',\'' + m.id + '\')" title="Primero abre el recurso para poder marcarlo como revisado">' +
                '✓ Marcar como revisado</button>' +
@@ -449,7 +753,7 @@ MODULOS.forEach(function(m) {
       '<div class="modal-bar" style="background:' + m.colorBarra + '"></div>' +
       '<button class="close-btn" onclick="closeModal(\'' + m.id + '\')">✕</button>' +
       '<span class="emoji">' + m.emoji + '</span>' +
-      '<h2>' + m.titulo + ' — ' + m.subtitulo + '</h2>' +
+      '<h2>' + m.titulo + (m.subtitulo ? ' — ' + m.subtitulo : '') + '</h2>' +
       '<p>' + m.descripcion + '</p>' +
       '<button class="toggle-activities" onclick="toggleActs(this)">▸ Ver recursos y actividades</button>' +
       '<div class="activities-section">' +
