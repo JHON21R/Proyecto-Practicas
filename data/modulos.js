@@ -438,22 +438,39 @@ const MODULOS = [
     colorBarra:  "#43a047",
     emoji:       "🌿",
     imgEmoji:    "🌱",
-    titulo:      "Unidad III",
-    descripcion: "Descripción del Módulo 3. Actualiza este texto con el contenido correspondiente.",
+    titulo:      "DOS MIRADAS SOBRE LA SALUD: LOS DETERMINANTES SOCIALES Y LA DETERMINACIÓN SOCIAL DE LA SALUD ",
+    descripcion: "El goce del grado máximo de salud que se pueda lograr es un derecho fundamental de todo ser humano.” El derecho a la salud en Colombia, establecido en la Ley Estatutaria 1751 de 2015, reconocida como un derecho autónomo e irrenunciable, asegura la dignidad y la igualdad de oportunidades. Esta ley garantiza un estado óptimo de salud física, mental, emocional y social. Además, la Política Pública en Salud Colectiva del municipio de Pasto integra la salud como un proceso determinado social e históricamente, destacando la responsabilidad estatal en colaboración con diversos grupos y la sociedad civil.",
     recurso:     "🎧 Audio introductorio del módulo",
-    actividad:   "🧩 Actividad del Módulo 3",
+    recursos: [
+      "📄 Determinantes Sociales de la Salud",
+      "📄 Determinación Social de la salud",
+      "📄 Determinación VS Determinantes",
+    ],
+    actividad:   "🧩 Actividad de Reflexión",
     items: [
       {
-        icono:   "▶️",
-        tipo:    "Audio / Video introductorio",
+        icono:   "🎧",
+        tipo:    "Audio de Introducción",
         texto:   "Introducción al Módulo 3.",
         accion:  "proximamente"
       },
       {
         icono:   "📄",
-        tipo:    "Lectura",
-        texto:   "Material de lectura del Módulo 3.",
+        tipo:    "Lectura y video introductorio",
+        texto:   "Material introductorio del Módulo 3.",
         accion:  "proximamente"
+      },
+      {
+        icono:   "📄",
+        tipo:    "Lectura y video introductorio",
+        texto:   "Material introductorio Modulo 3.",
+        accion:  "Proccimamente"
+      },
+      {
+        icono:   "📄",
+        tipo:    "Lectura y video introductorio",
+        texto:   "Material introductorio Modulo 3.",
+        accion:  "Proccimamente"
       },
       {
         icono:   "🧩",
@@ -474,63 +491,44 @@ const MODULOS = [
     colorBarra:  "#fb8c00",
     emoji:       "🏘️",
     imgEmoji:    "🌍",
-    titulo:      "Unidad IV",
-    descripcion: "Descripción del Módulo 4. Actualiza este texto con el contenido correspondiente.",
+    titulo:      "EL TERRITORIO COMO ESCENARIO DE ARTICULACIÓN",
+    descripcion: "Comprender el territorio como una construcción social, dinámica y relacional, configurada por las formas en que los humanos y no humanos que conforman comunidades lo habitan, lo usan, lo significan y lo transforman, teniendo en cuenta también las relaciones entre dimensiones sociales, culturales, económicas, ambientales y político-institucionales; desde ahí es posible el reconocimiento que configuran condiciones particulares de vida, salud, enfermedad y cuidado, y cómo el territorio constituye un escenario de encuentro y articulación entre la Atención Primaria en Salud (APS), Ciudad Bienestar–PSPIC (CB), las comunidades y otros actores territoriales. ",
     recurso:     "🎧 Audio introductorio del módulo",
-    actividad:   "🧩 Actividad del Módulo 4",
+    recursos :[
+      "🧩 Tejiendo el territorio como espacio de vida",
+      "▶️ Experiencia en el Territorio",
+      "📄 Lecturas de Apoyo",
+    ],
+    actividad:   "🧩 Actividad Reflexiba",
     items: [
       {
-        icono:   "▶️",
-        tipo:    "Audio / Video introductorio",
+        icono:   "🎧",
+        tipo:    "Audio introductorio",
         texto:   "Introducción al Módulo 4.",
         accion:  "proximamente"
       },
       {
-        icono:   "📄",
-        tipo:    "Lectura",
+        icono:   "🧩",
+        tipo:    "Recurso",
         texto:   "Material de lectura del Módulo 4.",
         accion:  "proximamente"
       },
       {
-        icono:   "🧩",
-        tipo:    "Actividad",
-        texto:   "Actividad evaluativa del Módulo 4.",
-        accion:  "proximamente"
-      }
-    ]
-  },
-
-  /* ══════════════════════════════════════════════════════
-     TARJETA 5 – Unidad V: Módulo 5
-  ══════════════════════════════════════════════════════ */
-  {
-    id:          "act-5",
-    numero:      5,
-    colorClase:  "m5",
-    colorBarra:  "#8e24aa",
-    emoji:       "🤝",
-    imgEmoji:    "💜",
-    titulo:      "Unidad V",
-    descripcion: "Descripción del Módulo 5. Actualiza este texto con el contenido correspondiente.",
-    recurso:     "🎧 Audio introductorio del módulo",
-    actividad:   "🧩 Actividad del Módulo 5",
-    items: [
-      {
         icono:   "▶️",
-        tipo:    "Audio / Video introductorio",
-        texto:   "Introducción al Módulo 5.",
-        accion:  "proximamente"
+        tipo:    "Video de territorio",
+        texto:   "Video de Apoyo Modulo 4.",
+        accion:  "Proximamente"
       },
       {
         icono:   "📄",
-        tipo:    "Lectura",
-        texto:   "Material de lectura del Módulo 5.",
-        accion:  "proximamente"
+        tipo:    "Lectura de apoyo",
+        texto:   "lectura Modulo 4.",
+        accion:  "Proximamente"
       },
       {
         icono:   "🧩",
         tipo:    "Actividad",
-        texto:   "Actividad evaluativa del Módulo 5.",
+        texto:   "Actividad Reflexiba Modulo 4.",
         accion:  "proximamente"
       }
     ]

@@ -105,17 +105,6 @@ a {
 }
 
 /* Imagen central */
-.hero-center .img-placeholder {
-  width: 100%;
-  height: 200px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #a5d6a7, #4db6ac);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
-}
-
 .hero-center img {
   width: 100%;
   height: 200px;
@@ -164,10 +153,11 @@ a {
 }
 
 .hero-icon-item span {
-  font-size: 0.65rem;
+  font-size: 15px !important;
   text-align: center;
   color: #333;
-  max-width: 60px;
+  max-width: 100px;
+  font-weight: 600;
 }
 
 /* Colores íconos hero */
@@ -176,23 +166,6 @@ a {
 .ico-comunid    { background: #e65100; }
 .ico-territorio { background: #6a1b9a; }
 .ico-particip   { background: #00695c; }
-
-.hero-quote {
-  background: #fff;
-  border-radius: 14px;
-  padding: 14px 16px;
-  font-size: 0.82rem;
-  color: #444;
-  line-height: 1.6;
-  box-shadow: 0 2px 10px rgba(0,0,0,.08);
-  max-width: 240px;
-  text-align: right;
-}
-
-.hero-quote::before {
-  content: "💚 ";
-}
-
 
 /* ── 5. Tarjetas de Información ──────────────────────────── */
 .info-grid {
@@ -228,20 +201,20 @@ a {
 }
 
 .info-card h3 {
-  font-size: 1rem;
+  font-size: 19px;
   font-weight: 700;
   color: #1a237e;
   margin-bottom: 6px;
 }
 
 .info-card p {
-  font-size: 0.82rem;
+  font-size: 16px;
   color: #555;
   line-height: 1.6;
 }
 
 .info-card .click-hint {
-  font-size: 0.72rem;
+  font-size: 14px;
   color: #999;
   margin-top: 10px;
   display: flex;
@@ -275,9 +248,8 @@ a {
 .modules-grid .flip-card:nth-child(2) { grid-column: 3 / 5; }
 .modules-grid .flip-card:nth-child(3) { grid-column: 5 / 7; }
 
-/* Fila 2: 2 tarjetas centradas */
-.modules-grid .flip-card:nth-child(4) { grid-column: 2 / 4; }
-.modules-grid .flip-card:nth-child(5) { grid-column: 4 / 6; }
+/* Fila 2: 1 tarjeta centrada */
+.modules-grid .flip-card:nth-child(4) { grid-column: 3 / 5; }
 
 .flip-card {
   height: 540px;
@@ -367,27 +339,46 @@ a {
   width: 100%;
   background: rgba(255,255,255,0.15);
   border-radius: 8px;
-  padding: 5px 10px;
-  font-size: 0.72rem;
+  padding: 6px 10px;
+  font-size: 15px;
   color: #fff;
   display: flex;
   align-items: center;
   gap: 6px;
   margin-bottom: 4px;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.flip-back .recurso-back:hover {
+  background: rgba(255,255,255,0.9);
+  color: #1a237e;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  font-weight: 600;
 }
 
 .flip-back .actividad-back {
   width: 100%;
   background: rgba(255,255,255,0.25);
   border-radius: 8px;
-  padding: 5px 10px;
-  font-size: 0.72rem;
+  padding: 6px 10px;
+  font-size: 15px;
   color: #fff;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 6px;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.flip-back .actividad-back:hover {
+  background: #fff;
+  color: #e65100;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
 
 .flip-front .actividad {
@@ -421,24 +412,6 @@ a {
   line-height: 1.6;
   flex: 1;
 }
-
-.show-more-btn {
-  background: #fff;
-  color: #1a237e;
-  border: none;
-  border-radius: 20px;
-  padding: 7px 16px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background .2s;
-  align-self: flex-start;
-}
-
-.show-more-btn:hover {
-  background: #e3f2fd;
-}
-
 
 /* ── 7. Cierre / Encuesta ────────────────────────────────── */
 .cierre-row {
@@ -646,14 +619,14 @@ a {
 }
 
 .modal h2 {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #1a237e;
   margin-bottom: 12px;
 }
 
 .modal p {
-  font-size: 0.9rem;
+  font-size: 17px;
   color: #444;
   line-height: 1.75;
 }
@@ -695,7 +668,7 @@ a {
 }
 
 .activities-section h3 {
-  font-size: 0.95rem;
+  font-size: 18px;
   font-weight: 700;
   color: #1565c0;
   margin-bottom: 10px;
@@ -709,7 +682,7 @@ a {
   border-radius: 10px;
   padding: 10px 14px;
   margin-bottom: 8px;
-  font-size: 0.83rem;
+  font-size: 16px;
   color: #333;
   line-height: 1.5;
 }
@@ -747,8 +720,8 @@ a {
   color: #fff;
   border: none;
   border-radius: 20px;
-  padding: 8px 20px;
-  font-size: 0.8rem;
+  padding: 9px 22px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   margin-top: 14px;
@@ -785,12 +758,24 @@ a {
   .modules-grid                { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
   .cierre-row, .footer-row     { grid-template-columns: 1fr; }
   .info-grid                   { grid-template-columns: 1fr; }
+
+  /* Resetea las posiciones fijas del grid de 6 columnas */
+  .modules-grid .flip-card:nth-child(1),
+  .modules-grid .flip-card:nth-child(2),
+  .modules-grid .flip-card:nth-child(3),
+  .modules-grid .flip-card:nth-child(4) { grid-column: auto; }
 }
 
 @media (max-width: 600px) {
   .hero-left h1  { font-size: 1.8rem; }
   .modules-grid  { grid-template-columns: 1fr; }
-  .flip-card     { height: 520px; }
+  .flip-card     { height: 480px; }
+
+  /* Cada tarjeta ocupa toda la fila, una debajo de otra */
+  .modules-grid .flip-card:nth-child(1),
+  .modules-grid .flip-card:nth-child(2),
+  .modules-grid .flip-card:nth-child(3),
+  .modules-grid .flip-card:nth-child(4) { grid-column: auto; }
 }
 
 
@@ -1189,38 +1174,3 @@ a {
 }
 
 
-/* ── 16. Banner de Unidad (estilo Moodle) ────────────────── */
-.unidad-banner {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  overflow: visible;
-}
-
-.unidad-banner img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.unidad-banner-texto {
-  background: #2e7d32;
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 12px 24px 12px 16px;
-  flex: 1;
-  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
-  position: relative;
-}
-
-.unidad-banner-texto.azul {
-  background: #1565c0;
-}

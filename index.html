@@ -3,9 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Módulo 1 – Viaje hacia el sentir, entendiendo la Salud Mental</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Curso de Atención Primaria en Salud y Ciudad Bienestar</title>
+  <link rel="stylesheet" href="css/styles.css?v=6" />
   <style>
+    /* ═══════════════════════════════════════════
+       CIERRE INSPIRADOR
+    ═══════════════════════════════════════════ */
+    .cierre-hero {
+      position: relative;
+      margin: 30px 0;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #004d40 0%, #00897b 45%, #1565c0 100%);
+      box-shadow: 0 12px 40px rgba(0,0,0,.2);
+    }
+    .cierre-hero-glow {
+      position: absolute;
+      top: -60%;
+      left: -20%;
+      width: 140%;
+      height: 220%;
+      background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.18), transparent 45%),
+                  radial-gradient(circle at 75% 60%, rgba(255,255,255,0.12), transparent 40%);
+      animation: cierre-flotar 8s ease-in-out infinite alternate;
+    }
+    @keyframes cierre-flotar {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-20px, 20px) rotate(6deg); }
+    }
+    .cierre-hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px 32px;
+      color: #fff;
+    }
+    .cierre-hero-icon {
+      font-size: 3.4rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      animation: cierre-latir 2.5s ease-in-out infinite;
+    }
+    @keyframes cierre-latir {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.15); }
+    }
+    .cierre-hero-content h2 {
+      font-size: 2rem !important;
+      font-weight: 900;
+      margin-bottom: 14px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,.2);
+    }
+    .cierre-hero-content p {
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 24px;
+      color: rgba(255,255,255,0.95);
+    }
+    .cierre-hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .cierre-chip {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      transition: transform .2s ease, background .2s ease;
+      cursor: default;
+    }
+    .cierre-chip:hover {
+      transform: translateY(-3px) scale(1.05);
+      background: rgba(255,255,255,0.32);
+    }
+    @media (max-width: 600px) {
+      .cierre-hero-content   { padding: 36px 20px; }
+      .cierre-hero-content h2 { font-size: 1.5rem !important; }
+    }
+
     /* ═══════════════════════════════════════════
        BANNER APS
     ═══════════════════════════════════════════ */
@@ -28,7 +111,7 @@
     }
     .banner-aps-left h2 span { color: #1565c0; }
     .banner-aps-left p {
-      font-size: 0.85rem;
+      font-size: 16px;
       color: #444;
       line-height: 1.7;
     }
@@ -72,19 +155,20 @@
       font-size: 2.8rem;
     }
     .banner-aps-icon span {
-      font-size: 0.62rem;
+      font-size: 14px;
       text-align: center;
       color: #333;
-      max-width: 60px;
+      max-width: 90px;
+      font-weight: 600;
     }
     .banner-aps-quote {
       background: #fff;
       border-radius: 14px;
       padding: 12px 16px;
-      font-size: 0.8rem;
+      font-size: 16px;
       color: #444;
       line-height: 1.6;
-      max-width: 220px;
+      max-width: 260px;
       text-align: right;
       box-shadow: 0 2px 10px rgba(0,0,0,.08);
     }
@@ -138,28 +222,35 @@
     #modal-bienvenida .modal-body {
       overflow-y: visible;
     }
+    #modal-bienvenida .modal-body p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
 
     /* ═══════════════════════════════════════════
        TIPOGRAFÍA — mínimo 12px en todo el sitio
     ═══════════════════════════════════════════ */
-    body          { font-size: 15px; }
+    body          { font-size: 18px; }
     p, li, span,
-    label, td     { font-size: 1rem; }
-    .subtitle,
-    .click-hint   { font-size: 1rem; }
-    .activity-item{ font-size: 0.93rem; }
+    label, td     { font-size: 18px; }
+    .subtitle     { font-size: 18px !important; }
+    .click-hint   { font-size: 16px; }
+    .activity-item{ font-size: 17px; }
     .flip-front p,
-    .flip-back  p { font-size: 0.87rem; }
-    .flip-hint    { font-size: 0.8rem; }
+    .flip-back  p { font-size: 16px; }
+    .flip-hint    { font-size: 15px; }
     h1            { font-size: 2rem; }
     h2            { font-size: 1.4rem; }
-    h3            { font-size: 1.15rem; }
-    h4            { font-size: 1rem; }
-    .hero-quote   { font-size: 1rem; }
-    .enc-item     { font-size: 1rem; }
-    .modules-title{ font-size: 1.1rem; }
-    .no-eval-card { font-size: 0.93rem; }
-    .fase-separador span { font-size: 0.87rem; }
+    h3            { font-size: 18px; }
+    h4            { font-size: 17px; }
+    .enc-item     { font-size: 17px; }
+    .modules-title{ font-size: 18px; }
+    .no-eval-card { font-size: 17px; }
+    .fase-separador span { font-size: 15px; }
+
+    /* Títulos grandes que NO cambian de tamaño */
+    .hero-left h1,
+    .banner-aps-left h2 { font-size: 2.6rem !important; }
 
     /* ═══════════════════════════════════════════
        ACTIVIDADES INDIVIDUALES — revisada en verde
@@ -194,8 +285,8 @@
       border: 1.5px solid #bbb;
       color: #bbb;
       border-radius: 20px;
-      padding: 3px 12px;
-      font-size: 0.8rem;
+      padding: 4px 14px;
+      font-size: 14px;
       font-weight: 600;
       cursor: not-allowed;
       transition: all .2s;
@@ -252,7 +343,7 @@
         de la necesidad de fortalecer las capacidades de los actores que desarrollan acciones de
         promoción de la salud en los territorios del municipio de Pasto.
         <button onclick="openModal('m-titulo')"
-                style="background:none;border:none;color:#1565c0;font-size:0.8rem;
+                style="background:none;border:none;color:#1565c0;font-size:14px;
                        font-weight:700;cursor:pointer;padding:0;margin-left:4px;
                        text-decoration:underline;"
                 onmouseover="this.style.color='#0d47a1'"
@@ -320,8 +411,28 @@
   <p class="modules-title">Temas del módulo</p>
   <div class="modules-grid" id="modules-grid"></div>
 
+  <!-- ══════════════════════════════════ CIERRE INSPIRADOR ══ -->
+  <div class="cierre-hero">
+    <div class="cierre-hero-glow"></div>
+    <div class="cierre-hero-content">
+      <div class="cierre-hero-icon">🌱</div>
+      <h2>Un camino que construimos juntos</h2>
+      <p>
+        Cada módulo es un paso hacia territorios más saludables. Gracias por ser parte
+        de este recorrido de aprendizaje, reflexión y acción por el bienestar de las
+        personas, las familias y las comunidades.
+      </p>
+      <div class="cierre-hero-chips">
+        <span class="cierre-chip">💚 Salud</span>
+        <span class="cierre-chip">🤝 Comunidad</span>
+        <span class="cierre-chip">🌎 Territorio</span>
+        <span class="cierre-chip">✨ Bienestar</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ══════════════════════════════════════════ CIERRE ══ -->
-  <div class="cierre-row">
+  <div class="cierre-row" style="display:none;">
     <div class="cierre-card">
       <div class="big-icon">📋</div>
       <h3>Cierre de la unidad<br>Encuesta de satisfacción</h3>
@@ -342,7 +453,7 @@
   </div>
 
   <!-- ══════════════════════════════════════════ FOOTER ══ -->
-  <div class="footer-row">
+  <div class="footer-row" style="display:none;">
     <div class="footer-text">
       <span class="ft-icon">👥</span>
       La comprensión de la salud nos permite actuar juntos para transformar realidades. 💚
@@ -694,7 +805,7 @@ MODULOS.forEach(function(m) {
         '<div class="num">' + m.numero + '</div>' +
         '<div class="card-img">' + m.imgEmoji + '</div>' +
         '<h4>' + m.titulo + '</h4>' +
-        '<p style="text-align:center;margin:0;font-size:0.78rem;color:#555;line-height:1.5;padding:0 4px;">' + m.descripcion + '</p>' +
+        '<p style="text-align:center;margin:0;font-size:15px;color:#555;line-height:1.5;padding:0 4px;">' + m.descripcion + '</p>' +
         '<span class="flip-hint">↩ Clic para ver recursos</span>' +
       '</div>' +
       '<div class="flip-back">' +
