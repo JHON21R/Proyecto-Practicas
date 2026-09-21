@@ -38,16 +38,6 @@
       padding: 48px 32px;
       color: #fff;
     }
-    .cierre-hero-icon {
-      font-size: 3.4rem;
-      margin-bottom: 12px;
-      display: inline-block;
-      animation: cierre-latir 2.5s ease-in-out infinite;
-    }
-    @keyframes cierre-latir {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.15); }
-    }
     .cierre-hero-content h2 {
       font-size: 2rem !important;
       font-weight: 900;
@@ -62,27 +52,22 @@
       margin: 0 auto 24px;
       color: rgba(255,255,255,0.95);
     }
-    .cierre-hero-chips {
+    .cierre-hero-logos {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 8px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 22px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.15);
+      display: inline-flex;
     }
-    .cierre-chip {
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,0.35);
-      border-radius: 30px;
-      padding: 8px 20px;
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff;
-      transition: transform .2s ease, background .2s ease;
-      cursor: default;
-    }
-    .cierre-chip:hover {
-      transform: translateY(-3px) scale(1.05);
-      background: rgba(255,255,255,0.32);
+    .cierre-hero-logos img {
+      max-width: 100%;
+      max-height: 80px;
     }
     @media (max-width: 600px) {
       .cierre-hero-content   { padding: 36px 20px; }
@@ -415,18 +400,17 @@
   <div class="cierre-hero">
     <div class="cierre-hero-glow"></div>
     <div class="cierre-hero-content">
-      <div class="cierre-hero-icon">🌱</div>
       <h2>Un camino que construimos juntos</h2>
       <p>
         Cada módulo es un paso hacia territorios más saludables. Gracias por ser parte
         de este recorrido de aprendizaje, reflexión y acción por el bienestar de las
         personas, las familias y las comunidades.
       </p>
-      <div class="cierre-hero-chips">
-        <span class="cierre-chip">💚 Salud</span>
-        <span class="cierre-chip">🤝 Comunidad</span>
-        <span class="cierre-chip">🌎 Territorio</span>
-        <span class="cierre-chip">✨ Bienestar</span>
+      <div style="text-align:center;">
+        <div class="cierre-hero-logos">
+          <img src="img/logos.png" alt="Logos institucionales">
+          <img src="img/mariana2.png" alt="Universidad Mariana">
+        </div>
       </div>
     </div>
   </div>
