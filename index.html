@@ -54,20 +54,26 @@
     }
     .cierre-hero-logos {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 8px;
+      gap: 20px;
+      margin-top: 20px;
       background: #fff;
-      border-radius: 12px;
-      padding: 14px 22px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.15);
-      display: inline-flex;
+      border-radius: 16px;
+      padding: 16px 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
     }
     .cierre-hero-logos img {
-      max-width: 100%;
-      max-height: 80px;
+      height: 80px;
+      width: auto;
+      object-fit: contain;
+      background: transparent;
+    }
+    /* El logo de la Universidad Mariana es cuadrado con margen: lo hacemos más grande y le quitamos separación extra */
+    .cierre-hero-logos img.logo-mariana {
+      height: 110px;
+      margin-left: -40px;
     }
     @media (max-width: 600px) {
       .cierre-hero-content   { padding: 36px 20px; }
@@ -406,11 +412,11 @@
         de este recorrido de aprendizaje, reflexión y acción por el bienestar de las
         personas, las familias y las comunidades.
       </p>
-      <div style="text-align:center;">
-        <div class="cierre-hero-logos">
-          <img src="img/logos.png" alt="Logos institucionales">
-          <img src="img/mariana2.png" alt="Universidad Mariana">
-        </div>
+      <div class="cierre-hero-logos">
+        <img src="img/logo-alcaldia.png" alt="Alcaldía de Pasto - Secretaría de Salud">
+        <img src="img/logo-pastosalud.png" alt="Pasto Salud E.S.E">
+        <img src="img/logo-ciudadbienestar.png?v=2" alt="Ciudad Bienestar">
+        <img src="img/mariana2.png" alt="Universidad Mariana" class="logo-mariana">
       </div>
     </div>
   </div>
