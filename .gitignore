@@ -1,0 +1,11 @@
+# Credenciales — NUNCA subir
+server/.env
+.env
+
+# Dependencias
+node_modules/
+server/node_modules/
+
+# Sistema operativo
+.DS_Store
+**/.DS_Store
