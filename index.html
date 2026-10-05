@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Curso de Atención Primaria en Salud y Ciudad Bienestar</title>
-  <link rel="stylesheet" href="css/styles.css?v=6" />
+  <link rel="stylesheet" href="css/styles.css?v=7" />
   <style>
     /* ═══════════════════════════════════════════
        CIERRE INSPIRADOR
@@ -85,14 +85,40 @@
        BANNER APS
     ═══════════════════════════════════════════ */
     .banner-aps {
-      background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
       border-radius: 18px;
-      padding: 28px 32px;
       margin-bottom: 18px;
-      display: grid;
-      grid-template-columns: 1fr 200px 1fr;
-      gap: 24px;
-      align-items: center;
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+    }
+    /* Imagen del banner 2, completa y ajustada al ancho */
+    .banner-aps-bg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* El texto y los íconos van superpuestos sobre la imagen */
+    .banner-aps-left,
+    .banner-aps-right {
+      position: absolute;
+      line-height: normal;
+    }
+    .banner-aps-left {
+      left: 4%;
+      top: 20%;
+      right: 55%;
+    }
+    .banner-aps-right {
+      right: 4%;
+      top: 20%;
+    }
+    .badge-modulo {
+      position: absolute;
+      top: -45px;
+      left: -60px;
+      height: 170px;
+      width: auto;
+      z-index: 2;
     }
     .banner-aps-left h2 {
       font-size: 2.6rem !important;
@@ -101,23 +127,129 @@
       line-height: 1.2;
       margin-bottom: 10px;
     }
-    .banner-aps-left h2 span { color: #1565c0; }
+    .banner-aps-left h2,
+    .banner-aps-left h2 span { color: #fff !important; }
     .banner-aps-left p {
       font-size: 16px;
-      color: #444;
+      color: #fff;
       line-height: 1.7;
     }
-    .banner-aps-center {
-      background: rgba(255,255,255,0.6);
-      border-radius: 16px;
-      padding: 16px;
+    .banner-aps-icon span { color: #fff !important; }
+    .banner-aps-quote { color: #fff; }
+
+    /* ═══════════════════════════════════════════
+       BANNER 3 — INTENCIÓN DE LA UNIDAD (tarjeta con imagen)
+    ═══════════════════════════════════════════ */
+    .banner-intencion.info-card {
+      position: relative;
+      padding: 0;
+      border-left: none;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .banner-intencion-bg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .banner-intencion-texto {
+      position: absolute;
+      top: 50%;
+      left: 34%;
+      right: 6%;
+      transform: translateY(-50%);
+      line-height: normal;
+      color: #fff;
+    }
+    .banner-intencion-texto h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .banner-intencion-texto p {
+      font-size: 16px;
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .banner-intencion-texto .click-hint {
+      font-size: 14px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ═══════════════════════════════════════════
+       DESCRIPCIÓN GENERAL (tarjeta con fondo naranja)
+    ═══════════════════════════════════════════ */
+    .banner-descripcion.info-card {
+      position: relative;
+      padding: 0;
+      border-left: none;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .banner-descripcion-bg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .banner-descripcion-icono {
+      position: absolute;
+      top: 50%;
+      left: 6%;
+      transform: translateY(-50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.6rem;
-      text-align: center;
-      line-height: 1.5;
-      height: 120px;
+      font-size: 5rem;
+      line-height: 1;
+    }
+    .banner-descripcion-texto {
+      position: absolute;
+      top: 50%;
+      left: 34%;
+      right: 6%;
+      transform: translateY(-50%);
+      line-height: normal;
+      color: #fff;
+    }
+    .banner-descripcion-texto h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .banner-descripcion-texto p {
+      font-size: 16px;
+      color: #fff;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .banner-descripcion-texto .click-hint {
+      font-size: 14px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    @media (max-width: 600px) {
+      .banner-intencion-texto,
+      .banner-descripcion-texto {
+        position: static;
+        transform: none;
+        padding: 14px 18px;
+        left: auto; right: auto; top: auto;
+      }
+      .banner-descripcion-icono { display: none; }
     }
     .banner-aps-right {
       display: flex;
@@ -154,43 +286,25 @@
       font-weight: 600;
     }
     .banner-aps-quote {
-      background: #fff;
+      background: transparent;
       border-radius: 14px;
       padding: 12px 16px;
       font-size: 16px;
-      color: #444;
+      color: #fff;
       line-height: 1.6;
       max-width: 260px;
       text-align: right;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
     }
     @media (max-width: 900px) {
-      .banner-aps { grid-template-columns: 1fr; }
+      .banner-aps-left,
+      .banner-aps-right {
+        position: static;
+        left: auto; right: auto; top: auto;
+        padding: 12px 18px;
+      }
       .banner-aps-right { align-items: flex-start; }
       .banner-aps-icons { justify-content: flex-start; }
       .banner-aps-quote { text-align: left; max-width: 100%; }
-    }
-    .onda {
-      display: inline-block;
-      width: 4px;
-      height: 100%;
-      background: #2e7d32;
-      border-radius: 4px;
-      animation: onda-pulso 0.8s ease-in-out infinite alternate;
-      min-height: 4px;
-    }
-    @keyframes onda-pulso {
-      0%   { height: 20%; }
-      100% { height: 100%; }
-    }
-    #ondas-audio {
-      display: none;
-      align-items: flex-end;
-      gap: 3px;
-      height: 20px;
-    }
-    #ondas-audio.activo {
-      display: flex !important;
     }
     #modal-bienvenida {
       position: fixed;
@@ -205,10 +319,13 @@
       justify-content: center;
       opacity: 1;
       transition: opacity .4s ease;
+      overflow-y: auto;
+      padding: 20px 0;
     }
     #modal-bienvenida .modal {
-      max-height: 90vh !important;
-      overflow-y: auto !important;
+      max-height: none !important;
+      overflow-y: visible !important;
+      overflow: hidden !important;
     }
 
     #modal-bienvenida .modal-body {
@@ -326,10 +443,8 @@
 <div class="page">
   <!-- ══════════════════════════════════════════ HERO ══ -->
   <div class="hero">
-    <div class="hero-left">
-      <h1 onclick="openModal('m-titulo')">
-        "Curso de Atención Primaria en Salud"
-      </h1>
+    <img class="hero-bg" src="img/Banner-principal.jpg" alt="Banner principal del curso">
+    <div class="hero-texto">
       <p class="subtitle">
         La construcción del Curso Virtual de Atención Primaria en Salud y Ciudad Bienestar surge
         de la necesidad de fortalecer las capacidades de los actores que desarrollan acciones de
@@ -342,31 +457,23 @@
                 onmouseout="this.style.color='#1565c0'">Leer más »</button>
       </p>
     </div>
-    <div class="hero-center">
-      <img src="img/iconocolibri.png" alt="Colibrí"
-           style="width:100%;height:200px;object-fit:contain;background:transparent;">
-    </div>
-    <div class="hero-right">
-      <div class="hero-icons">
-        <div class="hero-icon-item" onclick="openModal('m-personas')">
-          <div class="ico ico-personas">🎯</div><span>Objetivos de Aprendizaje</span>
-        </div>
-        <div class="hero-icon-item" onclick="openModal('m-familias')">
-          <div class="ico ico-familias">💬</div><span>Presentación</span>
-        </div>
+    <div class="hero-iconos">
+      <div class="hero-icon-item" onclick="openModal('m-personas')">
+        <div class="ico ico-personas">🎯</div><span>Objetivos de Aprendizaje</span>
+      </div>
+      <div class="hero-icon-item" onclick="openModal('m-familias')">
+        <div class="ico ico-familias">💬</div><span>Presentación</span>
       </div>
     </div>
   </div><!-- /hero -->
 
   <!-- ══════════════════════════════════════ BANNER APS ══ -->
-  <div class="banner-aps" style="position:relative;">
-    <span class="hero-badge">MÓDULO 1</span>
+  <div class="banner-aps">
+    <img class="banner-aps-bg" src="img/Banner-2-1.jpg" alt="Banner ¿Cómo entendemos la salud?">
+    <img class="badge-modulo" src="img/Boton-modulo-1.png" alt="Módulo 1">
     <div class="banner-aps-left">
-      <h2 style="font-size:2.6rem;font-weight:900;color:#1565c0;line-height:1.15;margin-bottom:10px;"><br><span style="font-size:2.6rem;color:#1565c0;">¿Cómo entendemos la salud?</span></h2>
+      <h2 style="font-size:2.6rem;font-weight:900;color:#fff;line-height:1.15;margin-bottom:10px;"><br><span style="font-size:2.6rem;color:#fff;">¿Cómo entendemos la salud?</span></h2>
       <p>Aproximación a las formas de comprender la salud desde la Atención Primaria en Salud (APS) y la Salud Colectiva como referentes que orientan las acciones de Ciudad Bienestar.</p>
-    </div>
-    <div class="banner-aps-center">
-      👨‍⚕️👩‍⚕️<br>👨‍👩‍👧‍👦🏘️
     </div>
     <div class="banner-aps-right">
       <div class="banner-aps-icons">
@@ -384,18 +491,23 @@
 
   <!-- ══════════════════════════════════════ TARJETAS INFO ══ -->
   <div class="info-grid">
-    <div class="info-card" onclick="openModal('m-intencion')">
-      <div class="card-icon">🎯</div>
-      <h3>Intención de la unidad</h3>
-      <p>Reconocer los conceptos fundamentales de la salud mental, el marco
-         normativo colombiano y los mitos y realidades que rodean este tema…</p>
-      <div class="click-hint">👆 Clic para ampliar</div>
+    <div class="banner-intencion info-card" onclick="openModal('m-intencion')">
+      <img class="banner-intencion-bg" src="img/Banner-3.jpg" alt="Intención de la unidad">
+      <div class="banner-intencion-texto">
+        <h3>Intención de la unidad</h3>
+        <p>Reconocer los conceptos fundamentales de la salud mental, el marco
+           normativo colombiano y los mitos y realidades que rodean este tema…</p>
+        <div class="click-hint">👆 Clic para ampliar</div>
+      </div>
     </div>
-    <div class="info-card" onclick="openModal('m-descripcion')">
-      <div class="card-icon">📖</div>
-      <h3>Descripción general</h3>
-      <p>En este curso encontrara diferentes recursos para su revición y desarrollo del curso aps</p>
-      <div class="click-hint">👆 Clic para ampliar</div>
+    <div class="banner-descripcion info-card" onclick="openModal('m-descripcion')">
+      <img class="banner-descripcion-bg" src="img/Banner-3-1.jpg" alt="Descripción general">
+      <div class="banner-descripcion-icono">🗺️</div>
+      <div class="banner-descripcion-texto">
+        <h3>Descripción general</h3>
+        <p>En este curso encontrara diferentes recursos para su revición y desarrollo del curso aps</p>
+        <div class="click-hint">👆 Clic para ampliar</div>
+      </div>
     </div>
   </div>
 
@@ -404,7 +516,7 @@
   <div class="modules-grid" id="modules-grid"></div>
 
   <!-- ══════════════════════════════════ CIERRE INSPIRADOR ══ -->
-  <div class="cierre-hero">
+  <div class="cierre-hero" style="display:none;">
     <div class="cierre-hero-glow"></div>
     <div class="cierre-hero-content">
       <h2>Un camino que construimos juntos</h2>
@@ -579,41 +691,19 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
      MODAL DE BIENVENIDA (Guión de saludo)
 ════════════════════════════════════════════════════════ -->
 <div id="modal-bienvenida">
-  <div class="modal" style="max-width:640px;width:92%;padding:40px 36px 32px;background:linear-gradient(135deg, #F4E04D 0%, #4AA96C 100%);">
-    <div class="modal-bar" style="background:linear-gradient(90deg,#2e7d32,#00897b,#1565c0)"></div>
+  <div class="modal" style="max-width:640px;width:92%;padding:40px 36px 32px;background:#ffffff url('img/Ventana-emergente-1.jpg') center top / cover no-repeat;">
     <button class="close-btn" onclick="cerrarBienvenida()" aria-label="Cerrar">✕</button>
 
     <!-- Capa para legibilidad del texto sobre el fondo -->
     <div style="position:relative;z-index:1;border-radius:14px;padding:24px 22px;">
 
-    <div style="text-align:center;margin-bottom:18px;position:relative;display:flex;align-items:center;justify-content:center;gap:20px;">
-
-      <!-- Botón de audio con ondas -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-        <button id="btn-audio-bienvenida" onclick="toggleAudioBienvenida()"
-                style="width:52px;height:52px;border-radius:50%;border:none;
-                       background:#2e7d32;color:#fff;font-size:1.4rem;cursor:pointer;
-                       box-shadow:0 4px 12px rgba(46,125,50,.4);
-                       transition:background .2s;flex-shrink:0;"
-                onmouseover="this.style.background='#1b5e20'"
-                onmouseout="this.style.background='#2e7d32'"
-                aria-label="Reproducir audio">
-          ▶
-        </button>
-        <!-- Ondas de reproducción -->
-        <div id="ondas-audio" style="display:none;align-items:flex-end;gap:3px;height:20px;">
-          <span class="onda" style="animation-delay:0s"></span>
-          <span class="onda" style="animation-delay:0.1s"></span>
-          <span class="onda" style="animation-delay:0.2s"></span>
-          <span class="onda" style="animation-delay:0.3s"></span>
-          <span class="onda" style="animation-delay:0.15s"></span>
-        </div>
-      </div>
-
-      <img src="img/iconocolibri.png" alt="Colibrí" style="width:64px;opacity:0.9;">
+    <!-- Audio de bienvenida, justo debajo del logo APS del fondo -->
+    <div style="text-align:center;margin-top:55px;margin-bottom:18px;">
+      <audio controls style="width:100%;max-width:360px;">
+        <source src="img/20260911_112232.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+      </audio>
     </div>
-
-    <audio id="audio-bienvenida" src="img/20260911_112232.mp3" preload="auto"></audio>
 
     <div class="modal-body">
 
@@ -648,15 +738,13 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
 
     </div><!-- /modal-body -->
 
-    <div style="text-align:center;padding-top:12px;">
-      <button onclick="cerrarBienvenida()"
-              style="background:#2e7d32;color:#fff;border:none;border-radius:24px;
-                     padding:12px 32px;font-size:1rem;font-weight:700;cursor:pointer;
-                     transition:background .2s;box-shadow:0 4px 14px rgba(46,125,50,.3);"
-              onmouseover="this.style.background='#1b5e20'"
-              onmouseout="this.style.background='#2e7d32'">
-        ¡Comenzar el curso! 🌿
-      </button>
+    <div style="text-align:center;margin-top:-10px;padding-top:0;">
+      <img src="img/comenzar.png" alt="Comenzar el Curso"
+           onclick="cerrarBienvenida()"
+           style="max-width:440px;width:85%;height:auto;cursor:pointer;
+                  transition:transform .2s;"
+           onmouseover="this.style.transform='scale(1.05)'"
+           onmouseout="this.style.transform='scale(1)'">
     </div>
 
     </div><!-- /capa legibilidad -->
@@ -697,36 +785,6 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   AUDIO BIENVENIDA
-══════════════════════════════════════════════════════════ */
-function toggleAudioBienvenida() {
-  var audio  = document.getElementById('audio-bienvenida');
-  var btn    = document.getElementById('btn-audio-bienvenida');
-  var ondas  = document.getElementById('ondas-audio');
-
-  if (audio.paused) {
-    audio.play();
-    btn.textContent = '⏸';
-    ondas.classList.add('activo');
-  } else {
-    audio.pause();
-    btn.textContent = '▶';
-    ondas.classList.remove('activo');
-  }
-}
-
-// Al terminar el audio, resetear botón
-document.addEventListener('DOMContentLoaded', function() {
-  var audio = document.getElementById('audio-bienvenida');
-  if (audio) {
-    audio.addEventListener('ended', function() {
-      document.getElementById('btn-audio-bienvenida').textContent = '▶';
-      document.getElementById('ondas-audio').classList.remove('activo');
-    });
-  }
-});
-
-/* ══════════════════════════════════════════════════════════
    MODAL DE BIENVENIDA
 ══════════════════════════════════════════════════════════ */
 document.body.style.overflow = 'hidden';
@@ -735,8 +793,6 @@ var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
 document.body.style.paddingRight = scrollbarW + 'px';
 
 function cerrarBienvenida() {
-  var audio = document.getElementById('audio-bienvenida');
-  if (audio) { audio.pause(); audio.currentTime = 0; }
   var modal = document.getElementById('modal-bienvenida');
   modal.classList.add('saliendo');
   document.body.style.overflow = '';
@@ -745,16 +801,8 @@ function cerrarBienvenida() {
   setTimeout(function() { modal.style.display = 'none'; }, 420);
 }
 
-// Activa scroll solo si el modal no cabe en la pantalla
-(function ajustarScrollBienvenida() {
-  var modal = document.querySelector('#modal-bienvenida .modal');
-  if (!modal) return;
-  var margen = 40;
-  if (modal.scrollHeight <= window.innerHeight - margen) {
-    modal.style.maxHeight = 'none';
-    modal.style.overflowY = 'visible';
-  }
-})();
+// El modal de bienvenida se muestra completo, sin barra de scroll interna.
+// Si no cabe en la pantalla, el desplazamiento se hace sobre el overlay.
 
 /* ══════════════════════════════════════════════════════════
    VISOR
@@ -792,13 +840,22 @@ MODULOS.forEach(function(m) {
   card.innerHTML =
     '<div class="flip-inner" style="position:relative">' +
       '<div class="completada-badge">✅</div>' +
-      '<div class="flip-front">' +
-        '<div class="num">' + m.numero + '</div>' +
-        '<div class="card-img">' + m.imgEmoji + '</div>' +
-        '<h4>' + m.titulo + '</h4>' +
-        '<p style="text-align:center;margin:0;font-size:15px;color:#555;line-height:1.5;padding:0 4px;">' + m.descripcion + '</p>' +
-        '<span class="flip-hint">↩ Clic para ver recursos</span>' +
-      '</div>' +
+      (m.imgFrente
+        ? '<div class="flip-front flip-front-img">' +
+            '<img class="flip-front-foto" src="' + m.imgFrente + '" alt="' + m.titulo + '">' +
+            '<div class="flip-front-texto">' +
+              '<h4 class="flip-front-titulo">' + m.titulo + '</h4>' +
+              '<p class="flip-front-desc">' + m.descripcion + '</p>' +
+            '</div>' +
+            '<span class="flip-hint">↩ Clic para ver recursos</span>' +
+          '</div>'
+        : '<div class="flip-front">' +
+            '<div class="num">' + m.numero + '</div>' +
+            '<div class="card-img">' + m.imgEmoji + '</div>' +
+            '<h4>' + m.titulo + '</h4>' +
+            '<p style="text-align:center;margin:0;font-size:15px;color:#555;line-height:1.5;padding:0 4px;">' + m.descripcion + '</p>' +
+            '<span class="flip-hint">↩ Clic para ver recursos</span>' +
+          '</div>') +
       '<div class="flip-back">' +
         '<h4>' + m.titulo + '</h4>' +
         (m.recursos ? m.recursos.map(function(r){ return '<div class="recurso-back">' + r + '</div>'; }).join('') : '<div class="recurso-back">' + m.recurso + '</div>') +
