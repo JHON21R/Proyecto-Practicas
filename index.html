@@ -678,17 +678,33 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
 <script src="data/modulos.js"></script>
 <script src="js/modals.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/scorm.js"></script>
 
 <script>
 /* ══════════════════════════════════════════════════════════
-   GUARDIA DE SESIÓN
-   Si el estudiante no ha ingresado con su documento, lo
-   enviamos al login antes de mostrar el curso.
+   INICIAR SESIÓN SCORM
+   Si el curso corre dentro de Moodle (SCORM), se conecta para
+   guardar el progreso en la cuenta del estudiante. Si no hay LMS
+   (modo revisión), no hace nada y el curso funciona igual.
+══════════════════════════════════════════════════════════ */
+var SCORM_ACTIVO = SCORM.iniciar();
+
+/* Al salir del curso, cerrar la sesión SCORM correctamente */
+window.addEventListener('unload', function () {
+  if (SCORM_ACTIVO) SCORM.terminar();
+});
+
+/* ══════════════════════════════════════════════════════════
+   GUARDIA DE SESIÓN  —  DESACTIVADA TEMPORALMENTE PARA REVISIÓN
+   (Se oculta el login para que el curso se pueda revisar sin
+    iniciar sesión. Para reactivar, descomentar el bloque de abajo.)
 ══════════════════════════════════════════════════════════ */
 var SESION = obtenerSesion();
+/*
 if (!SESION || !SESION.docId) {
   window.location.replace('login.html');
 }
+*/
 
 /* ══════════════════════════════════════════════════════════
    MODAL DE BIENVENIDA
@@ -711,14 +727,24 @@ function cerrarBienvenida() {
 // Si no cabe en la pantalla, el desplazamiento se hace sobre el overlay.
 
 /* ══════════════════════════════════════════════════════════
-   PERSISTENCIA DEL PROGRESO (en el servidor, por documento)
-   Las actividades completadas se guardan en el servidor ligadas
-   al documento del estudiante, para que su avance NO se pierda
-   entre sesiones ni entre dispositivos.
+   PERSISTENCIA DEL PROGRESO (vía SCORM / Moodle)
+   Las actividades completadas se guardan en Moodle, ligadas a la
+   cuenta del estudiante, usando el estándar SCORM. Si el curso se
+   abre fuera de Moodle (revisión), no se guarda nada y funciona igual.
 ══════════════════════════════════════════════════════════ */
+var COMPLETADAS = [];  // lista en memoria de las actividades completadas
+
 function guardarCompletada(actId) {
-  if (!SESION || !SESION.docId) return;
-  marcarProgresoServidor(SESION.docId, actId);
+  if (COMPLETADAS.indexOf(actId) === -1) {
+    COMPLETADAS.push(actId);
+  }
+  if (SCORM_ACTIVO) {
+    SCORM.escribirProgreso(COMPLETADAS);
+  }
+
+  /* Alternativa con backend propio (desactivada):
+  if (SESION && SESION.docId) marcarProgresoServidor(SESION.docId, actId);
+  */
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -803,8 +829,10 @@ MODULOS.forEach(function(m, moduloIdx) {
   card.className = 'flip-card ' + m.colorClase;
   card.id        = 'card-' + m.id;
   card.setAttribute('data-moduloidx', moduloIdx);
-  /* El primer módulo está desbloqueado; los demás, bloqueados hasta completar el anterior */
-  if (moduloIdx > 0) card.classList.add('modulo-bloqueado');
+  /* RESTRICCIÓN DESACTIVADA TEMPORALMENTE PARA REVISIÓN:
+     todos los módulos quedan desbloqueados. Para reactivar la cadena,
+     descomentar la línea de abajo. */
+  // if (moduloIdx > 0) card.classList.add('modulo-bloqueado');
   card.onclick   = function() {
     if (this.classList.contains('modulo-bloqueado')) {
       this.classList.remove('shake-card');
@@ -851,8 +879,10 @@ MODULOS.forEach(function(m, moduloIdx) {
               var indice = idxBack;
               var actIdBack = m.id + '__' + (idxBack++);
               var cls = (it.accion === 'proximamente') ? 'actividad-back' : 'recurso-back';
-              /* La primera actividad empieza desbloqueada; las demás bloqueadas */
-              if (indice > 0) cls += ' bloqueada';
+              /* RESTRICCIÓN DESACTIVADA TEMPORALMENTE PARA REVISIÓN:
+                 todas las actividades quedan desbloqueadas. Para reactivar
+                 la cadena, descomentar la línea de abajo. */
+              // if (indice > 0) cls += ' bloqueada';
               var dataArchivo = it.archivo ? (' data-archivo="' + it.archivo + '"') : '';
               var dataUrl     = it.url ? (' data-url="' + it.url + '"') : '';
               var extra = '';
@@ -911,11 +941,19 @@ function aplicarCompletada(actId) {
   }
 }
 
+/* Restaurar el progreso guardado en Moodle (SCORM) al cargar */
+if (SCORM_ACTIVO) {
+  COMPLETADAS = SCORM.leerProgreso();
+  COMPLETADAS.forEach(aplicarCompletada);
+}
+
+/* Alternativa con backend propio (desactivada):
 if (SESION && SESION.docId) {
   consultarProgresoServidor(SESION.docId).then(function(completadas) {
     completadas.forEach(aplicarCompletada);
   });
 }
+*/
 </script>
 
 </body>
