@@ -1,23 +1,24 @@
 /* ============================================================
-   MÓDULO 1 – "Viaje hacia el sentir, entendiendo la Salud Mental"
+   Curso APS – Temas de los módulos
    Archivo: data/modulos.js
 
    ⚠️  INSTRUCCIONES PARA MANTENIMIENTO:
    ─────────────────────────────────────
-   Cuando el ingeniero entregue los archivos descargados:
+   Cuando lleguen los recursos de cada módulo:
    1. Guarda el archivo en la carpeta correspondiente:
+      - Audios          → audio/
       - Textos/páginas  → contenido/
       - PDFs            → img/
       - Imágenes        → img/
-   2. En este archivo cambia:
-        accion: "link",  url: "http://localhost:8888/..."
-      por:
+   2. En este archivo cambia la acción del item:
+        accion: "proximamente"
+      por la que corresponda:
+        accion: "audio", archivo: "audio/nombre.mp3"
         accion: "visor", archivo: "contenido/nombre.html"
-      o para PDFs:
         accion: "pdf",   archivo: "img/nombre.pdf"
 
-   TIPOS DE ACCIÓN:
-     "link"        → Abre en Moodle (pestaña nueva)
+   TIPOS DE ACCIÓN DISPONIBLES:
+     "audio"       → Reproduce un audio dentro de la página
      "visor"       → Abre el contenido dentro de la página
      "pdf"         → Descarga o abre el PDF directamente
      "youtube"     → Abre video de YouTube en pestaña nueva
@@ -28,7 +29,7 @@
 const MODULOS = [
 
   /* ══════════════════════════════════════════════════════
-     TARJETA 1 – Unidad I: Conceptos / Normatividad
+     TARJETA 1 – Contexto de la Atención Primaria en Salud
   ══════════════════════════════════════════════════════ */
   {
     id:          "act-1",
@@ -39,23 +40,16 @@ const MODULOS = [
     imgEmoji:    "🗺️",
     imgFrente:   "img/Modulo-1.jpg",
     titulo:      "Contexto de la Atención Primaria en Salud",
-    descripcion: "La Atención Primaria en Salud es una estrategia que ofrece atención integral, accesible y de calidad, enfocándose en la promoción de la salud, la prevención de enfermedades y la participación comunitaria. Su evolución ha sido significativa, desde el reconocimiento en Alma-Ata en 1978 hasta su desarrollo en Colombia con la Ley 1438 de 2011, avanzando hacia un modelo más preventivo y participativo.",
-    recurso:     "🎧 Audio introductorio del módulo",
-    recursos: [
-      "🎧 Audio introductorio del módulo",
-      "📝 Antecedente APS",
-      "📋 Lectura: Viaje por la Historia de la APS",
-      "📄 Lecturas de apoyo"
-    ],
+    descripcion: "La Atención Primaria en Salud (APS) es una estrategia comunitaria integral, que ha evolucionado desde la declaración de Alma-Ata de 1978 hasta el contexto colombiano con la Ley 1438 de 2011. Su enfoque transforma a un modelo moderno centrado la promoción del bienestar en la sociedad.",
     actividad:   "✏️ Actividad de Aprendizaje",
     items: [
 
       {
-        icono:   "▶️",
+        icono:   "🎧",
         tipo:    "Audio introductorio",
-        texto:   "AudioModulo1 — Introducción al Módulo 1.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/course/section.php?id=2#module-5"
+        texto:   "Introducción al Módulo 1.",
+        accion:  "audio",
+        archivo: "audio/introtemaAPS.mp3"
       },
       {
         icono:   "📝",
@@ -74,147 +68,12 @@ const MODULOS = [
         tipo:    "Lecturas de apoyo",
         texto:   "Material de apoyo complementario.",
         accion:  "proximamente"
-      },
-      {
-        icono:   "📄",
-        tipo:    "Cuento",
-        texto:   "Iniciando el viaje — Explorando la salud mental.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=7"
-      },
-      {
-        icono:   "💬",
-        tipo:    "Foro",
-        texto:   "Reflexionemos sobre el viaje de la salud mental.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/forum/view.php?id=8"
-      },
-      {
-        icono:   "📋",
-        tipo:    "Hitos Salud Mental",
-        texto:   "Ruta del Viajero — Recorrido histórico de la salud mental en Colombia desde 1991.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=9"
-      },
-      {
-        icono:   "📥",
-        tipo:    "Hitos Salud Mental PDF",
-        texto:   "Documento completo en PDF — normatividad desde 1991 hasta 2025.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/pluginfile.php/36/mod_resource/content/1/HITOS%20DE%20LA%20SALUD%20MENTAL.pdf"
-      },
-      {
-        icono:   "📄",
-        tipo:    "Mitos y realidades — Obligatoria",
-        texto:   "Mitos y realidades de la salud Mental.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=11"
-      },
-      {
-        icono:   "📥",
-        tipo:    "Documento mitos y realidades PDF",
-        texto:   "Documento mitos y realidades Salud Mental.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=12"
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Emociones – Autoestima",
-        accion:  "separador"
-      },
-
-      {
-        icono:   "📋",
-        tipo:    "Los Diálogos del Viajerito",
-        texto:   "Episodio: Emociones y Sentimientos.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=14"
-      },
-      {
-        icono:   "📋",
-        tipo:    "Autoconcepto y autoestima",
-        texto:   "Lectura y reflexión sobre la imagen propia.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=15"
-      },
-      {
-        icono:   "🏝️",
-        tipo:    "La isla desierta",
-        texto:   "Recurso de aprendizaje — Descubre tu valor.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=16"
-      },
-      {
-        icono:   "📋",
-        tipo:    "Afectaciones a la salud Mental",
-        texto:   "Estrés, depresión y ansiedad.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=17"
-      },
-      {
-        icono:   "🔗",
-        tipo:    "Actividad didáctica",
-        texto:   "Actividad didáctica interactiva.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/url/view.php?id=18"
-      },
-      {
-        icono:   "▶️",
-        tipo:    "Video complementario",
-        texto:   "Diferencia entre Estrés, Eustrés y Distrés.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/url/view.php?id=19"
-      },
-      {
-        icono:   "▶️",
-        tipo:    "Video complementario",
-        texto:   "¿Qué es el estrés y la ansiedad?",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/url/view.php?id=20"
-      },
-      {
-        icono:   "▶️",
-        tipo:    "Video complementario",
-        texto:   "Depresión — Video informativo.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/url/view.php?id=21"
-      },
-      {
-        icono:   "▶️",
-        tipo:    "Video complementario",
-        texto:   "Procrastinación — Video informativo.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/url/view.php?id=22"
-      },
-      {
-        icono:   "🔗",
-        tipo:    "Conceptos clave",
-        texto:   "Conceptos clave de la Unidad II.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/url/view.php?id=23"
-      },
-      {
-        icono:   "🧩",
-        tipo:    "Test evaluativo",
-        texto:   "Test unidad II. Reconociendo conceptos — Abrió: 1 de marzo de 2026.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/quiz/view.php?id=24"
-      },
-      {
-        icono:   "📁",
-        tipo:    "Recursos infografías",
-        texto:   "Carpeta con material visual de apoyo.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/folder/view.php?id=25"
       }
     ]
   },
 
   /* ══════════════════════════════════════════════════════
-     TARJETA 2 – Unidad II: Trastornos y Rutas de Atención
+     TARJETA 2 – Salud Colectiva Como Apuesta Latinoamericana
   ══════════════════════════════════════════════════════ */
   {
     id:          "act-2",
@@ -225,213 +84,45 @@ const MODULOS = [
     imgEmoji:    "💙",
     imgFrente:   "img/Modulo-2.jpg",
     titulo:      "Salud Colectiva Como Apuesta Latinoamericana",
-    descripcion: "La Salud Colectiva es un campo de pensamiento, conocimiento y acción construido históricamente a partir del cuestionamiento de las formas tradicionales de comprender la salud, la enfermedad y las prácticas de salud. Su trayectoria recoge los aportes de la medicina social, el movimiento de la salud en latinoamerica y las ciencias sociales, ampliando la mirada más allá de lo individual y biológico para reconocer que los procesos de salud-enfermedad están vinculados con las condiciones sociales, económicas, políticas, culturales, históricas y territoriales en las que transcurre la vida.",
-    recurso:     "🎧 Audio introductorio de la unidad",
-    recursos: [
-      "🎧 Audio introductorio de la unidad",
-      "📄 Contexto de Salud Colectiva",
-      "📄 Narrativa Historica Salud Colectiva",
-      "▶️ Ciudad Bienestar como Estrategia Territorial",
-      "📄 Lecturas de Apoyo",
-    ],
+    descripcion: "La Salud Colectiva es un campo interdisciplinario de pensamiento y acción que supera la visión puramente biológista de la salud. Es un enfoque que busca comprender el procesos de salud y enfermedad desde las condiciones socioeconómicas, políticas y culturales de las personas, basándose en los aportes de la teoría critica latinoamericana.",
     actividad:   "💬 Foro Reconociendo Experiencias",
     items: [
-
-      /* ─── Audio de apertura ─────────────────────────── */
       {
         icono:   "🎧",
         tipo:    "Audio introductorio",
-        texto:   "audioUIIAI.mp3 — Introducción a la Unidad II.",
-        accion:  "proximamente"    /* ⏳ Pendiente: cuando llegue el archivo de audio */
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Trastorno Mental",
-        accion:  "separador"
-      },
-
-      {
-        icono:   "📋",
-        tipo:    "Más allá de los términos",
-        texto:   "Trastorno o enfermedad mental — lectura introductoria.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=28"
+        texto:   "Introducción a la Unidad II.",
+        accion:  "audio",
+        archivo: "audio/IntroSaludColectiva.mp3"
       },
       {
-        icono:   "💬",
-        tipo:    "Foro",
-        texto:   "¿Qué diferencia hay entre trastorno y enfermedad mental?",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/forum/view.php?id=29"
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Epilepsia",
-        accion:  "separador"
-      },
-
-      {
-        icono:   "📋",
-        tipo:    "Trastorno Epilepsia",
-        texto:   "Información sobre el trastorno de epilepsia.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=31"
+        icono:   "📝",
+        tipo:    "Contexto de Salud Colectiva",
+        texto:   "Lectura sobre el contexto de la Salud Colectiva.",
+        accion:  "proximamente"
       },
       {
-        icono:   "🖼️",
-        tipo:    "Infografía Epilepsia",
-        texto:   "Material visual sobre la epilepsia.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=32"
+        icono:   "📄",
+        tipo:    "Narrativa Histórica Salud Colectiva",
+        texto:   "Recorrido histórico de la Salud Colectiva.",
+        accion:  "proximamente"
       },
-      {
-        icono:   "🗺️",
-        tipo:    "Ruta de Atención Epilepsia",
-        texto:   "Ruta institucional de atención para epilepsia.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=33"
-      },
-      {
-        icono:   "📥",
-        tipo:    "ABC Epilepsia",
-        texto:   "Documento ABC sobre epilepsia.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=34"
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Consumo de SPA",
-        accion:  "separador"
-      },
-
       {
         icono:   "▶️",
-        tipo:    "Video Test — Consumo de SPA",
-        texto:   "Hablemos de Consumo de Sustancias Psicoactivas.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=36"
+        tipo:    "Ciudad Bienestar como Estrategia Territorial",
+        texto:   "Video sobre Ciudad Bienestar como estrategia territorial.",
+        accion:  "proximamente"
       },
       {
-        icono:   "📋",
-        tipo:    "Sobre las sustancias psicoactivas",
-        texto:   "Lectura sobre las sustancias psicoactivas.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=37"
-      },
-      {
-        icono:   "🗺️",
-        tipo:    "Ruta de Atención Consumo SPA",
-        texto:   "Ruta institucional de atención para consumo de SPA.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=38"
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Bibliografía",
-        accion:  "separador"
-      },
-
-      {
-        icono:   "📚",
-        tipo:    "Bibliografía",
-        texto:   "Referencias bibliográficas de la unidad.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=43"
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Conducta Suicida",
-        accion:  "separador"
-      },
-
-      {
-        icono:   "▶️",
-        tipo:    "Video Test — Conducta Suicida",
-        texto:   "Hablemos de la Conducta Suicida.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=44"
-      },
-      {
-        icono:   "🖼️",
-        tipo:    "Infografía Conducta Suicida",
-        texto:   "Infografía sobre la Conducta Suicida.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=45"
-      },
-      {
-        icono:   "🗺️",
-        tipo:    "Ruta de Atención Conducta Suicida",
-        texto:   "Ruta institucional de atención para conducta suicida.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/page/view.php?id=47"
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Violencias",
-        accion:  "separador"
-      },
-
-      {
-        icono:   "▶️",
-        tipo:    "Video Test — Violencias",
-        texto:   "Hablemos sobre Violencias.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=48"
-      },
-      {
-        icono:   "🖼️",
-        tipo:    "Infografía sobre las violencias",
-        texto:   "Material visual sobre las violencias.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=49"
-      },
-      {
-        icono:   "🗺️",
-        tipo:    "Ruta de Atención Violencia de Género",
-        texto:   "Ruta institucional de atención para violencia de género.",
-        accion:  "link",
-        url:     "http://localhost:8888/moodle/mod/resource/view.php?id=49"
-      },
-
-      /* ─── Separador ─────────────────────────────────── */
-      {
-        icono:   "",
-        tipo:    "separador",
-        texto:   "Evaluación",
-        accion:  "separador"
-      },
-
-      {
-        icono:   "🧩",
-        tipo:    "Reto de saberes",
-        texto:   "Explorando lo aprendido — Evaluación final de la Unidad II.",
-        accion:  "link",           /* Requiere login en Moodle para guardar nota */
-        url:     "http://localhost:8888/moodle/mod/quiz/view.php?id=51"
+        icono:   "📄",
+        tipo:    "Lecturas de Apoyo",
+        texto:   "Material de apoyo complementario.",
+        accion:  "proximamente"
       }
-
     ]
   },
 
   /* ══════════════════════════════════════════════════════
-     TARJETA 3 – Unidad III: Módulo 3
+     TARJETA 3 – Determinantes y determinación social de la salud
   ══════════════════════════════════════════════════════ */
   {
     id:          "act-3",
@@ -441,14 +132,8 @@ const MODULOS = [
     emoji:       "🌿",
     imgEmoji:    "🌱",
     imgFrente:   "img/Modulo-3.jpg",
-    titulo:      "DOS MIRADAS SOBRE LA SALUD: LOS DETERMINANTES SOCIALES Y LA DETERMINACIÓN SOCIAL DE LA SALUD ",
-    descripcion: "El goce del grado máximo de salud que se pueda lograr es un derecho fundamental de todo ser humano.” El derecho a la salud en Colombia, establecido en la Ley Estatutaria 1751 de 2015, reconocida como un derecho autónomo e irrenunciable, asegura la dignidad y la igualdad de oportunidades. Esta ley garantiza un estado óptimo de salud física, mental, emocional y social. Además, la Política Pública en Salud Colectiva del municipio de Pasto integra la salud como un proceso determinado social e históricamente, destacando la responsabilidad estatal en colaboración con diversos grupos y la sociedad civil.",
-    recurso:     "🎧 Audio introductorio del módulo",
-    recursos: [
-      "📄 Determinantes Sociales de la Salud",
-      "📄 Determinación Social de la salud",
-      "📄 Determinación VS Determinantes",
-    ],
+    titulo:      "Dos miradas sobre la salud: los determinantes sociales y la determinación sociales de la salud ",
+    descripcion: "El derecho a la salud en Colombia está consagrado como un principio autónomo e irrenunciable que resguarda la dignidad humana bajo la Ley Estatutaria 1751 de 2015. Asimismo, la Política Pública de Salud Colectiva de Pasto articula la salud como un proceso social e histórico que requiere la acción coordinada entre el Estado y la sociedad civil en articulación con la responsabilidad estatal.",
     actividad:   "🧩 Actividad de Reflexión",
     items: [
       {
@@ -459,21 +144,21 @@ const MODULOS = [
       },
       {
         icono:   "📄",
-        tipo:    "Lectura y video introductorio",
-        texto:   "Material introductorio del Módulo 3.",
+        tipo:    "Determinantes Sociales de la Salud",
+        texto:   "Lectura sobre los determinantes sociales de la salud.",
         accion:  "proximamente"
       },
       {
         icono:   "📄",
-        tipo:    "Lectura y video introductorio",
-        texto:   "Material introductorio Modulo 3.",
-        accion:  "Proccimamente"
+        tipo:    "Determinación Social de la Salud",
+        texto:   "Lectura sobre la determinación social de la salud.",
+        accion:  "proximamente"
       },
       {
         icono:   "📄",
-        tipo:    "Lectura y video introductorio",
-        texto:   "Material introductorio Modulo 3.",
-        accion:  "Proccimamente"
+        tipo:    "Determinación VS Determinantes",
+        texto:   "Comparación entre determinación y determinantes.",
+        accion:  "proximamente"
       },
       {
         icono:   "🧩",
@@ -485,7 +170,7 @@ const MODULOS = [
   },
 
   /* ══════════════════════════════════════════════════════
-     TARJETA 4 – Unidad IV: Módulo 4
+     TARJETA 4 – El territorio como escenario de articulación
   ══════════════════════════════════════════════════════ */
   {
     id:          "act-4",
@@ -495,44 +180,39 @@ const MODULOS = [
     emoji:       "🏘️",
     imgEmoji:    "🌍",
     imgFrente:   "img/Modulo-4.jpg",
-    titulo:      "EL TERRITORIO COMO ESCENARIO DE ARTICULACIÓN",
+    titulo:      "El territorio como escenario de articulación",
     descripcion: "Comprender el territorio como una construcción social, dinámica y relacional, configurada por las formas en que los humanos y no humanos que conforman comunidades lo habitan, lo usan, lo significan y lo transforman, teniendo en cuenta también las relaciones entre dimensiones sociales, culturales, económicas, ambientales y político-institucionales; desde ahí es posible el reconocimiento que configuran condiciones particulares de vida, salud, enfermedad y cuidado, y cómo el territorio constituye un escenario de encuentro y articulación entre la Atención Primaria en Salud (APS), Ciudad Bienestar–PSPIC (CB), las comunidades y otros actores territoriales. ",
-    recurso:     "🎧 Audio introductorio del módulo",
-    recursos :[
-      "🧩 Tejiendo el territorio como espacio de vida",
-      "▶️ Experiencia en el Territorio",
-      "📄 Lecturas de Apoyo",
-    ],
-    actividad:   "🧩 Actividad Reflexiba",
+    actividad:   "🧩 Actividad Reflexiva",
     items: [
       {
         icono:   "🎧",
         tipo:    "Audio introductorio",
         texto:   "Introducción al Módulo 4.",
-        accion:  "proximamente"
+        accion:  "audio",
+        archivo: "audio/Audio_Intro_Territorio.mp3"
       },
       {
         icono:   "🧩",
-        tipo:    "Recurso",
+        tipo:    "Tejiendo el territorio como espacio de vida",
         texto:   "Material de lectura del Módulo 4.",
         accion:  "proximamente"
       },
       {
         icono:   "▶️",
-        tipo:    "Video de territorio",
-        texto:   "Video de Apoyo Modulo 4.",
-        accion:  "Proximamente"
+        tipo:    "Experiencia en el Territorio",
+        texto:   "Video de apoyo del Módulo 4.",
+        accion:  "proximamente"
       },
       {
         icono:   "📄",
-        tipo:    "Lectura de apoyo",
-        texto:   "lectura Modulo 4.",
-        accion:  "Proximamente"
+        tipo:    "Lecturas de Apoyo",
+        texto:   "Material de apoyo complementario.",
+        accion:  "proximamente"
       },
       {
         icono:   "🧩",
         tipo:    "Actividad",
-        texto:   "Actividad Reflexiba Modulo 4.",
+        texto:   "Actividad reflexiva del Módulo 4.",
         accion:  "proximamente"
       }
     ]
