@@ -309,6 +309,7 @@ a {
   height: 540px;
   perspective: 1000px;
   cursor: pointer;
+  position: relative;
 }
 
 .flip-inner {
@@ -442,6 +443,84 @@ a {
   font-size: 0.68rem;
   color: #aaa;
   margin-top: auto;
+}
+
+/* Actividad completada en la cara trasera — cambia de color (verde) */
+.flip-back .recurso-back.completada,
+.flip-back .actividad-back.completada {
+  background: rgba(76, 175, 80, 0.85);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Actividad bloqueada — se ve en gris opaco hasta completar la anterior */
+.flip-back .recurso-back.bloqueada,
+.flip-back .actividad-back.bloqueada {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.45);
+  cursor: not-allowed;
+  opacity: 0.55;
+  position: relative;
+}
+
+.flip-back .recurso-back.bloqueada:hover,
+.flip-back .actividad-back.bloqueada:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.45);
+  box-shadow: none;
+  font-weight: 400;
+}
+
+/* Pequeña vibración cuando se intenta abrir una actividad bloqueada */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.flip-back .bloqueada.shake {
+  animation: shake 0.3s ease;
+}
+
+/* ── Módulo (tarjeta) bloqueado hasta completar el anterior ── */
+/* Se ve en gris opaco, sin candado */
+.flip-card.modulo-bloqueado {
+  cursor: not-allowed;
+}
+.flip-card.modulo-bloqueado .flip-inner {
+  filter: grayscale(1) brightness(0.85);
+  opacity: 0.5;
+}
+
+@keyframes shakeCard {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.flip-card.shake-card {
+  animation: shakeCard 0.4s ease;
+}
+
+.flip-back .recurso-back.completada .rb-label::after,
+.flip-back .actividad-back.completada .rb-label::after {
+  content: " ✓";
+  font-weight: 900;
+}
+
+/* Reproductor de audio embebido en la cara trasera */
+.flip-back .audio-player-back {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.flip-back .audio-player-back audio {
+  width: 100%;
+  height: 34px;
+}
+
+/* La cara trasera permite scroll si los recursos no caben */
+.flip-back {
+  overflow-y: auto;
 }
 
 /* Cara frontal como imagen completa (ej. Módulo 1) */
