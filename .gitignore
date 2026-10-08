@@ -9,3 +9,6 @@ server/node_modules/
 # Sistema operativo
 .DS_Store
 **/.DS_Store
+
+# Bases de datos locales (datos de estudiantes) — NUNCA subir
+server/data/*.db
