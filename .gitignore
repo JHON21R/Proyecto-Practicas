@@ -12,3 +12,13 @@ server/node_modules/
 
 # Bases de datos locales (datos de estudiantes) — NUNCA subir
 server/data/*.db
+
+# Paquete SCORM: el ZIP y las copias generadas de recursos
+# (se mantiene solo el manifiesto como fuente)
+Curso-APS-SCORM.zip
+scorm-paquete/css/
+scorm-paquete/js/
+scorm-paquete/img/
+scorm-paquete/audio/
+scorm-paquete/data/
+scorm-paquete/index.html
