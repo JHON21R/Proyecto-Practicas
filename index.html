@@ -344,7 +344,6 @@
     label, td     { font-size: 18px; }
     .subtitle     { font-size: 18px !important; }
     .click-hint   { font-size: 16px; }
-    .activity-item{ font-size: 17px; }
     .flip-front p,
     .flip-back  p { font-size: 16px; }
     .flip-hint    { font-size: 15px; }
@@ -361,81 +360,6 @@
     .hero-left h1,
     .banner-aps-left h2 { font-size: 2.6rem !important; }
 
-    /* ═══════════════════════════════════════════
-       ACTIVIDADES INDIVIDUALES — revisada en verde
-    ═══════════════════════════════════════════ */
-    .activity-item {
-      position: relative;
-      transition: background .3s;
-    }
-    .activity-item.revisada {
-      background: #e8f5e9 !important;
-      border-left: 4px solid #43a047;
-    }
-    .activity-item.revisada .ai-check { display: flex !important; }
-    .ai-check {
-      display: none;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #43a047;
-      color: #fff;
-      border-radius: 50%;
-      width: 24px; height: 24px;
-      font-size: 0.8rem;
-      align-items: center;
-      justify-content: center;
-    }
-    .btn-revisar {
-      display: inline-block;
-      margin-top: 6px;
-      background: none;
-      border: 1.5px solid #bbb;
-      color: #bbb;
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: not-allowed;
-      transition: all .2s;
-      opacity: 0.6;
-    }
-    .btn-revisar.habilitado {
-      border-color: #00897b;
-      color: #00897b;
-      cursor: pointer;
-      opacity: 1;
-    }
-    .btn-revisar.habilitado:hover { background: #00897b; color: #fff; }
-    .btn-revisar.revisado       { border-color: #43a047; color: #43a047; cursor: default; opacity: 1; }
-    .btn-revisar.revisado:hover { background: none; color: #43a047; }
-
-    /* ═══════════════════════════════════════════
-       TARJETA COMPLETADA
-    ═══════════════════════════════════════════ */
-    .flip-card.completada .flip-front {
-      background: linear-gradient(135deg,#e8f5e9,#c8e6c9) !important;
-      border: 2px solid #43a047;
-    }
-    .flip-card.completada .flip-back {
-      background: linear-gradient(135deg,#1b5e20,#2e7d32) !important;
-    }
-    .completada-badge {
-      display: none;
-      position: absolute;
-      top: 10px; right: 10px;
-      background: #43a047;
-      color: #fff;
-      border-radius: 50%;
-      width: 30px; height: 30px;
-      font-size: 1rem;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      z-index: 2;
-    }
-    .flip-card.completada .completada-badge { display: flex; }
   </style>
 </head>
 <body>
@@ -684,9 +608,6 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
   </div>
 </div>
 
-<!-- Modales de actividades (generados por JS) -->
-<div id="modals-container"></div>
-
 <!-- ════════════════════════════════════════════════════════
      MODAL DE BIENVENIDA (Guión de saludo)
 ════════════════════════════════════════════════════════ -->
@@ -700,7 +621,7 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
     <!-- Audio de bienvenida, justo debajo del logo APS del fondo -->
     <div style="text-align:center;margin-top:55px;margin-bottom:18px;">
       <audio controls style="width:100%;max-width:360px;">
-        <source src="img/20260911_112232.mp3" type="audio/mpeg">
+        <source src="audio/AudioBienvenidaCurso.mp3" type="audio/mpeg">
         Tu navegador no soporta el audio.
       </audio>
     </div>
@@ -719,8 +640,8 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
 
     <p style="margin-bottom:12px;">
       A lo largo de este curso tendremos la oportunidad de reconocer los fundamentos de la
-      Atención Primaria en Salud y de Ciudad Bienestar —una estrategia de salud colectiva que busca
-      la garantía del derecho a la salud—, comprender sus particularidades, aproximarnos a las
+      Atención Primaria en Salud y de Ciudad Bienestar una estrategia de salud colectiva que busca
+      la garantía del derecho a la salud, comprender sus particularidades, aproximarnos a las
       realidades territoriales del municipio de Pasto y explorar la articulación que puede contribuir
       al mejoramiento de las condiciones de salud de las personas, las familias y las comunidades.
     </p>
@@ -751,31 +672,6 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
   </div>
 </div>
 
-<!-- Modal próximamente -->
-<div class="overlay" id="modal-proximamente" onclick="backdropClose(event,'modal-proximamente')">
-  <div class="modal" style="text-align:center;max-width:420px;">
-    <div class="modal-bar" style="background:linear-gradient(90deg,#00897b,#1565c0)"></div>
-    <button class="close-btn" onclick="closeModal('modal-proximamente')">✕</button>
-    <span style="font-size:3rem;display:block;margin:16px 0;">🚧</span>
-    <h2 id="proximamente-titulo" style="color:#004d40;">Recurso en preparación</h2>
-    <p>Este recurso estará disponible directamente en esta página muy pronto.<br><br>
-       <strong>Por ahora puedes encontrarlo en la plataforma Moodle del curso.</strong></p>
-    <img src="img/iconocolibri.png" alt="Colibrí" style="width:60px;margin-top:16px;opacity:0.7;">
-  </div>
-</div>
-
-<!-- Modal visor -->
-<div class="overlay" id="modal-visor" onclick="backdropClose(event,'modal-visor')">
-  <div class="modal modal-doc">
-    <div class="modal-bar" style="background:linear-gradient(90deg,#00695c,#1565c0)"></div>
-    <button class="close-btn" onclick="closeModal('modal-visor')">✕</button>
-    <div id="visor-contenido">
-      <p style="text-align:center;padding:40px;color:#aaa;">Cargando...</p>
-    </div>
-  </div>
-</div>
-
-
 <!-- ════════════════════════════════════════════════════════
      SCRIPTS
 ════════════════════════════════════════════════════════ -->
@@ -784,6 +680,16 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
 <script src="js/auth.js"></script>
 
 <script>
+/* ══════════════════════════════════════════════════════════
+   GUARDIA DE SESIÓN
+   Si el estudiante no ha ingresado con su documento, lo
+   enviamos al login antes de mostrar el curso.
+══════════════════════════════════════════════════════════ */
+var SESION = obtenerSesion();
+if (!SESION || !SESION.docId) {
+  window.location.replace('login.html');
+}
+
 /* ══════════════════════════════════════════════════════════
    MODAL DE BIENVENIDA
 ══════════════════════════════════════════════════════════ */
@@ -805,41 +711,121 @@ function cerrarBienvenida() {
 // Si no cabe en la pantalla, el desplazamiento se hace sobre el overlay.
 
 /* ══════════════════════════════════════════════════════════
-   VISOR
+   PERSISTENCIA DEL PROGRESO (en el servidor, por documento)
+   Las actividades completadas se guardan en el servidor ligadas
+   al documento del estudiante, para que su avance NO se pierda
+   entre sesiones ni entre dispositivos.
 ══════════════════════════════════════════════════════════ */
-function abrirProximamente(titulo) {
-  document.getElementById('proximamente-titulo').textContent = titulo || 'Recurso en preparación';
-  openModal('modal-proximamente');
+function guardarCompletada(actId) {
+  if (!SESION || !SESION.docId) return;
+  marcarProgresoServidor(SESION.docId, actId);
 }
 
-function abrirVisor(archivo, titulo) {
-  var contenedor = document.getElementById('visor-contenido');
-  contenedor.innerHTML = '<p style="text-align:center;padding:40px;color:#aaa;">Cargando...</p>';
-  openModal('modal-visor');
-  fetch(archivo)
-    .then(function(r) { return r.text(); })
-    .then(function(html) { contenedor.innerHTML = html; })
-    .catch(function() {
-      contenedor.innerHTML = '<p style="text-align:center;padding:40px;color:#e53935;">No se pudo cargar el documento.</p>';
-    });
+/* ══════════════════════════════════════════════════════════
+   EJECUTAR UNA ACTIVIDAD AL HACER CLIC EN LA CARA TRASERA
+   Actúa directamente según el tipo, sin abrir ninguna ventana flotante.
+══════════════════════════════════════════════════════════ */
+function ejecutarActividad(el) {
+  /* Si está bloqueada, no se puede abrir hasta completar la anterior */
+  if (el.classList.contains('bloqueada')) {
+    el.classList.remove('shake');
+    void el.offsetWidth; // reinicia la animación
+    el.classList.add('shake');
+    return;
+  }
+
+  var accion  = el.getAttribute('data-accion');
+  var archivo = el.getAttribute('data-archivo');
+  var url     = el.getAttribute('data-url');
+  var actId   = el.getAttribute('data-actid');
+
+  if (accion === 'audio') {
+    var cont = document.getElementById('audioback-' + actId);
+    if (!cont) return;
+    var audio = cont.querySelector('audio');
+    /* Al hacer clic en el título: abre el reproductor y reproduce.
+       Si ya está abierto, no se cierra: el estudiante usa los
+       controles del propio audio para pausar o adelantar. */
+    if (cont.style.display === 'none' || cont.style.display === '') {
+      cont.style.display = 'block';
+      if (audio) audio.play().catch(function() {});
+    }
+  } else if (accion === 'pdf' && archivo) {
+    window.open(archivo, '_blank');
+    marcarCompletada(actId);
+  } else if ((accion === 'youtube' || accion === 'link') && url) {
+    window.open(url, '_blank', 'noopener');
+    marcarCompletada(actId);
+  }
+  /* 'proximamente' y 'visor' sin archivo: no hacen nada por ahora */
+}
+
+/* ══════════════════════════════════════════════════════════
+   MARCAR UNA ACTIVIDAD COMO COMPLETADA (cambia de color)
+   y DESBLOQUEAR la siguiente actividad del módulo.
+   El audio la marca al terminar; PDF/enlaces al abrirse.
+══════════════════════════════════════════════════════════ */
+function marcarCompletada(actId) {
+  var el = document.getElementById('rb-' + actId);
+  if (!el || el.classList.contains('completada')) return;
+
+  el.classList.add('completada');
+  guardarCompletada(actId);
+
+  var moduloId = el.getAttribute('data-modulo');
+  var indice   = parseInt(el.getAttribute('data-indice'), 10);
+
+  /* Desbloquear la siguiente actividad del mismo módulo */
+  var siguiente = document.getElementById('rb-' + moduloId + '__' + (indice + 1));
+  if (siguiente) siguiente.classList.remove('bloqueada');
+
+  /* Si no hay siguiente actividad, el módulo está completo → desbloquear el siguiente módulo */
+  if (!siguiente) {
+    var card = document.getElementById('card-' + moduloId);
+    if (card) {
+      card.classList.add('modulo-completado');
+      var idx = parseInt(card.getAttribute('data-moduloidx'), 10);
+      var siguienteCard = document.querySelector('.flip-card[data-moduloidx="' + (idx + 1) + '"]');
+      if (siguienteCard) siguienteCard.classList.remove('modulo-bloqueado');
+    }
+  }
 }
 
 /* ══════════════════════════════════════════════════════════
    GENERACIÓN DE TARJETAS Y MODALES
 ══════════════════════════════════════════════════════════ */
-var grid      = document.getElementById('modules-grid');
-var container = document.getElementById('modals-container');
+var grid = document.getElementById('modules-grid');
 
-MODULOS.forEach(function(m) {
+MODULOS.forEach(function(m, moduloIdx) {
 
   /* ── Tarjeta giratoria ── */
   var card = document.createElement('div');
   card.className = 'flip-card ' + m.colorClase;
   card.id        = 'card-' + m.id;
-  card.onclick   = function() { this.classList.toggle('flipped'); };
+  card.setAttribute('data-moduloidx', moduloIdx);
+  /* El primer módulo está desbloqueado; los demás, bloqueados hasta completar el anterior */
+  if (moduloIdx > 0) card.classList.add('modulo-bloqueado');
+  card.onclick   = function() {
+    if (this.classList.contains('modulo-bloqueado')) {
+      this.classList.remove('shake-card');
+      void this.offsetWidth;
+      this.classList.add('shake-card');
+      return;
+    }
+    var estabaAbierta = this.classList.contains('flipped');
+    this.classList.toggle('flipped');
+    /* Si se cierra la tarjeta (vuelve al frente), pausar y ocultar sus audios */
+    if (estabaAbierta) {
+      this.querySelectorAll('audio').forEach(function(a) {
+        a.pause();
+      });
+      this.querySelectorAll('.audio-player-back').forEach(function(p) {
+        p.style.display = 'none';
+      });
+    }
+  };
   card.innerHTML =
     '<div class="flip-inner" style="position:relative">' +
-      '<div class="completada-badge">✅</div>' +
       (m.imgFrente
         ? '<div class="flip-front flip-front-img">' +
             '<img class="flip-front-foto" src="' + m.imgFrente + '" alt="' + m.titulo + '">' +
@@ -858,147 +844,78 @@ MODULOS.forEach(function(m) {
           '</div>') +
       '<div class="flip-back">' +
         '<h4>' + m.titulo + '</h4>' +
-        (m.recursos ? m.recursos.map(function(r){ return '<div class="recurso-back">' + r + '</div>'; }).join('') : '<div class="recurso-back">' + m.recurso + '</div>') +
-        '<div class="actividad-back">' + m.actividad + '</div>' +
+        (function() {
+          var idxBack = 0;
+          return m.items.filter(function(it){ return it.accion !== 'separador'; })
+            .map(function(it) {
+              var indice = idxBack;
+              var actIdBack = m.id + '__' + (idxBack++);
+              var cls = (it.accion === 'proximamente') ? 'actividad-back' : 'recurso-back';
+              /* La primera actividad empieza desbloqueada; las demás bloqueadas */
+              if (indice > 0) cls += ' bloqueada';
+              var dataArchivo = it.archivo ? (' data-archivo="' + it.archivo + '"') : '';
+              var dataUrl     = it.url ? (' data-url="' + it.url + '"') : '';
+              var extra = '';
+              if (it.accion === 'audio') {
+                extra = '<div class="audio-player-back" id="audioback-' + actIdBack + '" style="display:none;" onclick="event.stopPropagation()">' +
+                          '<audio controls style="width:100%;" onended="marcarCompletada(\'' + actIdBack + '\')">' +
+                            '<source src="' + it.archivo + '" type="audio/mpeg">' +
+                          '</audio>' +
+                        '</div>';
+              }
+              return '<div class="' + cls + '" id="rb-' + actIdBack + '" ' +
+                     'data-accion="' + it.accion + '"' + dataArchivo + dataUrl + ' ' +
+                     'data-actid="' + actIdBack + '" ' +
+                     'data-modulo="' + m.id + '" ' +
+                     'data-indice="' + indice + '" ' +
+                     'onclick="event.stopPropagation();ejecutarActividad(this)">' +
+                     '<span class="rb-label">' + (it.icono || '📌') + ' ' + it.tipo + '</span>' +
+                     extra +
+                     '</div>';
+            }).join('');
+        })() +
       '</div>' +
     '</div>';
   grid.appendChild(card);
 
-  /* ── Items del modal con botón "Marcar como revisado" ── */
-  var itemIdx  = 0;
-  var itemsHTML = m.items.map(function(item) {
-    if (item.accion === 'separador') {
-      return '<div class="fase-separador"><hr><span>' + (item.texto || '') + '</span><hr></div>';
-    }
-
-    var idx   = itemIdx++;
-    var actId = m.id + '__' + idx;
-    var contenido = '';
-
-    if (item.accion === 'visor') {
-      contenido = '<span style="cursor:pointer;color:#00897b;font-weight:600;text-decoration:underline;" onclick="abrirVisor(\'' + item.archivo + '\',\'' + item.tipo + '\');habilitarRevisar(\'' + actId + '\')">' +
-                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</span>';
-    } else if (item.accion === 'pdf') {
-      contenido = '<a href="' + item.archivo + '" download style="color:#e65100;font-weight:600;text-decoration:underline;" onclick="habilitarRevisar(\'' + actId + '\')">' +
-                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</a>';
-    } else if (item.accion === 'youtube') {
-      contenido = '<a href="' + item.url + '" target="_blank" rel="noopener" style="color:#c62828;font-weight:600;text-decoration:underline;" onclick="habilitarRevisar(\'' + actId + '\')">' +
-                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</a>';
-    } else if (item.accion === 'proximamente') {
-      contenido = '<span style="cursor:pointer;color:#6a1b9a;font-weight:600;text-decoration:underline;" onclick="abrirProximamente(\'' + item.tipo + '\');habilitarRevisar(\'' + actId + '\')">' +
-                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</span>';
-    } else {
-      contenido = '<a href="' + item.url + '" target="_blank" rel="noopener" style="color:#1565c0;font-weight:600;text-decoration:underline;" onclick="habilitarRevisar(\'' + actId + '\')">' +
-                  '<strong>' + item.tipo + ':</strong> ' + item.texto + '</a>';
-    }
-
-    return '<div class="activity-item" id="ai-' + actId + '">' +
-             '<span class="ai">' + (item.icono || '📌') + '</span>' +
-             '<div style="flex:1">' + contenido +
-               '<br><button class="btn-revisar" id="br-' + actId + '" onclick="revisarActividad(\'' + actId + '\',\'' + m.id + '\')" title="Primero abre el recurso para poder marcarlo como revisado">' +
-               '✓ Marcar como revisado</button>' +
-             '</div>' +
-             '<div class="ai-check">✓</div>' +
-           '</div>';
-  }).join('');
-
-  /* ── Modal ── */
-  var modal = document.createElement('div');
-  modal.className = 'overlay';
-  modal.id        = m.id;
-  modal.setAttribute('onclick', 'backdropClose(event,\'' + m.id + '\')');
-  modal.innerHTML =
-    '<div class="modal">' +
-      '<div class="modal-bar" style="background:' + m.colorBarra + '"></div>' +
-      '<button class="close-btn" onclick="closeModal(\'' + m.id + '\')">✕</button>' +
-      '<span class="emoji">' + m.emoji + '</span>' +
-      '<h2>' + m.titulo + (m.subtitulo ? ' — ' + m.subtitulo : '') + '</h2>' +
-      '<p>' + m.descripcion + '</p>' +
-      '<button class="toggle-activities" onclick="toggleActs(this)">▸ Ver recursos y actividades</button>' +
-      '<div class="activities-section">' +
-        '<h3>Recursos y actividades</h3>' +
-        itemsHTML +
-      '</div>' +
-    '</div>';
-  container.appendChild(modal);
 });
 
 /* ══════════════════════════════════════════════════════════
-   HABILITAR BOTÓN AL ABRIR EL RECURSO
+   RESTAURAR EL PROGRESO GUARDADO AL CARGAR LA PÁGINA
+   Consulta el servidor (por documento) y reconstruye el estado:
+   actividades completadas, desbloqueo de la siguiente actividad
+   y desbloqueo de los módulos.
 ══════════════════════════════════════════════════════════ */
-function habilitarRevisar(actId) {
-  var btn = document.getElementById('br-' + actId);
-  if (btn && !btn.classList.contains('revisado')) {
-    btn.classList.add('habilitado');
-    btn.title = '¡Ya puedes marcar esta actividad como revisada!';
-  }
-}
+function aplicarCompletada(actId) {
+  var el = document.getElementById('rb-' + actId);
+  if (!el) return;
+  el.classList.add('completada');
+  el.classList.remove('bloqueada');
 
-/* ══════════════════════════════════════════════════════════
-   MARCAR ACTIVIDAD COMO REVISADA
-══════════════════════════════════════════════════════════ */
-function revisarActividad(actId, unidadId) {
-  var btn  = document.getElementById('br-' + actId);
-  var item = document.getElementById('ai-' + actId);
-  if (!btn || btn.classList.contains('revisado')) return;
+  var moduloId = el.getAttribute('data-modulo');
+  var indice   = parseInt(el.getAttribute('data-indice'), 10);
 
-  /* Bloquear si aún no se abrió el recurso */
-  if (!btn.classList.contains('habilitado')) {
-    btn.style.animation = 'none';
-    btn.textContent     = '⚠ Abre el recurso primero';
-    setTimeout(function() { btn.textContent = '✓ Marcar como revisado'; }, 2000);
-    return;
-  }
+  /* Desbloquear la siguiente actividad del mismo módulo */
+  var siguiente = document.getElementById('rb-' + moduloId + '__' + (indice + 1));
+  if (siguiente) siguiente.classList.remove('bloqueada');
 
-  btn.textContent = 'Guardando…';
-  btn.disabled    = true;
-
-  marcarRevisada(actId).then(function() {
-    btn.textContent = '✅ Revisado';
-    btn.classList.add('revisado');
-    btn.disabled    = false;
-    item.classList.add('revisada');
-    verificarUnidadCompleta(unidadId);
-  });
-}
-
-/* ══════════════════════════════════════════════════════════
-   VERIFICAR SI TODA LA UNIDAD ESTÁ COMPLETA
-══════════════════════════════════════════════════════════ */
-function verificarUnidadCompleta(unidadId) {
-  var modulo = MODULOS.find(function(m) { return m.id === unidadId; });
-  if (!modulo) return;
-
-  var total    = modulo.items.filter(function(i) { return i.accion !== 'separador'; }).length;
-  var revisadas = 0;
-  for (var i = 0; i < total; i++) {
-    var btn = document.getElementById('br-' + unidadId + '__' + i);
-    if (btn && btn.classList.contains('revisado')) revisadas++;
-  }
-
-  if (revisadas >= total) {
-    var card = document.getElementById('card-' + unidadId);
-    if (card && !card.classList.contains('completada')) {
-      card.classList.add('completada');
-      setTimeout(function() {
-        alert('🎉 ¡Completaste ' + modulo.titulo + '!\n\nTodas las actividades fueron revisadas.');
-      }, 300);
+  /* Si era la última actividad, marcar módulo completo y desbloquear el siguiente */
+  if (!siguiente) {
+    var card = document.getElementById('card-' + moduloId);
+    if (card) {
+      card.classList.add('modulo-completado');
+      var idx = parseInt(card.getAttribute('data-moduloidx'), 10);
+      var siguienteCard = document.querySelector('.flip-card[data-moduloidx="' + (idx + 1) + '"]');
+      if (siguienteCard) siguienteCard.classList.remove('modulo-bloqueado');
     }
   }
 }
 
-/* ══════════════════════════════════════════════════════════
-   CARGAR PROGRESO AL INICIAR
-══════════════════════════════════════════════════════════ */
-consultarProgreso().then(function(data) {
-  (data.revisadas || []).forEach(function(actId) {
-    var btn  = document.getElementById('br-' + actId);
-    var item = document.getElementById('ai-' + actId);
-    if (btn)  { btn.textContent = '✅ Revisado'; btn.classList.add('habilitado', 'revisado'); }
-    if (item) { item.classList.add('revisada'); }
+if (SESION && SESION.docId) {
+  consultarProgresoServidor(SESION.docId).then(function(completadas) {
+    completadas.forEach(aplicarCompletada);
   });
-  MODULOS.forEach(function(m) { verificarUnidadCompleta(m.id); });
-});
+}
 </script>
 
 </body>
