@@ -1,35 +1,64 @@
 /* ============================================================
-   auth.js  –  Progreso sin login ni formulario
-   Genera un ID anónimo único por navegador (se guarda en localStorage).
-   Sincroniza progreso de actividades individuales con el servidor.
+   auth.js  –  Sesión y progreso del estudiante (por documento)
+   ────────────────────────────────────────────────────────────
+   El estudiante se identifica con su documento (tipo + número).
+   El progreso se guarda en el servidor y persiste entre sesiones.
+
+   ⚠️  PRODUCCIÓN: cambia API_BASE por la dirección pública del
+       servidor, por ejemplo:
+       var API_BASE = 'http://185.240.215.107:3001/api';
 ============================================================ */
 
-const API = 'http://localhost:3001/api';
+var API_BASE = 'http://localhost:3001/api';
 
-/* ── ID anónimo del participante ─────────────────────────── */
-function getParticipanteId() {
-  var id = localStorage.getItem('vs_pid');
-  if (!id) {
-    id = 'anon_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
-    localStorage.setItem('vs_pid', id);
-  }
-  return id;
-}
+/* Clave para recordar la sesión en este navegador */
+var CLAVE_SESION = 'aps_sesion_v1';
 
-/* ── Marcar actividad como revisada ─────────────────────── */
-function marcarRevisada(actividadId) {
-  return fetch(API + '/progreso', {
+/* ── Registrar o recuperar al participante ───────────────── */
+function registrarParticipante(tipoDoc, numeroDoc) {
+  return fetch(API_BASE + '/participante', {
     method:  'POST',
     headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({ email: getParticipanteId(), actividadId })
+    body:    JSON.stringify({ tipoDoc: tipoDoc, numeroDoc: numeroDoc })
+  }).then(function(r) { return r.json(); });
+}
+
+/* ── Guardar / leer / cerrar la sesión del navegador ─────── */
+function guardarSesion(docId, tipoDoc, numeroDoc) {
+  try {
+    localStorage.setItem(CLAVE_SESION, JSON.stringify({
+      docId: docId, tipoDoc: tipoDoc, numeroDoc: numeroDoc
+    }));
+  } catch (e) {}
+}
+
+function obtenerSesion() {
+  try {
+    return JSON.parse(localStorage.getItem(CLAVE_SESION));
+  } catch (e) {
+    return null;
+  }
+}
+
+function cerrarSesion() {
+  try { localStorage.removeItem(CLAVE_SESION); } catch (e) {}
+}
+
+/* ── Marcar una actividad como completada en el servidor ─── */
+function marcarProgresoServidor(docId, actividadId) {
+  return fetch(API_BASE + '/progreso', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify({ docId: docId, actividadId: actividadId })
   })
   .then(function(r) { return r.json(); })
   .catch(function()  { return {}; });
 }
 
-/* ── Consultar progreso ──────────────────────────────────── */
-function consultarProgreso() {
-  return fetch(API + '/progreso/' + encodeURIComponent(getParticipanteId()))
+/* ── Consultar el progreso guardado del estudiante ───────── */
+function consultarProgresoServidor(docId) {
+  return fetch(API_BASE + '/progreso/' + encodeURIComponent(docId))
     .then(function(r) { return r.json(); })
-    .catch(function()  { return { revisadas: [] }; });
+    .then(function(data) { return (data && data.completadas) || []; })
+    .catch(function()  { return []; });
 }
