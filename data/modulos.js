@@ -55,13 +55,22 @@ const MODULOS = [
         icono:   "📝",
         tipo:    "Antecedente APS",
         texto:   "Antecedente de la Atención Primaria en Salud.",
-        accion:  "proximamente"
+        accion:  "link",
+        url:     "http://185.240.215.107:8081/lineatiempo/index.html"
+      },
+      {
+        icono:   "🎧",
+        tipo:    "Narrativa Histórica Salud Colectiva",
+        texto:   "Recorrido histórico de la Salud Colectiva.",
+        accion:  "audio",
+        archivo: "audio/APS_audio_documental.mp3"
       },
       {
         icono:   "📋",
-        tipo:    "Lectura",
+        tipo:    "Actividad",
         texto:   "Viaje por la Historia de la APS.",
-        accion:  "proximamente"
+        accion:  "link",
+        url:     "http://185.240.215.107:8081/moodle/mod/scorm/view.php?id=1266"
       },
       {
         icono:   "📄",
@@ -98,19 +107,29 @@ const MODULOS = [
         icono:   "📝",
         tipo:    "Contexto de Salud Colectiva",
         texto:   "Lectura sobre el contexto de la Salud Colectiva.",
-        accion:  "proximamente"
+        accion:  "link",
+        url:     "http://185.240.215.107:8081/lineatiempo/index.html"
       },
       {
-        icono:   "📄",
+        icono:   "🎧",
         tipo:    "Narrativa Histórica Salud Colectiva",
         texto:   "Recorrido histórico de la Salud Colectiva.",
-        accion:  "proximamente"
+        accion:  "video",
+        archivo: "audio/SALUD COLECTIVA AUDIO 2.mp3"
+      },
+      { 
+        icono:   "▶️",
+        tipo:    "Experiencia ciudad bienestar",
+        texto:   "Recorrido histórico de la Salud Colectiva.",
+        accion:  "video",
+        archivo: "pendiente"
       },
       {
-        icono:   "▶️",
-        tipo:    "Ciudad Bienestar como Estrategia Territorial",
-        texto:   "Video sobre Ciudad Bienestar como estrategia territorial.",
-        accion:  "proximamente"
+        icono:   "✏️",
+        tipo:    "Actividad",
+        texto:   "Ciudad Bienestar como estrategia territorial.",
+        accion:    "contenido",
+        contenido: "ciudad-bienestar-territorial"
       },
       {
         icono:   "📄",
@@ -150,21 +169,17 @@ const MODULOS = [
       },
       {
         icono:   "📄",
-        tipo:    "Determinación Social de la Salud",
-        texto:   "Lectura sobre la determinación social de la salud.",
-        accion:  "proximamente"
-      },
-      {
-        icono:   "📄",
         tipo:    "Determinación VS Determinantes",
         texto:   "Comparación entre determinación y determinantes.",
-        accion:  "proximamente"
+        accion:  "link",
+        url:     "http://185.240.215.107:8081/Determinantes/index.html"
       },
       {
         icono:   "🧩",
         tipo:    "Actividad",
         texto:   "Actividad evaluativa del Módulo 3.",
-        accion:  "proximamente"
+        accion:    "contenido",
+        contenido: "caso-elena-determinantes"
       }
     ]
   },
