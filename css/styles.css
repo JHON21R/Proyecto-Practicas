@@ -919,21 +919,34 @@ a {
 
 
 /* ── 11. Colores por Módulo ──────────────────────────────── */
-.m1 .num       { background: #00897b; }
-.m1 .flip-back { background: linear-gradient(160deg, #004d40, #00897b); }
+.m1 .num { background: #00897b; }
+.m2 .num { background: #1565c0; }
+.m3 .num { background: #43a047; }
+.m4 .num { background: #fb8c00; }
+.m5 .num { background: #8e24aa; }
 
-.m2 .num       { background: #1565c0; }
-.m2 .flip-back { background: linear-gradient(160deg, #0d47a1, #1565c0); }
-
-/* Se mantienen por si se agregan más módulos en el futuro */
-.m3 .num       { background: #43a047; }
-.m3 .flip-back { background: linear-gradient(160deg, #1b5e20, #43a047); }
-
-.m4 .num       { background: #fb8c00; }
-.m4 .flip-back { background: linear-gradient(160deg, #e65100, #fb8c00); }
-
-.m5 .num       { background: #8e24aa; }
-.m5 .flip-back { background: linear-gradient(160deg, #4a148c, #8e24aa); }
+/* Cara trasera: misma imagen del módulo, oscurecida y apagada
+   para que no se vea tan encendida y el texto blanco se lea bien */
+.m1 .flip-back {
+  background: linear-gradient(160deg, rgba(20,30,20,0.82), rgba(10,20,15,0.9)), url('../img/Modulo-1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.m2 .flip-back {
+  background: linear-gradient(160deg, rgba(20,25,35,0.82), rgba(10,15,25,0.9)), url('../img/Modulo-2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.m3 .flip-back {
+  background: linear-gradient(160deg, rgba(20,30,20,0.82), rgba(12,22,12,0.9)), url('../img/Modulo-3.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.m4 .flip-back {
+  background: linear-gradient(160deg, rgba(35,25,15,0.82), rgba(25,15,8,0.9)), url('../img/Modulo-4.jpg');
+  background-size: cover;
+  background-position: center;
+}
 
 
 /* ── 12. Responsive ──────────────────────────────────────── */
@@ -973,6 +986,15 @@ a {
   max-height: 88vh;
   overflow-y: auto;
   padding: 40px 36px 32px;
+}
+
+/* Modal del foro de presentación / guía de aprendizaje */
+.modal-foro {
+  max-width: 1150px;
+  width: 96%;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 28px 26px 26px;
 }
 
 /* Cabecera del documento */
