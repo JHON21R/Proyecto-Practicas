@@ -216,8 +216,8 @@
     .banner-descripcion-texto {
       position: absolute;
       top: 50%;
-      left: 34%;
-      right: 6%;
+      left: 42%;
+      right: 5%;
       transform: translateY(-50%);
       line-height: normal;
       color: #fff;
@@ -367,7 +367,7 @@
 <div class="page">
   <!-- ══════════════════════════════════════════ HERO ══ -->
   <div class="hero">
-    <img class="hero-bg" src="img/Banner-principal.jpg" alt="Banner principal del curso">
+    <img class="hero-bg" src="img/banner.jpg" alt="Banner principal del curso">
     <div class="hero-texto">
       <p class="subtitle">
         La construcción del Curso Virtual de Atención Primaria en Salud y Ciudad Bienestar surge
@@ -383,10 +383,10 @@
     </div>
     <div class="hero-iconos">
       <div class="hero-icon-item" onclick="openModal('m-personas')">
-        <div class="ico ico-personas">🎯</div><span>Objetivos de Aprendizaje</span>
+        <div class="ico ico-personas"><img src="iconos/objetivos.png" alt="Objetivos de Aprendizaje"></div><span>Objetivos de Aprendizaje</span>
       </div>
       <div class="hero-icon-item" onclick="openModal('m-familias')">
-        <div class="ico ico-familias">💬</div><span>Presentación</span>
+        <div class="ico ico-familias"><img src="iconos/presentacion.png" alt="Presentación"></div><span>Presentación</span>
       </div>
     </div>
   </div><!-- /hero -->
@@ -401,11 +401,11 @@
     </div>
     <div class="banner-aps-right">
       <div class="banner-aps-icons">
-        <div class="banner-aps-icon"><div class="ico-b" style="background:#1565c0;">👥</div><span>Personas</span></div>
-        <div class="banner-aps-icon"><div class="ico-b" style="background:#2e7d32;">👨‍👩‍👧</div><span>Familias</span></div>
-        <div class="banner-aps-icon"><div class="ico-b" style="background:#e65100;">🏘️</div><span>Comunidades</span></div>
-        <div class="banner-aps-icon"><div class="ico-b" style="background:#6a1b9a;">🗺️</div><span>Territorio</span></div>
-        <div class="banner-aps-icon"><div class="ico-b" style="background:#00695c;">🤝</div><span>Participación y bienestar</span></div>
+        <div class="banner-aps-icon"><div class="ico-b"><img src="iconos/personas.png" alt="Personas"></div><span>Personas</span></div>
+        <div class="banner-aps-icon"><div class="ico-b"><img src="iconos/familias.png" alt="Familias"></div><span>Familias</span></div>
+        <div class="banner-aps-icon"><div class="ico-b"><img src="iconos/comunidades.png" alt="Comunidades"></div><span>Comunidades</span></div>
+        <div class="banner-aps-icon"><div class="ico-b"><img src="iconos/territorio.png" alt="Territorio"></div><span>Territorio</span></div>
+        <div class="banner-aps-icon"><div class="ico-b"><img src="iconos/participacion.png" alt="Participación y bienestar"></div><span>Participación y bienestar</span></div>
       </div>
       <div class="banner-aps-quote">
         💚 Comprender la salud es el primer paso para construir acciones que transformen la vida de las personas y las comunidades.
@@ -425,11 +425,10 @@
       </div>
     </div>
     <div class="banner-descripcion info-card" onclick="openModal('m-descripcion')">
-      <img class="banner-descripcion-bg" src="img/Banner-3-1.jpg" alt="Descripción general">
-      <div class="banner-descripcion-icono">🗺️</div>
+      <img class="banner-descripcion-bg" src="img/banner-2.jpg" alt="Descripción general">
       <div class="banner-descripcion-texto">
         <h3>Descripción general</h3>
-        <p>En este curso encontrara diferentes recursos para su revición y desarrollo del curso aps</p>
+        <p>En este curso encontrará diferentes recursos para su revisión y desarrollo del curso APS.</p>
         <div class="click-hint">👆 Clic para ampliar</div>
       </div>
     </div>
@@ -515,10 +514,10 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
 </div>
 
 <div class="overlay" id="m-intencion" onclick="backdropClose(event,'m-intencion')">
-  <div class="modal">
+  <div class="modal" style="background:#ffffff url('img/intencion-unidad-modal.jpg') center top / cover no-repeat;">
     <div class="modal-bar" style="background:#00897b"></div>
     <button class="close-btn" onclick="closeModal('m-intencion')">✕</button>
-    <span class="emoji">🎯</span>
+    <span class="emoji"><img src="iconos/intencion.png" alt="Intención de la unidad" style="width:64px;height:64px;object-fit:contain;"></span>
     <h2>Intención de la unidad</h2>
     <p>Reconocer los conceptos fundamentales de la salud mental, identificar
        el marco normativo colombiano que la sustenta, y desmitificar creencias
@@ -529,19 +528,19 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
 </div>
 
 <div class="overlay" id="m-descripcion" onclick="backdropClose(event,'m-descripcion')">
-  <div class="modal">
+  <div class="modal" style="background:#ffffff url('img/descripcion-general-modal.jpg') center top / cover no-repeat;">
     <div class="modal-bar" style="background:#1565c0"></div>
     <button class="close-btn" onclick="closeModal('m-descripcion')">✕</button>
-    <span class="emoji">📖</span>
+    <span class="emoji"><img src="iconos/descripcion.png" alt="Descripción general" style="width:64px;height:64px;object-fit:contain;"></span>
     <h2>Descripción general</h2>
 
-    <p><strong>EXPLORE EL MATERIAL MULTIMEDIA</strong></p>
+    <p><strong>Explore El Material Multimedia</strong></p>
     <p>En cada unidad encontrarás infografías, enlaces, videos y demás herramientas pedagógicas que te permitirán de manera lúdica acceder a la información de este curso, es importante que las revises en su totalidad.</p>
 
-    <p style="margin-top:14px;"><strong>CAJA DE HERRAMIENTAS</strong></p>
+    <p style="margin-top:14px;"><strong>Caja De Herramientas</strong></p>
     <p>En ella encontrarás documentos pdf, enlaces a lecturas y videos que te permitirán ahondar en las diferentes temáticas y con ello profundizar tus conocimientos.</p>
 
-    <p style="margin-top:14px;"><strong>PRUEBAS DE CONOCIMIENTO O RETROALIMENTACIÓN</strong></p>
+    <p style="margin-top:14px;"><strong>Pruebas De Conocimiento O Retroalimentación</strong></p>
     <p>El desarrollo de estas actividades nos permitirán hacer el seguimiento a tu avance en el proceso formativo, recuerda que al culminar el mismo de manera satisfactoria alcanzarás tu certificado de participación.</p>
   </div>
 </div>
@@ -754,7 +753,7 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
           <p style="font-size: 15px; margin: 0 0 20px;">
             Además de compartir tu presentación y reflexión, te invitamos a leer las participaciones de tus compañeras y compañeros y responder <strong>al menos a una de ellas</strong>, destacando algún aspecto que haya llamado tu atención, un punto con el que te identifiques o una idea que permita enriquecer el diálogo.
           </p>
-          <a href="http://185.240.215.107:8081/moodle/mod/forum/view.php?id=1264" target="_blank" rel="noopener"
+          <a href="http://38.224.56.117:8081/moodle/mod/forum/view.php?id=1264" target="_blank" rel="noopener"
              style="display: block; background: #278b48; background-image: linear-gradient(100deg, #278b48 0%, #159e9a 100%); color: #ffffff; border-radius: 9px; padding: 17px 20px; text-align: center; border-bottom: 4px solid #f58220; text-decoration: none; cursor: pointer; transition: filter .2s;"
              onmouseover="this.style.filter='brightness(1.08)'"
              onmouseout="this.style.filter='brightness(1)'">
@@ -815,14 +814,14 @@ Por esta razón, el curso propone un recorrido progresivo que parte de la compre
      MODAL DE BIENVENIDA (Guión de saludo)
 ════════════════════════════════════════════════════════ -->
 <div id="modal-bienvenida">
-  <div class="modal" style="max-width:640px;width:92%;padding:40px 36px 32px;background:#ffffff url('img/Ventana-emergente-1.jpg') center top / cover no-repeat;">
+  <div class="modal" style="max-width:640px;width:92%;padding:40px 36px 32px;background:#ffffff url('img/FONDO-VENTANA-EMERGENTE-640pxX948px.jpg') center top / cover no-repeat;">
     <button class="close-btn" onclick="cerrarBienvenida()" aria-label="Cerrar">✕</button>
 
     <!-- Capa para legibilidad del texto sobre el fondo -->
     <div style="position:relative;z-index:1;border-radius:14px;padding:24px 22px;">
 
     <!-- Audio de bienvenida, justo debajo del logo APS del fondo -->
-    <div style="text-align:center;margin-top:55px;margin-bottom:18px;">
+    <div style="text-align:center;margin-top:95px;margin-bottom:18px;">
       <audio controls style="width:100%;max-width:360px;">
         <source src="audio/AudioBienvenidaCurso.mp3" type="audio/mpeg">
         Tu navegador no soporta el audio.
@@ -1032,7 +1031,7 @@ var CONTENIDOS_ACTIVIDAD = {
         '<div style="background:#fff5eb; border:1px solid #f5d4b6; border-radius:10px; padding:20px 22px; margin-bottom:22px;">' +
           '<h3 style="color:#bd5b18; font-size:18px; margin:0 0 10px;">Participación en el foro</h3>' +
           '<p style="font-size:15px; margin:0 0 16px;">Realiza las dos participaciones con argumentos claros y una actitud respetuosa frente a las distintas perspectivas, opiniones y experiencias.</p>' +
-          '<a href="http://185.240.215.107:8081/moodle/mod/forum/view.php?id=1267" target="_blank" rel="noopener" style="display:block; background:#278b48; background-image:linear-gradient(100deg,#278b48 0%,#159e9a 100%); color:#ffffff; border-radius:9px; padding:15px 20px; text-align:center; border-bottom:4px solid #f58220; text-decoration:none; font-weight:700; font-size:16px;">Ir al foro para participar →</a>' +
+          '<a href="http://38.224.56.117:8081/moodle/mod/forum/view.php?id=1267" target="_blank" rel="noopener" style="display:block; background:#278b48; background-image:linear-gradient(100deg,#278b48 0%,#159e9a 100%); color:#ffffff; border-radius:9px; padding:15px 20px; text-align:center; border-bottom:4px solid #f58220; text-decoration:none; font-weight:700; font-size:16px;">Ir al foro para participar →</a>' +
         '</div>' +
       '</div>' +
     '</div>',
@@ -1062,7 +1061,7 @@ var CONTENIDOS_ACTIVIDAD = {
           '<p style="margin:0; color:#743b13; font-weight:bold;">El archivo debe estar en formato PDF, tener un tamaño máximo de 1 MB y su nombre no debe contener tildes, la letra ñ ni diéresis (ü). De lo contrario, no podrá abrirse correctamente.</p>' +
         '</div>' +
         '<div style="text-align:center; margin-top:26px;">' +
-          '<a href="http://185.240.215.107:8081/moodle/mod/assign/view.php?id=1268" target="_blank" rel="noopener" style="display:inline-block; background:#f58220; background-image:linear-gradient(100deg,#f58220 0%,#e8690b 100%); color:#ffffff; border-radius:26px; padding:15px 42px; text-align:center; box-shadow:0 5px 14px rgba(245,130,32,.35); text-decoration:none; font-weight:700; font-size:17px;">📤 Entregar tarea</a>' +
+          '<a href="http://38.224.56.117:8081/moodle/mod/assign/view.php?id=1268" target="_blank" rel="noopener" style="display:inline-block; background:#f58220; background-image:linear-gradient(100deg,#f58220 0%,#e8690b 100%); color:#ffffff; border-radius:26px; padding:15px 42px; text-align:center; box-shadow:0 5px 14px rgba(245,130,32,.35); text-decoration:none; font-weight:700; font-size:17px;">📤 Entregar tarea</a>' +
         '</div>' +
       '</div>' +
     '</div>'
@@ -1172,7 +1171,7 @@ MODULOS.forEach(function(m, moduloIdx) {
               if (it.accion === 'audio') {
                 extra = '<div class="audio-player-back" id="audioback-' + actIdBack + '" style="display:none;" onclick="event.stopPropagation()">' +
                           '<audio controls style="width:100%;" onended="marcarCompletada(\'' + actIdBack + '\')">' +
-                            '<source src="' + it.archivo + '" type="audio/mpeg">' +
+                            '<source src="' + it.archivo + '">' +
                           '</audio>' +
                         '</div>';
               }
