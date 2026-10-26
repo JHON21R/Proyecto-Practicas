@@ -6,7 +6,7 @@
 
    ⚠️  PRODUCCIÓN: cambia API_BASE por la dirección pública del
        servidor, por ejemplo:
-       var API_BASE = 'http://185.240.215.107:3001/api';
+       var API_BASE = 'http://38.224.56.117:3001/api';
 ============================================================ */
 
 var API_BASE = 'http://localhost:3001/api';
