@@ -108,7 +108,7 @@ const MODULOS = [
         tipo:    "Contexto de Salud Colectiva",
         texto:   "Lectura sobre el contexto de la Salud Colectiva.",
         accion:  "link",
-        url:     "http://38.224.56.117:8081/lineatiempo/index.html"
+        url:     "http://38.224.56.117:8081/lineasaludcolectiva/index.html"
       },
       {
         icono:   "🎧",
@@ -166,7 +166,8 @@ const MODULOS = [
         icono:   "📄",
         tipo:    "Determinantes Sociales de la Salud",
         texto:   "Lectura sobre los determinantes sociales de la salud.",
-        accion:  "proximamente"
+         accion:  "link",
+        url:     "http://38.224.56.117:8081/contextodeterminacion/index.html"
       },
       {
         icono:   "📄",
