@@ -56,7 +56,7 @@ const MODULOS = [
         tipo:    "Antecedente APS",
         texto:   "Antecedente de la Atención Primaria en Salud.",
         accion:  "link",
-        url:     "http://185.240.215.107:8081/lineatiempo/index.html"
+        url:     "http://38.224.56.117:8081/lineatiempo/index.html"
       },
       {
         icono:   "🎧",
@@ -70,7 +70,7 @@ const MODULOS = [
         tipo:    "Actividad",
         texto:   "Viaje por la Historia de la APS.",
         accion:  "link",
-        url:     "http://185.240.215.107:8081/moodle/mod/scorm/view.php?id=1266"
+        url:     "http://38.224.56.117:8081/moodle/mod/scorm/view.php?id=1266"
       },
       {
         icono:   "📄",
@@ -108,14 +108,14 @@ const MODULOS = [
         tipo:    "Contexto de Salud Colectiva",
         texto:   "Lectura sobre el contexto de la Salud Colectiva.",
         accion:  "link",
-        url:     "http://185.240.215.107:8081/lineatiempo/index.html"
+        url:     "http://38.224.56.117:8081/lineatiempo/index.html"
       },
       {
         icono:   "🎧",
         tipo:    "Narrativa Histórica Salud Colectiva",
         texto:   "Recorrido histórico de la Salud Colectiva.",
-        accion:  "video",
-        archivo: "audio/SALUD COLECTIVA AUDIO 2.mp3"
+        accion:  "audio",
+        archivo: "audio/narrativa-salud-colectiva.mp3"
       },
       { 
         icono:   "▶️",
@@ -128,8 +128,8 @@ const MODULOS = [
         icono:   "✏️",
         tipo:    "Actividad",
         texto:   "Ciudad Bienestar como estrategia territorial.",
-        accion:    "contenido",
-        contenido: "ciudad-bienestar-territorial"
+        accion:  "link",
+        url:     "http://38.224.56.117:8081/moodle/mod/scorm/view.php?id=1270"
       },
       {
         icono:   "📄",
@@ -159,7 +159,8 @@ const MODULOS = [
         icono:   "🎧",
         tipo:    "Audio de Introducción",
         texto:   "Introducción al Módulo 3.",
-        accion:  "proximamente"
+        accion:  "audio",
+        archivo: "audio/AudioIntroDeterminantes.m4a"
       },
       {
         icono:   "📄",
@@ -172,7 +173,7 @@ const MODULOS = [
         tipo:    "Determinación VS Determinantes",
         texto:   "Comparación entre determinación y determinantes.",
         accion:  "link",
-        url:     "http://185.240.215.107:8081/Determinantes/index.html"
+        url:     "http://38.224.56.117:8081/Determinantes/index.html"
       },
       {
         icono:   "🧩",
