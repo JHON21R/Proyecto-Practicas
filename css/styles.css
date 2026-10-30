@@ -997,6 +997,69 @@ a {
   .modules-grid .flip-card:nth-child(4) { grid-column: auto; }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE REFORZADO PARA TABLET Y CELULAR
+   ═══════════════════════════════════════════════════════════ */
+
+/* Nunca permitir scroll horizontal en la página */
+html, body { overflow-x: hidden; max-width: 100%; }
+img { max-width: 100%; }
+
+/* Tablet y móviles grandes: el texto de las tarjetas Intención y
+   Descripción deja de ir encima de la imagen y pasa a ser estático */
+@media (max-width: 900px) {
+  .banner-intencion-texto,
+  .banner-descripcion-texto {
+    position: static;
+    transform: none;
+    left: auto; right: auto; top: auto;
+    padding: 14px 18px;
+  }
+  .banner-intencion.info-card,
+  .banner-descripcion.info-card { line-height: normal; }
+  .banner-intencion-bg,
+  .banner-descripcion-bg { position: relative; height: auto; }
+  .banner-descripcion-icono { display: none; }
+
+  /* Título del banner APS más pequeño para que no se desborde */
+  .banner-aps-left h2,
+  .banner-aps-left h2 span { font-size: 2rem !important; }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+  /* Base tipográfica un poco menor para que el contenido respire */
+  body,
+  p, li, span, label, td { font-size: 16px; }
+
+  /* Títulos grandes que antes no bajaban */
+  .hero-left h1,
+  .banner-aps-left h2,
+  .banner-aps-left h2 span { font-size: 1.6rem !important; }
+
+  /* Badge del módulo: más chico y dentro del banner */
+  .badge-modulo { height: 90px; top: 6px; left: 6px; }
+
+  /* Iconos del banner APS en fila que se acomoda sola */
+  .banner-aps-icons { justify-content: flex-start; gap: 10px; }
+  .banner-aps-icon .ico-b { width: 52px; height: 52px; }
+
+  /* Ventanas flotantes ocupan casi toda la pantalla */
+  .modal { padding: 28px 20px 24px; width: 94%; }
+  .modal-foro { width: 96%; padding: 22px 14px; }
+
+  /* La tabla de la guía permite desplazarse de lado dentro de su caja */
+  .modal-foro table { font-size: 12px; }
+}
+
+/* Celular pequeño */
+@media (max-width: 400px) {
+  .hero-left h1,
+  .banner-aps-left h2,
+  .banner-aps-left h2 span { font-size: 1.4rem !important; }
+  .flip-card { height: auto; min-height: 460px; }
+}
+
 
 /* ── 13. Visor de documentos internos ───────────────────── */
 
