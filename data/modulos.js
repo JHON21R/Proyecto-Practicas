@@ -72,12 +72,12 @@ const MODULOS = [
         accion:  "link",
         url:     "http://38.224.56.117:8081/moodle/mod/scorm/view.php?id=1266"
       },
-      {
+     /* {
         icono:   "📄",
         tipo:    "Lecturas de apoyo",
         texto:   "Material de apoyo complementario.",
         accion:  "proximamente"
-      }
+      }*/
     ]
   },
 
@@ -131,12 +131,12 @@ const MODULOS = [
         accion:  "link",
         url:     "http://38.224.56.117:8081/moodle/mod/scorm/view.php?id=1270"
       },
-      {
+     /* {
         icono:   "📄",
         tipo:    "Lecturas de Apoyo",
         texto:   "Material de apoyo complementario.",
         accion:  "proximamente"
-      }
+      }*/
     ]
   },
 
@@ -212,9 +212,11 @@ const MODULOS = [
         icono:   "🧩",
         tipo:    "Tejiendo el territorio como espacio de vida",
         texto:   "Material de lectura del Módulo 4.",
-        accion:  "proximamente"
+        accion:  "link",
+        url:     "http://38.224.56.117:8081/moodle/pluginfile.php/5768/mod_imscp/content/1/index.html"
+
       },
-      {
+    /*  {
         icono:   "▶️",
         tipo:    "Experiencia en el Territorio",
         texto:   "Video de apoyo del Módulo 4.",
@@ -231,7 +233,7 @@ const MODULOS = [
         tipo:    "Actividad",
         texto:   "Actividad reflexiva del Módulo 4.",
         accion:  "proximamente"
-      }
+      }*/
     ]
   }
 
